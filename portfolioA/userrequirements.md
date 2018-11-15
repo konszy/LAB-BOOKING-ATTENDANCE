@@ -6,6 +6,10 @@
 3. (Optional) Support / Maintenance people after the project is finished
 4. Lecturers (user)  : There may be lecturers who want to use the lab for their own work or book it for special cases
 
+![image_name](https://github.com/konszy/LAB-BOOKING-ATTENDANCE/blob/master/portfolioA/Stakeholders%20Diagram.png)
+
+
+
 #  Goals
 ###  1.Booking a seat (Core goal)
 ##### Atomic goals/tasks
@@ -115,6 +119,3 @@ __Alternative Flow__: You click the equipment first then go back and find the sl
 * The currently selected options should be highlighted in a list of options.
 * The font size (character height) shall be based on reading distance and guidance of HE75. * Character height (inches) = Distance (minutes of arc)/(57.3 x 60)
 * There should be a saving button/function where the admin can save the schedule of last * week booking and re-book it again in the next week
-
-
-![image_name](https://github.com/konszy/LAB-BOOKING-ATTENDANCE/blob/master/portfolioA/Stakeholders%20Diagram.png)
