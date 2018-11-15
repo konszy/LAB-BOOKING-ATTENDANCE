@@ -117,4 +117,4 @@ __Alternative Flow__: You click the equipment first then go back and find the sl
 * There should be a saving button/function where the admin can save the schedule of last * week booking and re-book it again in the next week
 
 
-![image_name](LAB-BOOKING-ATTENDANCE/portfolioA/Stakeholders Diagram.png)
+![image_name](https://github.com/konszy/LAB-BOOKING-ATTENDANCE/blob/master/portfolioA/Stakeholders%20Diagram.png)
