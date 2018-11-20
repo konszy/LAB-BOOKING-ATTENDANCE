@@ -6,6 +6,10 @@
 3. (Optional) Support / Maintenance people after the project is finished
 4. Lecturers (user)  : There may be lecturers who want to use the lab for their own work or book it for special cases
 
+![image_name](https://github.com/konszy/LAB-BOOKING-ATTENDANCE/blob/master/portfolioA/Stakeholders%20Diagram.png)
+
+
+
 #  Goals
 ###  1.Booking a seat (Core goal)
 ##### Atomic goals/tasks
