@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity @Table(name = "user")
 public class User {
-    @Id @GeneratedValue @Column(name="id") @Getter @Setter
+    @Id @GeneratedValue @Column(name="id")
     private Long id;
 
     @Column(name="name")
