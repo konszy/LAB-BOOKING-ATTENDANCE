@@ -9,7 +9,7 @@ public class Register {
         return name;
     }
 
-    public void setId(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

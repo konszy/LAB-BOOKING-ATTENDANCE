@@ -46,15 +46,21 @@ public class MainController {
 
     @PostMapping("/register")
     public String registerSubmit(@ModelAttribute Register register) {
+        User n = new User();
+		n.setName(register.getName());
+		n.setEmail(register.getEmail());
+		userRepository.save(n);
         return "result";
     }
 
+    // Return Users name and email by ID
     @GetMapping("{id}")
     @ResponseBody
     public String show(@PathVariable long id) {
         return "Name: " + (userRepository.findById(id)).getName() + ", Email: " + (userRepository.findById(id)).getEmail() + "";
     }
 
+    // Return all users
     @GetMapping(path="/all")
     public @ResponseBody Iterable<User> getAllUsers() {
         // This returns a JSON or XML with the users
