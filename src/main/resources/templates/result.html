@@ -4,10 +4,13 @@
     <title>Registration-Result</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+<h4></h4>
 <body>
-	<h1>Result</h1>
-    <p th:text="'Name: ' + ${register.name}" />
-    <p th:text="'Email: ' + ${register.email}" />
-    <a href="/all">View all users</a>
+<h1>Successfully Added</h1>
+<p th:text="'Name: ' + ${register.name}" />
+<p th:text="'Email: ' + ${register.email}" />
+<a th:href="@{display}">  DISPLAY </a>
+
 </body>
+
 </html>
