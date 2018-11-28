@@ -2,21 +2,19 @@ package com.dhammatorn.Controller;
 
 import com.dhammatorn.Entity.Student;
 import com.dhammatorn.Service.StudentService;
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.ui.Model;
+
 
 import java.util.Collection;
 
 //Rest deals with HTTP requests and the web - to - database controller
-@RestController
+@Controller
 //request mapping means it is the end of URL (e.g. /smth)
-@RequestMapping("/students")
+@RequestMapping("/")
 public class StudentController {
 
     //get all of student service
@@ -24,28 +22,10 @@ public class StudentController {
     //Autowired means springboot will instantiate the injection automatically
     private StudentService studentService;
 
-    /*
-    // Adding a registration
-    @GetMapping(path="/register")
-    public String registerForm(Model model) {
-        model.addAttribute("register", new Register());
-        return "register";
-    }
-
-    @PostMapping("/register")
-    public String registerSubmit(@ModelAttribute Register register) {
-        User n = new User();
-		n.setName(register.getName());
-		n.setEmail(register.getEmail());
-		userRepository.save(n);
-        return "result";
-    }
-    */
-
     //define the HTTP that this is a GET method
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/students", method = RequestMethod.GET)
     //function to return all students
-    public Collection<Student> getAllStudent() {
+    public @ResponseBody Collection<Student> getAllStudent() {
         return studentService.getAllStudent();
     }
 
@@ -53,14 +33,14 @@ public class StudentController {
     // a student according to that id
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     //Pathvariable means u actually want the id to be the one you send from the url
-    public Student getStudentById(@PathVariable("id") int id) {
+    public @ResponseBody Student getStudentById(@PathVariable("id") int id) {
         return studentService.getStudentById(id);
     }
 
 
     //delete student function
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteStudentById(@PathVariable("id") int id) {
+    public @ResponseBody void deleteStudentById(@PathVariable("id") int id) {
         studentService.removeStudentById(id);
     }
 
@@ -69,10 +49,25 @@ public class StudentController {
     //consumes tells the springboot to consume a JSON value sent by the function
     @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     //Request Body is requesting the student parameter
-    public void updateStudent(@RequestBody Student student){
+    public @ResponseBody void updateStudent(@RequestBody Student student){
         studentService.updateStudent(student);
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    public String index(){
+        return "index";
+    }
+
+    @RequestMapping(value = "/display", method = RequestMethod.GET)
+    public String display() {
+        return "display";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+        public String register(){
+            return "register";
+        }
 
 
 }
+

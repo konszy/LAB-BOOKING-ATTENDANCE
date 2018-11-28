@@ -6,12 +6,15 @@ public class Student {
     private int id;
     private String name;
     private String course;
+    private String email;
+    private String lastname;
 
-    public Student(int id, String name, String course){
+    public Student(int id, String name, String course, String lastname, String email){
         this.id = id;
         this.name = name;
+        this.lastname = lastname;
         this.course = course;
-
+        this.email = email;
     }
 
     //to automatically create getter and setter click command+N and generate (or Code -> Generate)

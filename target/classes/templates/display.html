@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <title>All Students </title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<p> Displaying all students </p>
+<body>
+<div class="mypanel"></div>
+
+<script>
+
+    $.getJSON('http://localhost:8080/students', function(data) {
+    for(let i =0; i < 2; i++){
+        var text = `Date: ${data[i].id}<br>
+                    Time: ${data[i].name}<br>
+                    Course: ${data[i].course}`
+
+        $(".mypanel").html(text);
+    }
+    });
+
+    </script>
+
+</body>
+</html>
