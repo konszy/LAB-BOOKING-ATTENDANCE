@@ -2,11 +2,16 @@ package com.dhammatorn.Controller;
 
 import com.dhammatorn.Entity.Student;
 import com.dhammatorn.Service.StudentService;
+import com.dhammatorn.Entity.Register;
 import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 import java.util.Collection;
@@ -16,6 +21,20 @@ import java.util.Collection;
 //request mapping means it is the end of URL (e.g. /smth)
 @RequestMapping("/")
 public class StudentController {
+
+    // Registering
+    @GetMapping("/register")
+    public String registerForm(Model model) {
+        model.addAttribute("register", new Register());
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String registerSubmit(@ModelAttribute Register register) {
+        Student s = new Student();
+        s.setName(register.getName());
+        return "result";
+    }
 
     //get all of student service
     @Autowired
@@ -28,6 +47,11 @@ public class StudentController {
     public @ResponseBody Collection<Student> getAllStudent() {
         return studentService.getAllStudent();
     }
+
+
+    /*
+
+
 
     //value /{id} means we are going to pass an id from the URL and this method is going to output
     // a student according to that id
@@ -63,10 +87,8 @@ public class StudentController {
         return "display";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-        public String register(){
-            return "register";
-        }
+
+    */
 
 
 }

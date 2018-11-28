@@ -16,19 +16,23 @@ public class StudentDao {
 
     //key is the student id
     //and the actual student object
-    private static Map<Integer, Student> students;
+    private Map<Integer, Student> students;
 
     //HTTP Put into database with these values
-    static {
+    {
 
         students = new HashMap<Integer, Student>(){
-
             {
                 // automatically put = command D
-                put(1, new Student(1, "John", "Computer Science"));
-                put(2, new Student(2, "Dave", "Electrical Engineering"));
+                //put(1, new Student(1, "John", "Bon", "Computer Science", "email", "null", "null"));
+                //put(2, new Student(2, "Dave", "Pave", "Electrical Engineering", "email", "null", "null"));
             }
         };
+    }
+
+
+    public void addStudent(Student student){
+        students.put(student.getId(), student);
     }
 
     //function to return all students
@@ -36,6 +40,7 @@ public class StudentDao {
         return this.students.values();
 
     }
+    /*
     //function to get Student by ID
     //copy this to service to connect them
     public Student getStudentById(int id){
@@ -55,5 +60,6 @@ public class StudentDao {
         students.put(student.getId(), student);
 
     }
+    */
 
 }

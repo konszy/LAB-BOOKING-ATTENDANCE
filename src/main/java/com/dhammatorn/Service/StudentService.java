@@ -17,11 +17,17 @@ public class StudentService {
     @Autowired
     private StudentDao studentDao;
 
+    public void addStudent(Student student){
+        studentDao.addStudent(student);
+    }
+
     //function to return all students
     public Collection<Student> getAllStudent(){
         return studentDao.getAllStudent();
 
     }
+
+    /*
 
     public Student getStudentById(int id){
         return this.studentDao.getStudentById(id);
@@ -36,5 +42,5 @@ public class StudentService {
         this.studentDao.updateStudent(student);
     }
 
-
+    */
 }

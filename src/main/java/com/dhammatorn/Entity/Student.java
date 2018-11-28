@@ -1,20 +1,39 @@
 package com.dhammatorn.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.Table;
+
 
 //object in the database
+@Entity @Table(name = "student")
 public class Student {
+    @Id @GeneratedValue @Column(name="id")
     private int id;
+
+    @Column(name="name")
     private String name;
-    private String course;
-    private String email;
+
+    @Column(name="lastname")
     private String lastname;
+
+    @Column(name="course")
+    private String course;
+
+    @Column(name="email")
+    private String email;
+
+    @Column(name="seatNo")
     private String seatNo;
+
+    @Column(name="dateAndTime")
     private String dateAndTime;
 
     /*
-    public Student(int id, String name, String lastname, String course,
+    public Student(String name, String lastname, String course,
                 String email, String seatNo, String dateAndTime){
-        this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.course = course;
@@ -26,18 +45,12 @@ public class Student {
 
     //to automatically create getter and setter click command+N and generate (or Code -> Generate)
 
-    public Student(){}
-
-    public int getId() {
+    public int getId(){
         return this.id;
     }
 
     public String getCourse() {
         return this.course;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
