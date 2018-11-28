@@ -8,25 +8,32 @@ public class Student {
     private String course;
     private String email;
     private String lastname;
+    private String seatNo;
+    private String dateAndTime;
 
-    public Student(int id, String name, String course, String lastname, String email){
+    /*
+    public Student(int id, String name, String lastname, String course,
+                String email, String seatNo, String dateAndTime){
         this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.course = course;
         this.email = email;
+        this.seatNo = seatNo;
+        this.dateAndTime = dateAndTime;
     }
+    */
 
     //to automatically create getter and setter click command+N and generate (or Code -> Generate)
 
     public Student(){}
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public String getCourse() {
-        return course;
+        return this.course;
     }
 
     public void setId(int id) {
@@ -34,7 +41,7 @@ public class Student {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -43,6 +50,38 @@ public class Student {
 
     public void setCourse(String course) {
         this.course = course;
+    }
+
+    public void setSeatNo(String seatNo){
+        this.seatNo = seatNo;
+    }
+
+    public String getSeatNo(){
+        return this.seatNo;
+    }
+
+    public void setDateAndTime(String dateAndTime){
+        this.dateAndTime = dateAndTime;
+    }
+
+    public String getDateAndTime(){
+        return this.dateAndTime;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public String getEmail(){
+        return this.email;
+    }
+
+    public void setLastname(String lastname){
+        this.lastname = lastname;
+    }
+
+    public String getLastname(){
+        return this.lastname;
     }
 
 
