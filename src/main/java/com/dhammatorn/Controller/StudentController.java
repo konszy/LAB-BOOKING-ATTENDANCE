@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.Model;
 
 import java.util.Collection;
 
@@ -19,6 +23,24 @@ public class StudentController {
     @Autowired
     //Autowired means springboot will instantiate the injection automatically
     private StudentService studentService;
+
+    /*
+    // Adding a registration
+    @GetMapping(path="/register")
+    public String registerForm(Model model) {
+        model.addAttribute("register", new Register());
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String registerSubmit(@ModelAttribute Register register) {
+        User n = new User();
+		n.setName(register.getName());
+		n.setEmail(register.getEmail());
+		userRepository.save(n);
+        return "result";
+    }
+    */
 
     //define the HTTP that this is a GET method
     @RequestMapping(method = RequestMethod.GET)
