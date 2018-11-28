@@ -40,7 +40,7 @@ public class StudentDao {
         return this.students.values();
 
     }
-    /*
+
     //function to get Student by ID
     //copy this to service to connect them
     public Student getStudentById(int id){
@@ -60,6 +60,6 @@ public class StudentDao {
         students.put(student.getId(), student);
 
     }
-    */
+
 
 }

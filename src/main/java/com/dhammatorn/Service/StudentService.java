@@ -27,8 +27,6 @@ public class StudentService {
 
     }
 
-    /*
-
     public Student getStudentById(int id){
         return this.studentDao.getStudentById(id);
     }
@@ -42,5 +40,4 @@ public class StudentService {
         this.studentDao.updateStudent(student);
     }
 
-    */
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+    body {font-family: Arial, Helvetica, sans-serif;}
+    form {border: 3px solid #f1f1f1;}
+
+    input[type=text], input[type=password] {
+        width: 30%;
+        padding: 12px 10px;
+        margin: 0 auto;
+        display: block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        text-align: center;
+
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 20%;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+    body {
+    background-image: url("images/background.jpeg");
+    text-align: center;
+    }
+    h1{
+      text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <p><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" /></p></br>
+    <h1> Faculty of Engineering </h1>
+      <P>
+      Username:<br><br>
+      <input type="text" placeholder="Username" th:field="*{userid}" /></p><br>
+      Password:<br><br>
+      <input type="password" placeholder="Password" th:field="*{password}" /><br> <a th:href="@{forgot_password}"> Forgot Your Password? </a> <br>
+      <br></p>
+      <button type="submit" >Login</button> <br>
+      <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+</body>
+</html>

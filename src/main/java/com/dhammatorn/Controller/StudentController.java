@@ -33,6 +33,7 @@ public class StudentController {
     public String registerSubmit(@ModelAttribute Register register) {
         Student s = new Student();
         s.setName(register.getName());
+        studentService.addStudent(s);
         return "result";
     }
 
@@ -48,11 +49,6 @@ public class StudentController {
         return studentService.getAllStudent();
     }
 
-
-    /*
-
-
-
     //value /{id} means we are going to pass an id from the URL and this method is going to output
     // a student according to that id
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -61,13 +57,11 @@ public class StudentController {
         return studentService.getStudentById(id);
     }
 
-
     //delete student function
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public @ResponseBody void deleteStudentById(@PathVariable("id") int id) {
         studentService.removeStudentById(id);
     }
-
 
     //handle student update function
     //consumes tells the springboot to consume a JSON value sent by the function
@@ -86,9 +80,6 @@ public class StudentController {
     public String display() {
         return "display";
     }
-
-
-    */
 
 
 }
