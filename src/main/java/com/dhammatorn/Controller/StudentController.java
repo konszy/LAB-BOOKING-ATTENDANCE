@@ -70,7 +70,7 @@ public class StudentController {
     public @ResponseBody void updateStudent(@RequestBody Student student){
         studentService.updateStudent(student);
     }
-
+    
     @RequestMapping(method = RequestMethod.GET)
     public String index(){
         return "index";
