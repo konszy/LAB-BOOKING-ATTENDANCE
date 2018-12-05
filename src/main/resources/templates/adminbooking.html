@@ -4,6 +4,7 @@
     <title>seats sellection</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
+
     form {
       margin:20px;
       display:inline
@@ -48,8 +49,23 @@
       width: 20%;
   }
 
-
     </style>
+
+    <script>
+
+    function sellectAll(){
+      var seatNOs  =document.getElementsByName("seatNO");
+      if(seatNOs.checked==true){
+        for(var i=0;i<seatNOs.length;i++){
+          seatNO[i].checked = true;
+        }}
+      else{
+        for(var i=0;i<seatNOs.length;i++)
+        seatNO[i].checked = false;}
+    }
+
+    </script>
+
 </head>
 <body>
   <h3> Time slot </h3>
@@ -91,101 +107,102 @@
     <table class="table1" >
     <tr>
       <th align="center" style="width:100px;">Seat No</th>
-      <th align="center" style="width:150px;">Statu</th>
+      <th align="center" style="width:150px;">Status</th>
       <th align="center" style="width:80px;">Seat sellect</th>
     </tr>
     <tr>
       <td align="center">A1</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">A2</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">A3</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">A4</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">A5</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">A6</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">B1</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">B2</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">B3</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">B4</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">B5</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">B6</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">C1</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">C2</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">C3</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">C4</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">C5</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
     <tr>
       <td align="center">C6</td>
       <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
+      <td align="center"><input type="checkbox" name="seatNO" value="1A"></td>
     </tr>
   </table><br>
 
+      <input type="button" value="SellectAll" onclick="sellectAll()" />
       <button type="submit" >Confirm</button> <br>
 
 </body>
