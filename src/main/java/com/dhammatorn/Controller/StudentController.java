@@ -33,6 +33,9 @@ public class StudentController {
     public String registerSubmit(@ModelAttribute Register register) {
         Student s = new Student();
         s.setName(register.getName());
+        s.setLastname(register.getLastname());
+        s.setCourse(register.getCourse());
+        s.setEmail(register.getEmail());
         studentService.addStudent(s);
         return "result";
     }
