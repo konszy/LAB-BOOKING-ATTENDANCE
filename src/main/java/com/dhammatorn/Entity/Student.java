@@ -10,8 +10,7 @@ import javax.persistence.Table;
 //object in the database
 @Entity @Table(name = "student")
 public class Student {
-
-    @Id @Column(name="id")
+    @Id @GeneratedValue @Column(name="id")
     private int id;
 
     @Column(name="name")
@@ -32,11 +31,19 @@ public class Student {
     @Column(name="dateAndTime")
     private String dateAndTime;
 
-
-    // Getters and Setters
-    public void setId(int id){
-        this.id = id;
+    /*
+    public Student(String name, String lastname, String course,
+                String email, String seatNo, String dateAndTime){
+        this.name = name;
+        this.lastname = lastname;
+        this.course = course;
+        this.email = email;
+        this.seatNo = seatNo;
+        this.dateAndTime = dateAndTime;
     }
+    */
+
+    //to automatically create getter and setter click command+N and generate (or Code -> Generate)
 
     public int getId(){
         return this.id;

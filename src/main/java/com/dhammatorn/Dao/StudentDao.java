@@ -27,32 +27,15 @@ public class StudentDao {
        student_interface.save(student);
     }
 
-
-//    //HTTP Put into database with these values
-//    {
-//
-//        students = new HashMap<Integer, Student>(){
-//            {
-//            }
-//        };
-//    }
-//
-//    // Adding a student to the HashMap, will auto generate an Id
-//    public void addStudent(Student student){
-//       // student.setId(students.size());
-//        students.put(student.getId(), student);
-//    }
-
     //function to return all students
     public Collection<Student> getAllStudent(){
-        return this.students.values();
-
+        return student_interface.findAll();
     }
 
     //function to get Student by ID
     //copy this to service to connect them
     public Student getStudentById(int id){
-        return this.students.get(id);
+        return student_interface.getStudentById(id);
     }
 
     public void removeStudentById(int id) {
