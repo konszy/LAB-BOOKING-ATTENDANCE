@@ -23,15 +23,13 @@ public class StudentDao {
 
         students = new HashMap<Integer, Student>(){
             {
-                // automatically put = command D
-                //put(1, new Student(1, "John", "Bon", "Computer Science", "email", "null", "null"));
-                //put(2, new Student(2, "Dave", "Pave", "Electrical Engineering", "email", "null", "null"));
             }
         };
     }
 
-
+    // Adding a student to the HashMap, will auto generate an Id
     public void addStudent(Student student){
+        student.setId(students.size());
         students.put(student.getId(), student);
     }
 
