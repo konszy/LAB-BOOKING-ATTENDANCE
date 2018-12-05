@@ -1,6 +1,8 @@
 package com.dhammatorn.Dao;
 
 import com.dhammatorn.Entity.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
@@ -16,22 +18,30 @@ public class StudentDao {
 
     //key is the student id
     //and the actual student object
-    private Map<Integer, Student> students;
+    private Map<Integer, Student> students = new HashMap<Integer, Student>();
 
-    //HTTP Put into database with these values
-    {
+    @Autowired
+    public Student_interface student_interface;
 
-        students = new HashMap<Integer, Student>(){
-            {
-            }
-        };
-    }
-
-    // Adding a student to the HashMap, will auto generate an Id
     public void addStudent(Student student){
-        student.setId(students.size());
-        students.put(student.getId(), student);
+       student_interface.save(student);
     }
+
+
+//    //HTTP Put into database with these values
+//    {
+//
+//        students = new HashMap<Integer, Student>(){
+//            {
+//            }
+//        };
+//    }
+//
+//    // Adding a student to the HashMap, will auto generate an Id
+//    public void addStudent(Student student){
+//       // student.setId(students.size());
+//        students.put(student.getId(), student);
+//    }
 
     //function to return all students
     public Collection<Student> getAllStudent(){
