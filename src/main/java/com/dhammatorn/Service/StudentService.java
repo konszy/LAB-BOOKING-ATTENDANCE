@@ -31,6 +31,7 @@ public class StudentService {
         return this.studentDao.getStudentById(id);
     }
 
+    /*
     public void removeStudentById(int id){
         this.studentDao.removeStudentById(id);
     }
@@ -39,5 +40,6 @@ public class StudentService {
 
         this.studentDao.updateStudent(student);
     }
+    */
 
 }

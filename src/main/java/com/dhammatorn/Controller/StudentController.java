@@ -60,6 +60,7 @@ public class StudentController {
         return studentService.getStudentById(id);
     }
 
+    /*
     //delete student function
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public @ResponseBody void deleteStudentById(@PathVariable("id") int id) {
@@ -73,15 +74,11 @@ public class StudentController {
     public @ResponseBody void updateStudent(@RequestBody Student student){
         studentService.updateStudent(student);
     }
+    */
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(){
         return "index";
-    }
-
-    @RequestMapping(value = "/display", method = RequestMethod.GET)
-    public String display() {
-        return "display";
     }
 
 
