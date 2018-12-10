@@ -98,5 +98,17 @@ public class StudentController {
         return "index";
     }
 
+    // ADMIN PAGES
+
+    @GetMapping(value = "/admin/booking")
+    public String adminbooking(){
+        return "adminbooking";
+    }
+
+    @GetMapping(value = "/admin/manageaccounts")
+    public String manageaccounts(){
+        return "manage_account";
+    }
+
 
 }
