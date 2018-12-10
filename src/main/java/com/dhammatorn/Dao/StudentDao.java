@@ -39,10 +39,12 @@ public class StudentDao {
     }
 
     /*
-    public void removeStudentById(int id) {
-        this.students.remove(id);
+    // Delete a student by using a given ID
+    public void deleteStudentById(int id) {
+        student_interface.deleteStudentById(id);
     }
 
+    /*
     //update student
     public void updateStudent(int id){
         Student s = getStudentById();

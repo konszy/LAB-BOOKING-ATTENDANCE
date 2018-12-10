@@ -22,6 +22,11 @@ import java.util.Collection;
 @RequestMapping("/")
 public class StudentController {
 
+    //get all of student service
+    @Autowired
+    //Autowired means springboot will instantiate the injection automatically
+    private StudentService studentService;
+
     // Registering
     @GetMapping("/register")
     public String registerForm(Model model) {
@@ -40,14 +45,8 @@ public class StudentController {
         return "result";
     }
 
-    //get all of student service
-    @Autowired
-    //Autowired means springboot will instantiate the injection automatically
-    private StudentService studentService;
-
-    //define the HTTP that this is a GET method
-    @RequestMapping(value = "/students", method = RequestMethod.GET)
     //function to return all students
+    @RequestMapping(value = "/students", method = RequestMethod.GET)
     public @ResponseBody Collection<Student> getAllStudent() {
         return studentService.getAllStudent();
     }
@@ -60,12 +59,30 @@ public class StudentController {
         return studentService.getStudentById(id);
     }
 
+    @GetMapping(value = "/{id}/edituser")
+    public String edituserForm(Model model) {
+        model.addAttribute("register", new Register());
+        return "edit_users";
+    }
+
+    @PostMapping(value = "/{id}/edituser")
+    public String edituserSubmit(@ModelAttribute Register register) {
+        Student s = new Student(); //studentService.getStudentById(@PathVariable("id") int id).class;
+        s.setName(register.getName());
+        s.setLastname(register.getLastname());
+        s.setCourse(register.getCourse());
+        s.setEmail(register.getEmail());
+        return "editresult";
+    }
+
     /*
     //delete student function
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public @ResponseBody void deleteStudentById(@PathVariable("id") int id) {
-        studentService.removeStudentById(id);
+        studentService.deleteStudentById(id);
     }
+
+
 
     //handle student update function
     //consumes tells the springboot to consume a JSON value sent by the function

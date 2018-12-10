@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Complete</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit Complete</h1>
+    <p th:text="'First name: ' + ${register.name}" />
+    <p th:text="'Last name: ' + ${register.lastname}" />
+    <p th:text="'Course: ' + ${register.course}" />
+    <p th:text="'Email: ' + ${register.email}" />
+
+    <a th:href="@{index}"> Return to main page  </a>
+</body>
+</html>

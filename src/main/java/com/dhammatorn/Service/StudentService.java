@@ -32,10 +32,11 @@ public class StudentService {
     }
 
     /*
-    public void removeStudentById(int id){
-        this.studentDao.removeStudentById(id);
+    public void deleteStudentById(int id){
+        this.studentDao.deleteStudentById(id);
     }
 
+    
     public void updateStudent(Student student){
 
         this.studentDao.updateStudent(student);
