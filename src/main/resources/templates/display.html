@@ -4,23 +4,41 @@
 <head>
     <title>All Students </title>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+    $.getJSON('http://localhost:8080/students', function(data) {
+    for(let i = 0; i < data.length; i++){
+        var text = `<tr><td> ${data[i].id}</td>
+                   <td> ${data[i].name}</td>
+                   <td> ${data[i].lastname}</td>
+                   <td> ${data[i].course}</td>
+                   <td> ${data[i].email}</td>
+                   <td> ${data[i].seatNo}</td>
+                   <td> ${data[i].dateAndTime}</td>
+                   </tr>`
+        $(".student").append(text);
+    }
+
+    });
+</script>
 </head>
 <p> Displaying all students </p>
-<body>
+<body onload = "onLoad();">
 <div class="mypanel"></div>
+<table class = "student">
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> Name </th>
+        <th> Lastname </th>
+        <th> Course </th>
+        <th> Email </th>
+        <th> Seat No.</th>
+        <th> Date / Time</th>
+    </tr>
+    </thead>
+    <tbody>
 
-<script>
-
-    $.getJSON('http://localhost:8080/students', function(data) {
-    for(let i = 0; i < 2; i++){
-        var text = `Date: ${data[i].id}<br>
-                    Time: ${data[i].name}<br>
-                    Course: ${data[i].course}`
-    }
-            $(".mypanel").html(text);
-    });
-
-    </script>
-
+    </tbody>
+</table>
 </body>
 </html>
