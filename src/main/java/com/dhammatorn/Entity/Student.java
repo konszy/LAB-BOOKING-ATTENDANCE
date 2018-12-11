@@ -25,11 +25,8 @@ public class Student {
     @Column(name="email")
     private String email;
 
-    @Column(name="seatNo")
-    private String seatNo;
-
-    @Column(name="dateAndTime")
-    private String dateAndTime;
+    @Column(name="booking")
+    private int booking;
 
     /*
     public Student(String name, String lastname, String course,
@@ -65,21 +62,14 @@ public class Student {
         this.course = course;
     }
 
-    public void setSeatNo(String seatNo){
-        this.seatNo = seatNo;
+    public void setBooking(int booking){
+        this.booking = booking;
     }
 
-    public String getSeatNo(){
-        return this.seatNo;
+    public int getBooking(){
+        return this.booking;
     }
 
-    public void setDateAndTime(String dateAndTime){
-        this.dateAndTime = dateAndTime;
-    }
-
-    public String getDateAndTime(){
-        return this.dateAndTime;
-    }
 
     public void setEmail(String email){
         this.email = email;
