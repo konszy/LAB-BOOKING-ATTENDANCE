@@ -1,0 +1,27 @@
+body {
+      background-image: url('../images/background.jpeg');
+      text-align: center;
+    }
+
+    .student th {
+	      background-color:#87CEFA;
+	      color:#000000
+    }
+    .student ,.student th,.student td {
+      font-size:0.95em;
+	    text-align:center;
+      margin-left:auto;
+      margin-right:auto;
+	    padding:4px;
+	    border:1px solid #5fbdf8;
+      border-collapse:collapse
+    }
+    .student tr:nth-child(odd){
+	     background-color:#d7eefd;
+    }
+    .student tr:nth-child(even){
+	     background-color:#fdfdfd;
+    }
+    h3 {
+      text-align: center;
+    }
