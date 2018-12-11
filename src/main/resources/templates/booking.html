@@ -54,7 +54,6 @@
 <body>
   <h3> Time slot </h3>
     Start time:
-<form action="#" th:action="@{/bookings/book}" method="post">
     <form>
       <select name="time">
         <option value="9:00">9:00</option>
@@ -185,10 +184,9 @@
       <td>Available</td>
       <td align="center"><input type="radio" name="seatNO" value="1A"></td>
     </tr>
-  </table>
-        <br>
-        <input type="submit" value="Submit" />
-        <br>
-</form>
+  </table><br>
+
+      <button type="submit" >Confirm</button> <br>
+
 </body>
 </html>

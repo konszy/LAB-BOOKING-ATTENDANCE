@@ -6,11 +6,9 @@
 </head>
 <body>
 	<h1>Registration Complete</h1>
-    <p th:text="'First name: ' + ${student.name}" />
-    <p th:text="'Last name: ' + ${student.lastname}" />
-    <p th:text="'Course: ' + ${student.course}" />
-    <p th:text="'Email: ' + ${student.email}" />
-
-    <a th:href="@{index}"> Return to main page  </a>
+    <p th:text="'First name: ' + ${register.name}" />
+    <p th:text="'Last name: ' + ${register.lastname}" />
+    <p th:text="'Course: ' + ${register.course}" />
+    <p th:text="'Email: ' + ${register.email}" />
 </body>
 </html>
