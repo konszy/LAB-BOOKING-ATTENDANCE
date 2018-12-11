@@ -18,9 +18,15 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
-    @GetMapping("")
+    @GetMapping("/book")
     public String makeBooking(){
         return "booking";
+    }
+
+    @PostMapping("/book")
+    @ResponseBody
+    public String submitBooking(){
+        return "submitted";
     }
 
 }
