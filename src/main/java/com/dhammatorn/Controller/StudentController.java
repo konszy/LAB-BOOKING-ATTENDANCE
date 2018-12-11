@@ -53,7 +53,6 @@ public class StudentController {
     public @ResponseBody Student getStudentById(@PathVariable("id") int id) {
         Optional<Student> maybeStudent = studentService.getStudentById(id);
         if (maybeStudent.isPresent()) {
-            System.out.println("present");
             Student student = maybeStudent.get();
             return student;
         } else {
@@ -65,12 +64,10 @@ public class StudentController {
 
     @GetMapping(value = "/{id}/edituser")
     public String edituserForm(Model model, @PathVariable("id") int id) {
-
         Optional<Student> maybeStudent = studentService.getStudentById(id);
         if (maybeStudent.isPresent()) {
             Student student = maybeStudent.get();
             model.addAttribute("student", student);
-            model.addAttribute("id", Integer.toString(id));
         } else {
             //error
         }
@@ -78,7 +75,7 @@ public class StudentController {
     }
 
     @PostMapping(value = "/{id}/edituser")
-    public String edituserSubmit(@ModelAttribute Student student, @PathVariable("id") int id) {
+    public String edituserSubmit(@ModelAttribute Student student) {
         studentService.updateStudent(student);
         return "editresult";
     }
