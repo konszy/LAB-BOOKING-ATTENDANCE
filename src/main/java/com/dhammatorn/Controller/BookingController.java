@@ -19,13 +19,13 @@ public class BookingController {
     private BookingService bookingService;
 
     @GetMapping("/book")
-    public String makeBooking(){
+    public String bookingForm(){
         return "booking";
     }
 
     @PostMapping("/book")
     @ResponseBody
-    public String submitBooking(){
+    public String bookingSubmit(){
         return "submitted";
     }
 
