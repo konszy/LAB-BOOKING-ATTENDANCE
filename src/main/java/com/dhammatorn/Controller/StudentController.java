@@ -30,18 +30,13 @@ public class StudentController {
     // Registering
     @GetMapping("/register")
     public String registerForm(Model model) {
-        model.addAttribute("register", new Register());
+        model.addAttribute("student", new Student());
         return "register";
     }
 
     @PostMapping("/register")
-    public String registerSubmit(@ModelAttribute Register register) {
-        Student s = new Student();
-        s.setName(register.getName());
-        s.setLastname(register.getLastname());
-        s.setCourse(register.getCourse());
-        s.setEmail(register.getEmail());
-        studentService.addStudent(s);
+    public String registerSubmit(@ModelAttribute Student student) {
+        studentService.addStudent(student);
         return "result";
     }
 

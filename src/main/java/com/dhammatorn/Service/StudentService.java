@@ -1,8 +1,7 @@
 package com.dhammatorn.Service;
 
-import com.dhammatorn.Dao.StudentDao;
 import com.dhammatorn.Entity.Student;
-import com.dhammatorn.Dao.Student_interface;
+import com.dhammatorn.Dao.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
@@ -23,7 +22,8 @@ public class StudentService {
     //we need a way to access the Dao
     //create an instance of the Dao
     @Autowired
-    public Student_interface studentRepository;
+    public StudentRepository studentRepository;
+
     public void addStudent(Student student){
        studentRepository.save(student);
     }

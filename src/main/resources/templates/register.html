@@ -72,7 +72,7 @@
 <body>
   <p><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" /></p></br>
   <h1> Faculty of Engineering </h1>
-    <form action="#" th:action="@{/{id}/edituser}" th:object="${register}" method="post">
+    <form action="#" th:action="@{/register}" th:object="${student}" method="post">
         <p>First Name: <input type="text" th:field="*{name}" /></p>
         <p>Last Name: <input type="text" th:field="*{lastname}" /></p>
         <p>Course: <input type="text" th:field="*{course}" /></p>
