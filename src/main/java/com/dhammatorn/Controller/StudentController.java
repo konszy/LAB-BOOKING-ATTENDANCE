@@ -12,8 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-
 import java.util.Collection;
 
 //Rest deals with HTTP requests and the web - to - database controller
@@ -66,37 +64,16 @@ public class StudentController {
     }
 
     @PostMapping(value = "/{id}/edituser")
-    public String edituserSubmit(@ModelAttribute Register register) {
-        Student s = new Student(); //studentService.getStudentById(@PathVariable("id") int id).class;
-        s.setName(register.getName());
-        s.setLastname(register.getLastname());
-        s.setCourse(register.getCourse());
-        s.setEmail(register.getEmail());
+    public String edituserSubmit(@ModelAttribute Register register, @PathVariable("id") int id) {
+        studentService.updateStudentById(id, register.getName());
         return "editresult";
     }
-
-    /*
-    //delete student function
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public @ResponseBody void deleteStudentById(@PathVariable("id") int id) {
-        studentService.deleteStudentById(id);
-    }
-
-
-
-    //handle student update function
-    //consumes tells the springboot to consume a JSON value sent by the function
-    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    //Request Body is requesting the student parameter
-    public @ResponseBody void updateStudent(@RequestBody Student student){
-        studentService.updateStudent(student);
-    }
-    */
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(){
         return "index";
     }
+
 
     // ADMIN PAGES
 

@@ -31,16 +31,14 @@ public class StudentService {
         return this.studentDao.getStudentById(id);
     }
 
-    /*
+    public void updateStudentById(int id, String name){
+        this.studentDao.updateStudentById(id, name);
+    }
+
+
     public void deleteStudentById(int id){
         this.studentDao.deleteStudentById(id);
     }
-
-    /*
-    public void updateStudent(Student student){
-
-        this.studentDao.updateStudent(student);
-    }
-    */
+    
 
 }

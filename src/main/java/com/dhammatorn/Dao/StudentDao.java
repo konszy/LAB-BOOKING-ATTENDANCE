@@ -38,21 +38,16 @@ public class StudentDao {
         return student_interface.getStudentById(id);
     }
 
-    /*
+    public void updateStudentById(int id, String name){
+        student_interface.updateStudentById(id, name);
+    }
+
+    
     // Delete a student by using a given ID
     public void deleteStudentById(int id) {
         student_interface.deleteStudentById(id);
     }
 
-    /*
-    //update student
-    public void updateStudent(int id){
-        Student s = getStudentById();
-        s.setCourse(student.getCourse());
-        s.setName(s.getName());
-        student_interface.save(student);
-    }
 
-    */
 
 }
