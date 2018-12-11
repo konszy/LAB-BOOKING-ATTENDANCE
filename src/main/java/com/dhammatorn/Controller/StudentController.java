@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.util.Collection;
+import java.util.Optional;
+import java.util.List;
 
 //Rest deals with HTTP requests and the web - to - database controller
 @Controller
@@ -45,7 +47,7 @@ public class StudentController {
 
     //function to return all students
     @RequestMapping(value = "/students", method = RequestMethod.GET)
-    public @ResponseBody Collection<Student> getAllStudent() {
+    public @ResponseBody List<Student> getAllStudent() {
         return studentService.getAllStudent();
     }
 
@@ -54,7 +56,15 @@ public class StudentController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     //Pathvariable means u actually want the id to be the one you send from the url
     public @ResponseBody Student getStudentById(@PathVariable("id") int id) {
-        return studentService.getStudentById(id);
+        Optional<Student> maybeStudent = studentService.getStudentById(id);
+        if (maybeStudent.isPresent()) {
+            Student student = maybeStudent.get();
+            return student;
+        } else {
+            //error
+            Student student = new Student();
+            return student;
+        }
     }
 
     @GetMapping(value = "/{id}/edituser")
@@ -65,7 +75,14 @@ public class StudentController {
 
     @PostMapping(value = "/{id}/edituser")
     public String edituserSubmit(@ModelAttribute Register register, @PathVariable("id") int id) {
-        studentService.updateStudentById(id, register.getName());
+        Optional<Student> maybeStudent = studentService.getStudentById(id);
+        if (maybeStudent.isPresent()) {
+            Student student = maybeStudent.get();
+            student.setName(register.getName());
+            studentService.updateStudent(student);
+        } else {
+            //error
+        }
         return "editresult";
     }
 

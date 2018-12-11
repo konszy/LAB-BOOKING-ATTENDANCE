@@ -2,10 +2,18 @@ package com.dhammatorn.Service;
 
 import com.dhammatorn.Dao.StudentDao;
 import com.dhammatorn.Entity.Student;
+import com.dhammatorn.Dao.Student_interface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.Optional;
 import java.util.Collection;
+import java.util.List;
+import java.util.ArrayList;
+import com.dhammatorn.Entity.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
 
 @Service
 //this is where Buisness logic happens (where database meets web) -- middle ground/layer
@@ -15,30 +23,32 @@ public class StudentService {
     //we need a way to access the Dao
     //create an instance of the Dao
     @Autowired
-    private StudentDao studentDao;
-
+    public Student_interface studentRepository;
     public void addStudent(Student student){
-        studentDao.addStudent(student);
+       studentRepository.save(student);
     }
 
     //function to return all students
-    public Collection<Student> getAllStudent(){
-        return studentDao.getAllStudent();
-
+    public List<Student> getAllStudent(){
+        List<Student> students = new ArrayList<>();
+        studentRepository.findAll().forEach(students::add);
+        return students;
     }
 
-    public Student getStudentById(int id){
-        return this.studentDao.getStudentById(id);
+    //function to get Student by ID
+    //copy this to service to connect them
+    public Optional<Student> getStudentById(int id){
+        return studentRepository.findById(id);
     }
 
-    public void updateStudentById(int id, String name){
-        this.studentDao.updateStudentById(id, name);
+    public void updateStudent(Student student){
+        studentRepository.save(student);
     }
 
-
-    public void deleteStudentById(int id){
-        this.studentDao.deleteStudentById(id);
+    // Delete a student by using a given ID
+    public void deleteStudentById(int id) {
+        studentRepository.deleteById(id);
     }
-    
+
 
 }
