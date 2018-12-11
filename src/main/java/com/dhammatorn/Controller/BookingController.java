@@ -1,5 +1,6 @@
 package com.dhammatorn.Controller;
 import com.dhammatorn.Entity.Booking;
+import com.dhammatorn.Entity.Tempbooking;
 import com.dhammatorn.Service.BookingService;
 import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ public class BookingController {
     private BookingService bookingService;
 
     @GetMapping("/book")
-    public String bookingForm(){
+    public String bookingForm(Model model){
+        //model.addAttribute("tempbooking", new Tempbooking());
         return "booking";
     }
 

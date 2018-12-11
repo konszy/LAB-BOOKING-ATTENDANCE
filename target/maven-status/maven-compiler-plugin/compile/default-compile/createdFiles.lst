@@ -1,4 +1,5 @@
 com/dhammatorn/Dao/BookingRepository.class
+com/dhammatorn/Entity/Tempbooking.class
 com/dhammatorn/Main.class
 com/dhammatorn/Controller/StudentController.class
 com/dhammatorn/Service/StudentService.class

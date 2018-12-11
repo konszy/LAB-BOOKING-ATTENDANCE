@@ -6,22 +6,25 @@ import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.Table;
 
-@Entity @Table(name = "booking")
-public class Booking {
-    @Id @GeneratedValue @Column(name="id")
+
+public class Tempbooking {
     private int id;
 
-    @Column(name="seatNo")
     private String seatNo;
 
-    @Column(name="dateAndTime")
     private String dateAndTime;
 
-    @Column(name="length")
     private int length;
 
-    @Column(name="student")
     private int student;
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public int getId(){
+        return this.id;
+    }
 
     public void setSeatNo(String seatNo){
         this.seatNo = seatNo;
@@ -54,7 +57,4 @@ public class Booking {
     public int getStudent(){
         return this.student;
     }
-
-
-
 }

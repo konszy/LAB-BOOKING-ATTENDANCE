@@ -6,5 +6,6 @@
 /Users/tommyvanaalst/Desktop/uni/y2/SPE/labbookingandattendance/src/main/java/com/dhammatorn/Entity/Student.java
 /Users/tommyvanaalst/Desktop/uni/y2/SPE/labbookingandattendance/src/main/java/com/dhammatorn/Controller/BookingController.java
 /Users/tommyvanaalst/Desktop/uni/y2/SPE/labbookingandattendance/src/main/java/com/dhammatorn/Entity/Booking.java
+/Users/tommyvanaalst/Desktop/uni/y2/SPE/labbookingandattendance/src/main/java/com/dhammatorn/Entity/Tempbooking.java
 /Users/tommyvanaalst/Desktop/uni/y2/SPE/labbookingandattendance/src/main/java/com/dhammatorn/Service/BookingService.java
 /Users/tommyvanaalst/Desktop/uni/y2/SPE/labbookingandattendance/src/main/java/com/dhammatorn/Controller/StudentController.java
