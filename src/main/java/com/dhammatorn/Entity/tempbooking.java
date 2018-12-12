@@ -12,9 +12,11 @@ public class Tempbooking {
 
     private String seatNo;
 
-    private String dateAndTime;
+    private String startTime;
 
-    private int length;
+    private String endTime;
+
+    private String day;
 
     private int student;
 
@@ -34,20 +36,28 @@ public class Tempbooking {
         return this.seatNo;
     }
 
-    public void setDateAndTime(String dateAndTime){
-        this.dateAndTime = dateAndTime;
+    public void setStartTime(String startTime){
+        this.startTime = startTime;
     }
 
-    public String getDateAndTime(){
-        return this.dateAndTime;
+    public String getStartTime(){
+        return this.startTime;
     }
 
-    public void setLength(int length){
-        this.length = length;
+    public void setEndTime(String endTime){
+        this.endTime = endTime;
     }
 
-    public int getLength(){
-        return this.length;
+    public String getEndTime(){
+        return this.endTime;
+    }
+
+    public void setDay(String day){
+        this.day = day;
+    }
+
+    public String getDay(){
+        return this.day;
     }
 
     public void setStudent(int student){

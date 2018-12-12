@@ -52,143 +52,94 @@
     </style>
 </head>
 <body>
-  <h3> Time slot </h3>
-    Start time:
-<form action="#" th:action="@{/bookings/book}" method="post">
-    <form>
-      <select name="time">
-        <option value="9:00">9:00</option>
-        <option value="10:00">10:00</option>
-        <option value="11:00">11:00</option>
-        <option value="12:00">12:00</option>
-        <option value="13:00">13:00</option>
-        <option value="14:00">14:00</option>
-        <option value="15:00">15:00</option>
-        <option value="16:00">16:00</option>
-      </select>
-    </form>
-    Ended time:
-    <form>
-      <select name="time">
-        <option value="10:00">10:00</option>
-        <option value="11:00">11:00</option>
-        <option value="12:00">12:00</option>
-        <option value="13:00">13:00</option>
-        <option value="14:00">14:00</option>
-        <option value="15:00">15:00</option>
-        <option value="16:00">16:00</option>
-        <option value="17:00">17:00</option>
-      </select>
-    </form><br><br>
-    <form>
-      <input type="radio" name="weekdays" value="Monday" checked>Monday
-      <input type="radio" name="weekdays" value="Tuesday">Tuesday
-      <input type="radio" name="weekdays" value="Wednesday">Wednesday
-      <input type="radio" name="weekdays" value="Thursday">Thursday
-      <input type="radio" name="weekdays" value="Friday">Friday
-    </form><br>
+    <form action="#" th:action="@{/bookings/book}" th:object="${tempbooking}" method="post">
+        <h3> Time slot </h3>
+          Start time:
+            <select th:field="*{startTime}">
+              <option th:value="9" th:text="9"></option>
+              <option th:value="10" th:text="10"></option>
+              <option th:value="11" th:text="11"></option>
+              <option th:value="12" th:text="12"></option>
+              <option th:value="13" th:text="13"></option>
+              <option th:value="14" th:text="14"></option>
+              <option th:value="15" th:text="15"></option>
+              <option th:value="16" th:text="16"></option>
+            </select>
 
-    <p>The character means block and the number means seats</p>
-    <table class="table1" >
-    <tr>
-      <th align="center" style="width:100px;">Seat No</th>
-      <th align="center" style="width:150px;">Statu</th>
-      <th align="center" style="width:80px;">Seat sellect</th>
-    </tr>
-    <tr>
-      <td align="center">A1</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">A2</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">A3</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">A4</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">A5</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">A6</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">B1</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">B2</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">B3</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">B4</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">B5</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">B6</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">C1</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">C2</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">C3</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">C4</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">C5</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-    <tr>
-      <td align="center">C6</td>
-      <td>Available</td>
-      <td align="center"><input type="radio" name="seatNO" value="1A"></td>
-    </tr>
-  </table>
+           End time:
+              <select th:field="*{endTime}">
+                  <option th:value="10" th:text="10"></option>
+                  <option th:value="11" th:text="11"></option>
+                  <option th:value="12" th:text="12"></option>
+                  <option th:value="13" th:text="13"></option>
+                  <option th:value="14" th:text="14"></option>
+                  <option th:value="15" th:text="15"></option>
+                  <option th:value="16" th:text="16"></option>
+                  <option th:value="17" th:text="17"></option>
+              </select>
+
+        <br><br>
+
+        Day:
+          <select th:field="*{day}">
+            <option th:value="MON" th:text="MON"></option>
+            <option th:value="TUE" th:text="TUE"></option>
+            <option th:value="WED" th:text="WED"></option>
+            <option th:value="THU" th:text="THU"></option>
+            <option th:value="FRI" th:text="FRI"></option>
+          </select>
+
+        <table class="table1" >
+          <tr>
+            <th align="center" style="width:100px;">Seat</th>
+            <th align="center" style="width:150px;">Status</th>
+            <th align="center" style="width:80px;">Sellect</th>
+          </tr>
+          <tr>
+            <td align="center">A1</td>
+            <td>Available</td>
+            <td align="center"><input type="radio" th:field="*{seatNo}" th:value="A1"></td>
+          </tr>
+          <tr>
+            <td align="center">A2</td>
+            <td>Available</td>
+            <td align="center"><input type="radio" th:field="*{seatNo}" th:value="A2"></td>
+          </tr>
+          <tr>
+            <td align="center">A3</td>
+            <td>Available</td>
+            <td align="center"><input type="radio" th:field="*{seatNo}" th:value="A3"></td>
+          </tr>
+          <tr>
+            <td align="center">B1</td>
+            <td>Available</td>
+            <td align="center"><input type="radio" th:field="*{seatNo}" th:value="B1"></td>
+          </tr>
+          <tr>
+            <td align="center">B2</td>
+            <td>Available</td>
+            <td align="center"><input type="radio" th:field="*{seatNo}" th:value="B2"></td>
+          </tr>
+          <tr>
+            <td align="center">B3</td>
+            <td>Available</td>
+            <td align="center"><input type="radio" th:field="*{seatNo}" th:value="B3"></td>
+          </tr>
+        </table>
+
+        <br><br>
+
+        User:
+           <select th:field="*{student}">
+               <option th:value="1" th:text="1"></option>
+               <option th:value="2" th:text="2"></option>
+           </select>
+
         <br>
         <input type="submit" value="Submit" />
         <br>
-</form>
+
+    </form>
+    <br><br>
 </body>
 </html>
