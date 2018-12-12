@@ -80,6 +80,14 @@ public class StudentController {
         return "editresult";
     }
 
+    // Delete by Id
+    @GetMapping(value = "/{id}/deleteuser")
+    @ResponseBody
+    public String deleteUser(@PathVariable("id") int id){
+        studentService.deleteStudentById(id);
+        return "Student Deleted";
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public String index(){
         return "index";
