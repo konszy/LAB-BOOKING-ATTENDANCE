@@ -6,7 +6,7 @@
     <title>All Students </title>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
-    $.getJSON('http://localhost:8080/students', function(data) {
+    $.getJSON('http://localhost:8080/bookings/book', function(data) {
     for(let i = 0; i < data.length; i++){
         var text = `<tr><td> ${data[i].id}</td>
                    <td> ${data[i].name}</td>
