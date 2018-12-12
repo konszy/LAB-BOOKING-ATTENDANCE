@@ -34,14 +34,14 @@
 
         <br><br>
 
-        Day:
-          <select th:field="*{day}">
-            <option th:value="MON" th:text="MON"></option>
-            <option th:value="TUE" th:text="TUE"></option>
-            <option th:value="WED" th:text="WED"></option>
-            <option th:value="THU" th:text="THU"></option>
-            <option th:value="FRI" th:text="FRI"></option>
-          </select>
+            <input type="radio" th:field="*{day}" th:value="MON" >Monday
+            <input type="radio" th:field="*{day}" th:value="TUE" >Tuesday
+            <input type="radio" th:field="*{day}" th:value="WED" >Wednesday
+            <input type="radio" th:field="*{day}" th:value="THU" >Thursday
+            <input type="radio" th:field="*{day}" th:value="FRI" >Friday
+
+        <br><br>
+
 
         <table class="table1" >
           <tr>
@@ -88,6 +88,8 @@
                <option th:value="1" th:text="1"></option>
                <option th:value="2" th:text="2"></option>
            </select>
+
+        <br>
 
         <br>
         <input type="submit" value="Submit" />
