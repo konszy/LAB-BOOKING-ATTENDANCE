@@ -29,4 +29,10 @@ public class BookingService {
         return students;
     }
 
+    public List<Booking> getAllBookings(){
+        List<Booking> bookings = new ArrayList<>();
+        bookingRepository.findAll().forEach(bookings::add);
+        return bookings;
+    }
+
 }

@@ -42,4 +42,11 @@ public class BookingController {
         return "submitted";
     }
 
+    @GetMapping("/all")
+    @ResponseBody
+    public List<Booking> viewAllBookings(){
+        return bookingService.getAllBookings();
+    }
+
+
 }
