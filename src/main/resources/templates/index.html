@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<p><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" /></p></br>
+<p class = "uni_img"><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" /></p>
 <title>Faculty of Engineering</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,12 @@
 <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
 <style>
 body,h1 {font-family: "Montserrat", sans-serif}
+body {
+    background-image: url("images/background.jpeg");
+}
+p.uni_img {
+text-align: center;
+}
 img {margin-bottom: -7px}
 .w3-row-padding img {margin-bottom: 12px}
 </style>
@@ -24,6 +30,8 @@ img {margin-bottom: -7px}
         <a th:href="@{display}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Display All Students</a>
         <a th:href="@{/admin/booking}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Admin Bookings</a>
         <a th:href="@{/1/edituser}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Admin Edit User</a>
+        <a th:href="@{/booking}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Student Booking</a>
+
     </div>
 </nav>
 
@@ -52,15 +60,15 @@ img {margin-bottom: -7px}
         </div>
 
         <div class="w3-third">
-            <img th:src="@{../images/ee1.jpg}" style="width:100%">
-            <img th:src="@{../images/ee2.png}" style="width:100%">
-            <img th:src="@{../images/ee3.jpeg}" style="width:100%">
+            <img th:src="@{../images/ee4.jpg}" style="width:100%">
+            <img th:src="@{../images/ee5.jpg}" style="width:100%">
+            <img th:src="@{../images/ee6.jpg}" style="width:100%">
         </div>
 
         <div class="w3-third">
-            <img th:src="@{../images/ee1.jpg}" style="width:100%">
-            <img th:src="@{../images/ee2.png}" style="width:100%">
-            <img th:src="@{../images/ee3.jpeg}" style="width:100%">
+            <img th:src="@{../images/bees3.jpg}" style="width:100%">
+            <img th:src="@{../images/ee7.png}" style="width:100%">
+            <img th:src="@{../images/ee8.jpg}" style="width:100%">
         </div>
 
     </div>
@@ -103,4 +111,3 @@ function w3_close() {
 
 </body>
 </html>
-

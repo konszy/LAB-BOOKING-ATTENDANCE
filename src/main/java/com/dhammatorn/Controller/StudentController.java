@@ -74,7 +74,7 @@ public class StudentController {
         return "edit_users";
     }
 
-    @PostMapping(value = "/{id}/edituser")
+    @PutMapping(value = "/{id}/edituser")
     public String edituserSubmit(@ModelAttribute Student student) {
         studentService.updateStudent(student);
         return "editresult";
@@ -97,6 +97,23 @@ public class StudentController {
     public String manageaccounts(){
         return "manage_account";
     }
+
+    @GetMapping(value = "/display")
+    public String display(){
+        return "display";
+    }
+
+    @GetMapping(value = "/equipment")
+    public String equipment(){ return "equipment"; }
+
+    @GetMapping(value = "/booking")
+    public String booking(){ return "booking"; }
+
+    @GetMapping(value = "/manage_account")
+    public String manage_account(){return "manage_account"; }
+
+    @GetMapping(value = "/error")
+    public String error(){return "error"; }
 
 
 }
