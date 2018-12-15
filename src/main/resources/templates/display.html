@@ -4,38 +4,29 @@
 <head>
     <link rel="stylesheet" media="screen" th:href="@{/css/display.css}"/>
     <title>All Students </title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script>
-    $.getJSON('http://localhost:8080/bookings/book', function(data) {
-    for(let i = 0; i < data.length; i++){
-        var text = `<tr><td> ${data[i].id}</td>
-                   <td> ${data[i].name}</td>
-                   <td> ${data[i].lastname}</td>
-                   <td> ${data[i].course}</td>
-                   <td> ${data[i].email}</td>
-                   </tr>`
-        $(".student").append(text);
-    }
-
-    });
-</script>
 </head>
 <h3> Current Booking Slots </h3>
 <body onload = "onLoad();">
 <div class="mypanel"></div>
-<table class = "student">
-    <thead>
-    <tr>
-        <th> ID </th>
-        <th> Name </th>
-        <th> Lastname </th>
-        <th> Course </th>
-        <th> Email </th>
-    </tr>
-    </thead>
-    <tbody>
-
-    </tbody>
-</table>
+<div class="container">
+    <h2> List of all Users </h2>
+    <table class="student">
+      <tr>
+          <th> ID </th>
+          <th> Name </th>
+          <th> Lastname </th>
+          <th> Course </th>
+          <th> Email </th>
+      </tr>
+      <tr th:each="student :${display}">
+          <td th:text="${student.id}"> </td>
+          <td th:text="${student.name}"> </td>
+          <td th:text="${student.email}"> </td>
+          <td th:text="${student.lastname}"> </td>
+          <td th:text="${student.course}"> </td>
+          <td> <a th:href="@{'http://localhost:8080/' + ${student.id} + '/deleteuser'}" > Delete </a> </td> 
+      </tr>
+    </table>
+</div>
 </body>
 </html>

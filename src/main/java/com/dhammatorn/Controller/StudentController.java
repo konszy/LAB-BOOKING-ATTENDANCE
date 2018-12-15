@@ -44,7 +44,9 @@ public class StudentController {
     @RequestMapping(value = "/students", method = RequestMethod.GET)
     public @ResponseBody List<Student> getAllStudent() {
         return studentService.getAllStudent();
+
     }
+
 
     //value /{id} means we are going to pass an id from the URL and this method is going to output
     // a student according to that id
@@ -106,10 +108,15 @@ public class StudentController {
         return "manage_account";
     }
 
-    @GetMapping(value = "/display")
-    public String display(){
+    //updated display function
+
+    @RequestMapping("/display")
+    public String display(Model model){
+        model.addAttribute("display", getAllStudent());
         return "display";
     }
+
+
 
     @GetMapping(value = "/equipment")
     public String equipment(){ return "equipment"; }
