@@ -18,8 +18,26 @@ public class BookingService {
     @Autowired
     private BookingRepository bookingRepository;
 
-    public void saveBooking(Booking booking){
-        bookingRepository.save(booking);
+    public int saveBooking(Booking booking){
+        //check if there is any booking on the same date
+        List<Booking> bookings = new ArrayList<>();
+        bookingRepository.findAll().forEach(bookings::add);
+        Boolean booked = false;
+        for(Booking temp: bookings){
+            if(temp.getSeatNo().equals(booking.getSeatNo())
+                    && temp.getDateAndTime().equals(booking.getDateAndTime())
+                    && temp.getLength() == temp.getLength()){
+                booked = true;
+            }
+        }
+
+        if(booked == false) {
+            bookingRepository.save(booking);
+            return 1;
+        }
+        else {
+            return 0;
+        }
     }
 
     public List<Student> getAllStudents(){

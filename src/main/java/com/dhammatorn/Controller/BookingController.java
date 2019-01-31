@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.view.RedirectView;
+
 import java.util.List;
 
 
@@ -29,7 +31,7 @@ public class BookingController {
 
     @PostMapping("/book")
     @ResponseBody
-    public String bookingSubmit(@ModelAttribute Tempbooking tempbooking){
+    public RedirectView bookingSubmit(@ModelAttribute Tempbooking tempbooking){
         Booking booking = new Booking();
         String day = tempbooking.getDay();
         booking.setDateAndTime(day + ":" + tempbooking.getStartTime());
@@ -38,8 +40,9 @@ public class BookingController {
         booking.setLength(length);
         booking.setSeatNo(tempbooking.getSeatNo());
         booking.setStudent(tempbooking.getStudent());
-        bookingService.saveBooking(booking);
-        return "submitted";
+        int feedback = bookingService.saveBooking(booking);
+        if (feedback == 1) return new RedirectView("/");
+        else return new RedirectView("/bookings/bookingfailed");
     }
 
     @GetMapping("/all")
@@ -47,6 +50,13 @@ public class BookingController {
     public List<Booking> viewAllBookings(){
         return bookingService.getAllBookings();
     }
+
+    @GetMapping(value = "/error")
+    public String error(){return "error"; }
+
+    @GetMapping(value = "/bookingfailed")
+    public String booking_failed(){return "bookingfailed";}
+
 
 
 }
