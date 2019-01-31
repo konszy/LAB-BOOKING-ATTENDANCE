@@ -57,6 +57,11 @@ public class BookingController {
     @GetMapping(value = "/bookingfailed")
     public String booking_failed(){return "bookingfailed";}
 
+    @RequestMapping("/admin_all_booking")
+    public String display(Model model){
+        model.addAttribute("admin_all_booking", viewAllBookings());
+        return "admin_all_booking";
+    }
 
 
 }

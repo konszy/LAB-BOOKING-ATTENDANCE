@@ -4,37 +4,27 @@
 <head>
     <link rel="stylesheet" media="screen" th:href="@{/css/display.css}"/>
     <title>All Students </title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script>
-        $.getJSON('http://localhost:8080/bookings/all', function(data) {
-            for(let i = 0; i < data.length; i++){
-                var text = `<tr>
-                   <td> ${data[i].seatNo}</td>
-                   <td> ${data[i].dateAndTime}</td>
-                   <td> ${data[i].length}</td>
-                   <td> ${data[i].student}</td>
-                   </tr>`
-                $(".student").append(text);
-            }
-
-        });
-    </script>
 </head>
-<h3> All Booking Slot  </h3>
+<h3> Current Booking Slots </h3>
 <body onload = "onLoad();">
 <div class="mypanel"></div>
-<table class = "student">
-    <thead>
-    <tr>
-        <th> Seat Number </th>
-        <th> Date and Time </th>
-        <th> Length </th>
-        <th> Student </th>
-    </tr>
-    </thead>
-    <tbody>
-
-    </tbody>
-</table>
+<div class="container">
+    <h2> List of all Users </h2>
+    <table class="booking">
+        <tr>
+            <th> student </th>
+            <th> seatNo </th>
+            <th> dateAndTime </th>
+            <th> Length </th>
+        </tr>
+        <tr th:each="booking :${admin_all_booking}">
+            <td th:text="${booking.student}"> </td>
+            <td th:text="${booking.seatNo}"> </td>
+            <td th:text="${booking.dateAndTime}"> </td>
+            <td th:text="${booking.length}"> </td>
+            <td> <a th:href="@{'http://localhost:8080/' + ${booking.student} + '/deleteuser'}" > Delete </a> </td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>
