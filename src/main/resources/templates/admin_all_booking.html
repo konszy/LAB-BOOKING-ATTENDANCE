@@ -10,19 +10,21 @@
 <div class="mypanel"></div>
 <div class="container">
     <h2> List of all Users </h2>
-    <table class="booking">
+    <table class="student">
         <tr>
+            <th> Booking Number/Reference </th>
             <th> student </th>
             <th> seatNo </th>
             <th> dateAndTime </th>
             <th> Length </th>
         </tr>
         <tr th:each="booking :${admin_all_booking}">
+            <td th:text="${booking.id}"> </td>
             <td th:text="${booking.student}"> </td>
             <td th:text="${booking.seatNo}"> </td>
             <td th:text="${booking.dateAndTime}"> </td>
             <td th:text="${booking.length}"> </td>
-            <td> <a th:href="@{'http://localhost:8080/' + ${booking.student} + '/deleteuser'}" > Delete </a> </td>
+            <td> <a th:href="@{'http://localhost:8080/bookings/' + ${booking.id} + '/dlt'}" > Delete </a> </td>
         </tr>
     </table>
 </div>

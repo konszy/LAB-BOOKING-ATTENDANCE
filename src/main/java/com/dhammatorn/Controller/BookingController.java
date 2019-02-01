@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -62,6 +63,37 @@ public class BookingController {
         model.addAttribute("admin_all_booking", viewAllBookings());
         return "admin_all_booking";
     }
+
+
+    //value /{id} means we are going to pass an id from the URL and this method is going to output
+    // a student according to that id
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    //Pathvariable means u actually want the id to be the one you send from the url
+    public @ResponseBody Booking getBookingById(@PathVariable("id") int id) {
+        Optional<Booking> maybeBooking = bookingService.getBookingById(id);
+        if (maybeBooking.isPresent()) {
+            Booking student = maybeBooking.get();
+            return student;
+        } else {
+            //error
+            Booking student = new Booking();
+            return student;
+        }
+    }
+
+    // Delete by Id
+    @GetMapping(value = "/{id}/dlt")
+    @ResponseBody
+    public String deleteUser(@PathVariable("id") int id){
+//        List<Booking> all_bookings = viewAllBookings();
+//        int id;
+//        for(Booking temp:all_bookings){
+//            if(student == temp.getStudent()) id = temp.getID();
+//        }
+        bookingService.deleteBookingById(id);
+        return "Booking Deleted";
+    }
+
 
 
 }

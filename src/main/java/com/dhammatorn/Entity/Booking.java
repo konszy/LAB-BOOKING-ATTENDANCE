@@ -55,6 +55,8 @@ public class Booking {
         return this.student;
     }
 
-
+    public int getId() {
+        return id;
+    }
 
 }
