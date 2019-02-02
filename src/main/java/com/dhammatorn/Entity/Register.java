@@ -6,6 +6,9 @@ public class Register {
     private String lastname;
     private String course;
     private String email;
+    private String username;
+    private String password;
+    private String matchingPassword;
 
     public String getName(){
         return this.name;
@@ -38,5 +41,30 @@ public class Register {
     public void setEmail(String email){
         this.email = email;
     }
+
+    public String getUsername(){
+        return this.username;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public String getPassword(){
+        return this.password;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public String getMatchingPassword(){
+        return this.matchingPassword;
+    }
+
+    public void setMatchingPassword(String matchingPassword){
+        this.matchingPassword = matchingPassword;
+    }
+
 
 }

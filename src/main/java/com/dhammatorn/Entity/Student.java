@@ -1,10 +1,14 @@
 package com.dhammatorn.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.Table;
+import lombok.Data;
+
+import javax.persistence.*;
+import org.hibernate.validator.constraints.Length;
+import java.util.Set;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 
 //object in the database
@@ -25,22 +29,22 @@ public class Student {
     @Column(name="email")
     private String email;
 
+    @Column(name="username") @NotNull @NotEmpty @Size(min=2, max=30)
+    private String username;
+
+    @Column(name="password") @NotNull @NotEmpty @Size(min=2, max=30)
+    private String password;
+
+    @Column(name = "active")
+    private int active;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
     @Column(name="booking")
     private int booking;
 
-    /*
-    public Student(String name, String lastname, String course,
-                String email, String seatNo, String dateAndTime){
-        this.name = name;
-        this.lastname = lastname;
-        this.course = course;
-        this.email = email;
-        this.seatNo = seatNo;
-        this.dateAndTime = dateAndTime;
-    }
-    */
-
-    //to automatically create getter and setter click command+N and generate (or Code -> Generate)
 
     public int getId(){
         return this.id;
@@ -70,7 +74,6 @@ public class Student {
         return this.booking;
     }
 
-
     public void setEmail(String email){
         this.email = email;
     }
@@ -85,6 +88,22 @@ public class Student {
 
     public String getLastname(){
         return this.lastname;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public String getUsername(){
+        return this.username;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public String getPassword(){
+        return this.password;
     }
 
 

@@ -17,6 +17,7 @@
           <th> Lastname </th>
           <th> Course </th>
           <th> Email </th>
+          <th> Username </th>
       </tr>
       <tr th:each="student :${display}">
           <td th:text="${student.id}"> </td>
@@ -24,7 +25,8 @@
           <td th:text="${student.email}"> </td>
           <td th:text="${student.lastname}"> </td>
           <td th:text="${student.course}"> </td>
-          <td> <a th:href="@{'http://localhost:8080/' + ${student.id} + '/deleteuser'}" > Delete </a> </td> 
+          <td th:text="${student.username}"> </td>
+          <td> <a th:href="@{'http://localhost:8080/' + ${student.id} + '/deleteuser'}" > Delete </a> </td>
       </tr>
     </table>
 </div>
