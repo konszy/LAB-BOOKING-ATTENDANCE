@@ -1,111 +1,148 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<p class = "uni_img"><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" /></p>
-<title>Faculty of Engineering</title>
+
+<title>University of Bristol</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" th:href="@{https://www.w3schools.com/w3css/4/w3.css}">
-<link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Montserrat}">
-<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/index.css}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-body,h1 {font-family: "Montserrat", sans-serif}
-body {
-    background-image: url("images/background.jpeg");
+html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
+.mySlides {display:none}
+.w3-tag, .fa {cursor:pointer}
+.w3-tag {height:15px;width:15px;padding:0;margin-top:6px}
+.university-logo {
+    text-align: center;
 }
-p.uni_img {
-text-align: center;
+h1{
+    font-family: "Times New Roman", Times, serif;
 }
-img {margin-bottom: -7px}
-.w3-row-padding img {margin-bottom: 12px}
+p{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+}
 </style>
 <body>
 
-<!-- Sidebar -->
-<nav class="w3-sidebar w3-black w3-animate-top w3-xxlarge" style="display:none;padding-top:150px" id="mySidebar">
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-black w3-xxlarge w3-padding w3-display-topright" style="padding:6px 24px">
-        <i class="fa fa-remove"></i>
-    </a>
-    <div class="w3-bar-block w3-center">
-        <a th:href="@{register}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Register</a>
-        <a th:href="@{display}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Display All Students</a>
-        <a th:href="@{/admin/booking}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Admin Bookings</a>
-        <a th:href="@{/1/edituser}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Admin Edit User</a>
-        <a th:href="@{/booking}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Student Booking</a>
-
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-large w3-light-grey">
+    <div class="w3-col s3">
+      <a th:href="@{register}" class="w3-button w3-block">Register</a>
     </div>
-</nav>
-
-<!-- !PAGE CONTENT! -->
-<div class="w3-content" style="max-width:1500px">
-
-    <!-- Header -->
-    <div class="w3-opacity">
-        <span class="w3-button w3-xxlarge w3-white w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span>
-        <div class="w3-clear"></div>
-        <header class="w3-center w3-margin-bottom">
-            <h1><b>Electrical and Electronics Engineering Lab Booking System</b></h1>
-
-            <p class="w3-padding-16">
-                <button class="w3-button w3-black" onclick="myFunction()">Login</button>
-            </p>
-        </header>
+    <div class="w3-col s3">
+      <a th:href="@{display}" class="w3-button w3-block">Display All Student </a>
     </div>
-
-    <!-- Photo Grid -->
-    <div class="w3-row" id="myGrid" style="margin-bottom:128px">
-        <div class="w3-third">
-            <img th:src="@{../images/ee1.jpg}" style="width:100%">
-            <img th:src="@{../images/ee2.png}" style="width:100%">
-            <img th:src="@{../images/ee3.jpeg}" style="width:100%">
-        </div>
-
-        <div class="w3-third">
-            <img th:src="@{../images/ee4.jpg}" style="width:100%">
-            <img th:src="@{../images/ee5.jpg}" style="width:100%">
-            <img th:src="@{../images/ee6.jpg}" style="width:100%">
-        </div>
-
-        <div class="w3-third">
-            <img th:src="@{../images/bees3.jpg}" style="width:100%">
-            <img th:src="@{../images/ee7.png}" style="width:100%">
-            <img th:src="@{../images/ee8.jpg}" style="width:100%">
-        </div>
-
+    <div class="w3-col s3">
+      <a th:href="@{/admin/booking}" class="w3-button w3-block">Admin Booking</a>
     </div>
-
-    <!-- End Page Content -->
+    <div class="w3-col s3">
+      <a th:href="@{/1/edituser}" class="w3-button w3-block">Edit User</a>
+    </div>
+    <div class="w3-col s3">
+      <a th:href="@{/bookings/book}" class="w3-button w3-block">Student Booking</a>
+    </div>
+    <div class="w3-col s3">
+      <a th:href="@{/bookings/display_all}" class="w3-button w3-block">Display All Booking</a>
+    </div>
+  </div>
 </div>
+<br>
+<br>
 
-<!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-    <p class="w3-medium">Template from <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
+<!-- Content -->
+<div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+
+  <div class="w3-panel">
+    <div class="university-logo">
+    <img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" class="center"/>
+    </div>
+    <br>
+    <h1 align="center"> Electrical and Electronics Engineering Lab Booking System</h1>
+    <p align="center" >University of Bristol : Faculty of Engineering</p>
+  </div>
+
+  <!-- Slideshow -->
+  <div class="w3-container">
+    <div class="w3-display-container mySlides">
+      <img th:src="@{../images/ee7.png}" style="width:100%">
+    </div>
+    <div class="w3-display-container mySlides">
+      <img th:src="@{../images/ee5.jpg}" style="width:100%">
+    </div>
+    <div class="w3-display-container mySlides">
+      <img th:src="@{../images/ee1.jpg}" style="width:100%">
+    </div>
+
+    <!-- Slideshow next/previous buttons -->
+    <div class="w3-container w3-dark-grey w3-padding w3-xlarge">
+      <div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
+      <div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
+
+      <div class="w3-center">
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+      </div>
+    </div>
+  </div>
+
+  <!--
+  Grid -->
+  <div class="w3-row w3-container">
+    <div class="w3-center w3-padding-64">
+      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">What can you do</span>
+    </div>
+    <div class="w3-col l3 m6 w3-light-grey w3-container w3-padding-16">
+      <h3>Register</h3>
+      <p>Before registering, you must scan your UCARD at the lab. Then come back to this page to register with your email
+      and student id</p>
+    </div>
+
+    <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
+      <h3>Booking a slot</h3>
+      <p>Each student is allowed a maximum of 3 hours slot booking each time.</p>
+    </div>
+
+    <div class="w3-col l3 m6 w3-dark-grey w3-container w3-padding-16">
+      <h3>Selecting each equipment</h3>
+      <p>Students can select each equipment they need in each session.</p>
+    </div>
+
+    <div class="w3-col l3 m6 w3-black w3-container w3-padding-16">
+      <h3>Agreements</h3>
+      <p>Ensure that you read each requirement and agreement carefully before booking.</p>
+    </div>
+  </div>
 
 <script>
-// Toggle grid padding
-function myFunction() {
-    var x = document.getElementById("myGrid");
-    if (x.className === "w3-row") {
-        x.className = "w3-row-padding";
-    } else {
-        x.className = x.className.replace("w3-row-padding", "w3-row");
-    }
+// Slideshow
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
 }
 
-// Open and close sidebar
-function w3_open() {
-    document.getElementById("mySidebar").style.width = "100%";
-    document.getElementById("mySidebar").style.display = "block";
+function currentDiv(n) {
+  showDivs(slideIndex = n);
 }
 
-function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demodots");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-white", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-white";
 }
 </script>
 

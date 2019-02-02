@@ -6,23 +6,23 @@
     <link rel="stylesheet" media="screen" th:href="@{/css/register.css}"/>
 </head>
 <body>
-  <p><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" /></p></br>
+  <p><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" /></p>
   <h1> Faculty of Engineering </h1>
     <form action="#" th:action="@{/register}" th:object="${student}" method="post">
         <p>First Name: <input type="text" th:field="*{name}" /></p>
         <p>Last Name: <input type="text" th:field="*{lastname}" /></p>
         <p>Course: <input type="text" th:field="*{course}" /></p>
         <p>Email: <input type="text" th:field="*{email}" /></p>
-        <p class="agreement_head">  Please ensure you have acknowledge the following : <p>
+        <p>Username: <input type="text" th:field="*{username}" /></p>
+        <p>Password: <input type="text" th:field="*{password}" /></p>
+        <p class="agreement_head">  Please ensure you have acknowledge the following : </p>
         <div>
-            1. Report to your supervisor incase of emergency in equipment <br>
-            2. You are responsible for the safety of your own and others while using the lab <br>
-            3. Any damages to the equipment will be reported to the faculty in your name <br>
-            4. It is against the rule for you to book the seats for others. Any damags made in your booking or your name will be reported to
-            the faculty <br>
-            5. You are responsible for your own bookings of seats in the lab, if cancellation was not made in
-            specific time of agreement , you will receive a strike. Three strikes and your account will be
-            blacklisted. <br>
+            1. Report to your supervisor incase of emergency in equipment.<br>
+            2. You are responsible for the safety of your own and others while using the lab.<br>
+            3. It is against the rule for you to book the seats for others.<br>
+            4. Any damages to the equipment will be reported to the faculty in your name.<br>
+            5. You are responsible for your own bookings of seats in the lab, if cancellation was not made in specific time of agreement, you will receive a strike.<br>
+            <strong>Three strikes and your account will be blacklisted.</strong><br>
             Please Contact Mr. Richard Walker for removing your name from the black list.
         </div>
         <p><input type="submit" value="Register" /> <input type="reset" value="Reset" /></p>
