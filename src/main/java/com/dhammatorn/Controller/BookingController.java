@@ -6,6 +6,7 @@ import com.dhammatorn.Service.BookingService;
 import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.mail.MailException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -42,9 +43,18 @@ public class BookingController {
         booking.setSeatNo(tempbooking.getSeatNo());
         booking.setStudent(tempbooking.getStudent());
         int feedback = bookingService.saveBooking(booking);
-        if (feedback == 1) return new RedirectView("/");
+        if (feedback == 1){
+//            try {
+//                bookingService.sendNotification(booking);
+//            }
+//            catch (MailException e){
+//
+//            }
+            return new RedirectView("/");
+        }
         else return new RedirectView("/bookings/bookingfailed");
     }
+
 
     @GetMapping("/all")
     @ResponseBody
