@@ -20,6 +20,34 @@ public class Tempbooking {
 
     private int student;
 
+    private Integer rsop;
+
+    private Integer active8;
+
+    private Integer bnc_croclead;
+
+    private Integer bnc_lead;
+
+    private Integer power_supp;
+
+    private Integer rs_4mmplug;
+
+    private Integer prototyping_board;
+
+    private Integer solidCoreWire;
+
+    private Integer wire_strippers;
+
+    private Integer resistors;
+
+    private Integer capacitors;
+
+    private Integer lcr400_bridge;
+
+    private Integer bnc_Tpiece;
+
+   private Integer oscilloscope_trim;
+
     public void setId(int id){
         this.id = id;
     }
@@ -66,5 +94,117 @@ public class Tempbooking {
 
     public int getStudent(){
         return this.student;
+    }
+
+    public Integer getRsop() {
+        return rsop;
+    }
+
+    public void setRsop(Integer rsop) {
+        this.rsop = rsop;
+    }
+
+    public Integer getActive8() {
+        return active8;
+    }
+
+    public void setActive8(Integer active8) {
+        this.active8 = active8;
+    }
+
+    public Integer getBnc_croclead() {
+        return bnc_croclead;
+    }
+
+    public void setBnc_croclead(Integer bnc_croclead) {
+        this.bnc_croclead = bnc_croclead;
+    }
+
+    public Integer getBnc_lead() {
+        return bnc_lead;
+    }
+
+    public void setBnc_lead(Integer bnc_lead) {
+        this.bnc_lead = bnc_lead;
+    }
+
+    public Integer getPower_supp() {
+        return power_supp;
+    }
+
+    public void setPower_supp(Integer power_supp) {
+        this.power_supp = power_supp;
+    }
+
+    public Integer getRs_4mmplug() {
+        return rs_4mmplug;
+    }
+
+    public void setRs_4mmplug(Integer rs_4mmplug) {
+        this.rs_4mmplug = rs_4mmplug;
+    }
+
+    public Integer getPrototyping_board() {
+        return prototyping_board;
+    }
+
+    public void setPrototyping_board(Integer prototyping_board) {
+        this.prototyping_board = prototyping_board;
+    }
+
+    public Integer getSolidCoreWire() {
+        return solidCoreWire;
+    }
+
+    public void setSolidCoreWire(Integer solidCoreWire) {
+        this.solidCoreWire = solidCoreWire;
+    }
+
+    public Integer getWire_strippers() {
+        return wire_strippers;
+    }
+
+    public void setWire_strippers(Integer wire_strippers) {
+        this.wire_strippers = wire_strippers;
+    }
+
+    public Integer getResistors() {
+        return resistors;
+    }
+
+    public void setResistors(Integer resistors) {
+        this.resistors = resistors;
+    }
+
+    public Integer getCapacitors() {
+        return capacitors;
+    }
+
+    public void setCapacitors(Integer capacitors) {
+        this.capacitors = capacitors;
+    }
+
+    public Integer getLcr400_bridge() {
+        return lcr400_bridge;
+    }
+
+    public void setLcr400_bridge(Integer lcr400_bridge) {
+        this.lcr400_bridge = lcr400_bridge;
+    }
+
+    public Integer getBnc_Tpiece() {
+        return bnc_Tpiece;
+    }
+
+    public void setBnc_Tpiece(Integer bnc_Tpiece) {
+        this.bnc_Tpiece = bnc_Tpiece;
+    }
+
+    public Integer getOscilloscope_trim() {
+        return oscilloscope_trim;
+    }
+
+    public void setOscilloscope_trim(Integer oscilloscope_trim) {
+        this.oscilloscope_trim = oscilloscope_trim;
     }
 }

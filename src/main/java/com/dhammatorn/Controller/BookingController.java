@@ -34,14 +34,60 @@ public class BookingController {
     @PostMapping("/book")
     @ResponseBody
     public RedirectView bookingSubmit(@ModelAttribute Tempbooking tempbooking){
+
         Booking booking = new Booking();
         String day = tempbooking.getDay();
+
         booking.setDateAndTime(day + ":" + tempbooking.getStartTime());
         int endTime = Integer.parseInt(tempbooking.getEndTime());
         int length = endTime - Integer.parseInt(tempbooking.getStartTime());
         booking.setLength(length);
         booking.setSeatNo(tempbooking.getSeatNo());
         booking.setStudent(tempbooking.getStudent());
+
+        //equipments
+        if(tempbooking.getCapacitors() == null) booking.setCapacitors(0);
+        else booking.setCapacitors(tempbooking.getCapacitors());
+
+        if(tempbooking.getBnc_Tpiece()== null) booking.setBnc_Tpiece(0);
+        else booking.setBnc_Tpiece(tempbooking.getBnc_Tpiece());
+
+        if(tempbooking.getPrototyping_board() == null) booking.setPrototyping_board(0);
+        else booking.setPrototyping_board(tempbooking.getPrototyping_board());
+
+        if(tempbooking.getSolidCoreWire() == null) booking.setSolidCoreWire(0);
+        else booking.setSolidCoreWire(tempbooking.getSolidCoreWire());
+
+        if(tempbooking.getResistors() == null) booking.setResistors(0);
+        else booking.setResistors(tempbooking.getResistors());
+
+        if(tempbooking.getLcr400_bridge() == null) booking.setLcr400_bridge(0);
+        else booking.setLcr400_bridge(tempbooking.getLcr400_bridge());
+
+        if(tempbooking.getWire_strippers() == null) booking.setWire_strippers(0);
+        else booking.setWire_strippers(tempbooking.getWire_strippers());
+
+        if(tempbooking.getActive8() == null) booking.setActive8(0);
+        else booking.setActive8(tempbooking.getActive8());
+
+        if(tempbooking.getOscilloscope_trim() == null) booking.setOscilloscope_trim(0);
+        else booking.setOscilloscope_trim(tempbooking.getOscilloscope_trim());
+
+        if(tempbooking.getRsop() == null) booking.setRsop(0);
+        else booking.setRsop(tempbooking.getRsop());
+
+        if(tempbooking.getPower_supp() == null) booking.setPower_supp(0);
+        else booking.setPower_supp(tempbooking.getPower_supp());
+
+        if(tempbooking.getBnc_croclead() == null) booking.setBnc_croclead(0);
+        else booking.setBnc_croclead(tempbooking.getBnc_croclead());
+
+        if(tempbooking.getBnc_lead() == null) booking.setBnc_lead(0);
+        else booking.setBnc_lead(tempbooking.getBnc_lead());
+
+        if(tempbooking.getRsop() == null) booking.setRsop(0);
+        else booking.setRsop(tempbooking.getRsop());
+
         int feedback = bookingService.saveBooking(booking);
         if (feedback == 1){
 //            try {
@@ -52,7 +98,9 @@ public class BookingController {
 //            }
             return new RedirectView("/");
         }
-        else return new RedirectView("/bookings/bookingfailed");
+        else {
+            return new RedirectView("/bookings/bookingfailed");
+        }
     }
 
 
