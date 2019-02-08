@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Registration</title>
+	</head>
+<body>
+				<form autocomplete="off" action="#" th:action="@{/registration}"
+					th:object="${student}" method="post" class="form-horizontal"
+					role="form">
+					<h2>Registration Form</h2>
+					<div class="form-group">
+						<div class="col-sm-9">
+						<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+								class="validation-message"></label>
+						<input type="text" th:field="*{name}" placeholder="Name"
+								class="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							<label	th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{lastname}"
+								placeholder="Last Name" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<label	th:if="${#fields.hasErrors('course')}" th:errors="*{course}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{course}"
+								placeholder="Course" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<label	th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{email}"
+								placeholder="Email" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<input type="text" th:field="*{username}" placeholder="Username"
+								class="form-control" />
+							<label
+								th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+								class="validation-message"></label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<input type="password" th:field="*{password}"
+								placeholder="Password" class="form-control" /> <label
+								th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+								class="validation-message"></label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							<button type="submit" class="btn btn-primary btn-block">Register</button>
+						</div>
+					</div>
+
+					<span th:utext="${successMessage}"></span>
+
+					</form>
+
+	</body>
+	</html>
