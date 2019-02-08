@@ -11,35 +11,35 @@
 					<h2>Registration Form</h2>
 					<div class="form-group">
 						<div class="col-sm-9">
-						<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
-								class="validation-message"></label>
 						<input type="text" th:field="*{name}" placeholder="Name"
 								class="form-control" />
+						<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+								class="validation-message"></label>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<div class="col-sm-9">
-							<label	th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"
-								class="validation-message"></label>
 							<input type="text" th:field="*{lastname}"
 								placeholder="Last Name" class="form-control" />
+							<label	th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"
+								class="validation-message"></label>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-9">
-							<label	th:if="${#fields.hasErrors('course')}" th:errors="*{course}"
-								class="validation-message"></label>
 							<input type="text" th:field="*{course}"
 								placeholder="Course" class="form-control" />
+							<label	th:if="${#fields.hasErrors('course')}" th:errors="*{course}"
+								class="validation-message"></label>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-9">
-							<label	th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-								class="validation-message"></label>
 							<input type="text" th:field="*{email}"
 								placeholder="Email" class="form-control" />
+							<label	th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+								class="validation-message"></label>
 						</div>
 					</div>
 					<div class="form-group">

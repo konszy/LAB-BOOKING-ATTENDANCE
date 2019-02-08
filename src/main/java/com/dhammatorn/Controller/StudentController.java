@@ -91,7 +91,6 @@ public class StudentController {
             modelAndView.addObject("successMessage", "Student has been registered successfully");
             modelAndView.addObject("student", new Student());
             modelAndView.setViewName("registration");
-
         }
 
         return modelAndView;

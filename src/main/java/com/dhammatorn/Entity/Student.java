@@ -19,21 +19,28 @@ public class Student {
     private int id;
 
     @Column(name="name")
+    @NotEmpty(message = "*Please provide your first name")
     private String name;
 
     @Column(name="lastname")
+    @NotEmpty(message = "*Please provide your last name")
     private String lastname;
 
     @Column(name="course")
+    @NotEmpty(message = "*Please provide your course")
     private String course;
 
     @Column(name="email")
+    @NotEmpty(message = "*Please provide your email")
     private String email;
 
     @Column(name="username")
+    @NotEmpty(message = "*Please provide your username")
     private String username;
 
     @Column(name="password")
+    @Length(min = 5, message = "*Your password must have at least 5 characters")
+    @NotEmpty(message = "*Please provide your password")
     private String password;
 
     @Column(name = "active")
