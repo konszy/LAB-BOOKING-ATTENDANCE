@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Seats and Equipment Selection</title>
@@ -6,8 +5,10 @@
     <link rel="stylesheet" media="screen" th:href="@{/css/booking.css}"/>
 </head>
 <body>
-    <form action="#" th:action="@{/bookings/book}" th:object="${tempbooking}" method="post">
+
         <h3> Time slot </h3>
+        <p  th:text="${error}"> Web Application. Passed parameter </p>
+    <form action="#" th:action="@{/bookings/book}" th:object="${tempbooking}" method="post">
           Start time:
             <select th:field="*{startTime}">
               <option th:value="9" th:text="9"></option>
@@ -18,8 +19,8 @@
               <option th:value="14" th:text="14"></option>
               <option th:value="15" th:text="15"></option>
               <option th:value="16" th:text="16"></option>
-            </select>
-           End time:
+            </select> :00
+           to End time:
               <select th:field="*{endTime}">
                   <option th:value="10" th:text="10"></option>
                   <option th:value="11" th:text="11"></option>
@@ -29,10 +30,10 @@
                   <option th:value="15" th:text="15"></option>
                   <option th:value="16" th:text="16"></option>
                   <option th:value="17" th:text="17"></option>
-              </select>
+              </select> :00
 
         <br><br>
-
+            <p th:if="${#fields.hasErrors('day')}" th:errors="*{day}">Name Error</p>
             <input type="radio" th:field="*{day}" th:value="MON" >Monday
             <input type="radio" th:field="*{day}" th:value="TUE" >Tuesday
             <input type="radio" th:field="*{day}" th:value="WED" >Wednesday
@@ -43,6 +44,7 @@
 
 
         <table class="table1" >
+            <p th:if="${#fields.hasErrors('seatNo')}" th:errors="*{seatNo}">Seat Number Error</p>
           <tr>
             <th align="center" style="width:100px;">Seat</th>
             <th align="center" style="width:150px;">Status</th>

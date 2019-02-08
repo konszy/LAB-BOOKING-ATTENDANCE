@@ -5,17 +5,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.Table;
+import javax.validation.Validator;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
+public class Tempbooking{
 
-public class Tempbooking {
     private int id;
 
+    @NotNull
     private String seatNo;
 
     private String startTime;
 
     private String endTime;
 
+    private String error;
+
+    @NotNull
     private String day;
 
     private int student;

@@ -13,8 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.security.auth.login.LoginException;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,77 +36,101 @@ public class BookingController {
         return "booking";
     }
 
+    @GetMapping("/length_error")
+    public ModelAndView length_error(Tempbooking tempbooking){
+        ModelAndView mav = new ModelAndView("bookings/book");
+        mav.addObject("error", "Start and End time error");
+        return mav;
+    }
+
     @PostMapping("/book")
-    @ResponseBody
-    public RedirectView bookingSubmit(@ModelAttribute Tempbooking tempbooking){
-
-        Booking booking = new Booking();
-        String day = tempbooking.getDay();
-
-        booking.setDateAndTime(day + ":" + tempbooking.getStartTime());
+//    @ResponseBody
+    String bookingSubmit(@ModelAttribute @Valid Tempbooking tempbooking,BindingResult bindingResult,RedirectAttributes redirectAttributes,Model model){
         int endTime = Integer.parseInt(tempbooking.getEndTime());
         int length = endTime - Integer.parseInt(tempbooking.getStartTime());
-        booking.setLength(length);
-        booking.setSeatNo(tempbooking.getSeatNo());
-        booking.setStudent(tempbooking.getStudent());
 
-        //equipments
-        if(tempbooking.getCapacitors() == null) booking.setCapacitors(0);
-        else booking.setCapacitors(tempbooking.getCapacitors());
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.createAccountModel", bindingResult);
+            redirectAttributes.addFlashAttribute("tempbooking", tempbooking);
+            return "booking";
 
-        if(tempbooking.getBnc_Tpiece()== null) booking.setBnc_Tpiece(0);
-        else booking.setBnc_Tpiece(tempbooking.getBnc_Tpiece());
-
-        if(tempbooking.getPrototyping_board() == null) booking.setPrototyping_board(0);
-        else booking.setPrototyping_board(tempbooking.getPrototyping_board());
-
-        if(tempbooking.getSolidCoreWire() == null) booking.setSolidCoreWire(0);
-        else booking.setSolidCoreWire(tempbooking.getSolidCoreWire());
-
-        if(tempbooking.getResistors() == null) booking.setResistors(0);
-        else booking.setResistors(tempbooking.getResistors());
-
-        if(tempbooking.getLcr400_bridge() == null) booking.setLcr400_bridge(0);
-        else booking.setLcr400_bridge(tempbooking.getLcr400_bridge());
-
-        if(tempbooking.getWire_strippers() == null) booking.setWire_strippers(0);
-        else booking.setWire_strippers(tempbooking.getWire_strippers());
-
-        if(tempbooking.getActive8() == null) booking.setActive8(0);
-        else booking.setActive8(tempbooking.getActive8());
-
-        if(tempbooking.getOscilloscope_trim() == null) booking.setOscilloscope_trim(0);
-        else booking.setOscilloscope_trim(tempbooking.getOscilloscope_trim());
-
-        if(tempbooking.getRsop() == null) booking.setRsop(0);
-        else booking.setRsop(tempbooking.getRsop());
-
-        if(tempbooking.getPower_supp() == null) booking.setPower_supp(0);
-        else booking.setPower_supp(tempbooking.getPower_supp());
-
-        if(tempbooking.getBnc_croclead() == null) booking.setBnc_croclead(0);
-        else booking.setBnc_croclead(tempbooking.getBnc_croclead());
-
-        if(tempbooking.getBnc_lead() == null) booking.setBnc_lead(0);
-        else booking.setBnc_lead(tempbooking.getBnc_lead());
-
-        if(tempbooking.getRsop() == null) booking.setRsop(0);
-        else booking.setRsop(tempbooking.getRsop());
-
-        int feedback = bookingService.saveBooking(booking);
-        if (feedback == 1){
-//            try {
-//                bookingService.sendNotification(booking);
-//            }
-//            catch (MailException e){
-//
-//            }
-            return new RedirectView("/");
+//            return new RedirectView("/bookings/book");
+        }
+        else if(length <= 0){
+            model.addAttribute("error","start and end time not valid");
+            return "booking";
         }
         else {
-            return new RedirectView("/bookings/bookingfailed");
+            Booking booking = new Booking();
+            String day = tempbooking.getDay();
+
+            booking.setDateAndTime(day + ":" + tempbooking.getStartTime());
+            booking.setLength(length);
+            booking.setSeatNo(tempbooking.getSeatNo());
+            booking.setStudent(tempbooking.getStudent());
+
+            //equipments
+            if (tempbooking.getCapacitors() == null) booking.setCapacitors(0);
+            else booking.setCapacitors(tempbooking.getCapacitors());
+
+            if (tempbooking.getBnc_Tpiece() == null) booking.setBnc_Tpiece(0);
+            else booking.setBnc_Tpiece(tempbooking.getBnc_Tpiece());
+
+            if (tempbooking.getPrototyping_board() == null) booking.setPrototyping_board(0);
+            else booking.setPrototyping_board(tempbooking.getPrototyping_board());
+
+            if (tempbooking.getSolidCoreWire() == null) booking.setSolidCoreWire(0);
+            else booking.setSolidCoreWire(tempbooking.getSolidCoreWire());
+
+            if (tempbooking.getResistors() == null) booking.setResistors(0);
+            else booking.setResistors(tempbooking.getResistors());
+
+            if (tempbooking.getLcr400_bridge() == null) booking.setLcr400_bridge(0);
+            else booking.setLcr400_bridge(tempbooking.getLcr400_bridge());
+
+            if (tempbooking.getWire_strippers() == null) booking.setWire_strippers(0);
+            else booking.setWire_strippers(tempbooking.getWire_strippers());
+
+            if (tempbooking.getActive8() == null) booking.setActive8(0);
+            else booking.setActive8(tempbooking.getActive8());
+
+            if (tempbooking.getOscilloscope_trim() == null) booking.setOscilloscope_trim(0);
+            else booking.setOscilloscope_trim(tempbooking.getOscilloscope_trim());
+
+            if (tempbooking.getRsop() == null) booking.setRsop(0);
+            else booking.setRsop(tempbooking.getRsop());
+
+            if (tempbooking.getPower_supp() == null) booking.setPower_supp(0);
+            else booking.setPower_supp(tempbooking.getPower_supp());
+
+            if (tempbooking.getBnc_croclead() == null) booking.setBnc_croclead(0);
+            else booking.setBnc_croclead(tempbooking.getBnc_croclead());
+
+            if (tempbooking.getBnc_lead() == null) booking.setBnc_lead(0);
+            else booking.setBnc_lead(tempbooking.getBnc_lead());
+
+            if (tempbooking.getRsop() == null) booking.setRsop(0);
+            else booking.setRsop(tempbooking.getRsop());
+
+//        int feedback = bookingService.saveBooking(booking);
+//        if (feedback == 1){
+//        if(length <= 0){
+//            tempbooking.setError("Date and Time Not avaliable");
+//            return new RedirectView("/bookings/book");
+//        }
+
+            bookingService.saveBooking(booking);
+
+
+            return "redirect:/";
+//        return new RedirectView("/bookings/all");
+
         }
-    }
+        }
+//        else {
+//            return new RedirectView("/bookings/bookingfailed");
+//        }
+//    }
 
 
     @GetMapping("/all")
@@ -142,14 +171,14 @@ public class BookingController {
     // Delete by Id
     @GetMapping(value = "/{id}/dlt")
     @ResponseBody
-    public String deleteUser(@PathVariable("id") int id){
+    public RedirectView deleteUser(@PathVariable("id") int id){
 //        List<Booking> all_bookings = viewAllBookings();
 //        int id;
 //        for(Booking temp:all_bookings){
 //            if(student == temp.getStudent()) id = temp.getID();
 //        }
         bookingService.deleteBookingById(id);
-        return "Booking Deleted";
+        return new RedirectView("/bookings/admin_all_booking");
     }
 
 
