@@ -39,12 +39,16 @@ public class Student {
     @Column(name = "active")
     private int active;
 
+    @Column(name="ucard")
+    private String ucard;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     @Column(name="booking")
     private int booking;
+
 
 
     public int getId(){
@@ -121,6 +125,14 @@ public class Student {
 
     public Set<Role> getRoles(){
         return this.roles;
+    }
+
+    public void setUcard(String ucard){
+        this.ucard = ucard;
+    }
+
+    public String getUcard(){
+        return this.ucard;
     }
 
 }

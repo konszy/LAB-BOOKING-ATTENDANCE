@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Seats and Equipment Selection</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" media="screen" th:href="@{/css/booking.css}"/>
+</head>
+<body>
+    <form action="#" th:action="@{/bookings/book}" th:object="${tempbooking}" method="post">
+        <h3> Time slot </h3>
+          Start time:
+            <select th:field="*{startTime}">
+              <option th:value="9" th:text="9"></option>
+              <option th:value="10" th:text="10"></option>
+              <option th:value="11" th:text="11"></option>
+              <option th:value="12" th:text="12"></option>
+              <option th:value="13" th:text="13"></option>
+              <option th:value="14" th:text="14"></option>
+              <option th:value="15" th:text="15"></option>
+              <option th:value="16" th:text="16"></option>
+            </select>
+           End time:
+              <select th:field="*{endTime}">
+                  <option th:value="10" th:text="10"></option>
+                  <option th:value="11" th:text="11"></option>
+                  <option th:value="12" th:text="12"></option>
+                  <option th:value="13" th:text="13"></option>
+                  <option th:value="14" th:text="14"></option>
+                  <option th:value="15" th:text="15"></option>
+                  <option th:value="16" th:text="16"></option>
+                  <option th:value="17" th:text="17"></option>
+              </select>
+
+        <br><br>
+
+            <input type="radio" th:field="*{day}" th:value="MON" >Monday
+            <input type="radio" th:field="*{day}" th:value="TUE" >Tuesday
+            <input type="radio" th:field="*{day}" th:value="WED" >Wednesday
+            <input type="radio" th:field="*{day}" th:value="THU" >Thursday
+            <input type="radio" th:field="*{day}" th:value="FRI" >Friday
+
+        <br><br>
+
+
+        <table class="table1" >
+          <tr>
+            <th align="center" style="width:100px;">Seat</th>
+            <th align="center" style="width:150px;">Status</th>
+            <th align="center" style="width:80px;">Select</th>
+          </tr>
+          <tr>
+            <td align="center">A1</td>
+            <td>Available</td>
+            <td align="center"><input type="radio" th:field="*{seatNo}" th:value="A1"></td>
+          </tr>
+          <tr>
+            <td align="center">A2</td>
+            <td>Available</td>
+            <td align="center"><input type="radio" th:field="*{seatNo}" th:value="A2"></td>
+          </tr>
+          <tr>
+            <td align="center">A3</td>
+            <td>Available</td>
+            <td align="center"><input type="radio" th:field="*{seatNo}" th:value="A3"></td>
+          </tr>
+          <tr>
+            <td align="center">B1</td>
+            <td>Available</td>
+            <td align="center"><input type="radio" th:field="*{seatNo}" th:value="B1"></td>
+          </tr>
+          <tr>
+            <td align="center">B2</td>
+            <td>Available</td>
+            <td align="center"><input type="radio" th:field="*{seatNo}" th:value="B2"></td>
+          </tr>
+          <tr>
+            <td align="center">B3</td>
+            <td>Available</td>
+            <td align="center"><input type="radio" th:field="*{seatNo}" th:value="B3"></td>
+          </tr>
+        </table>
+
+        <br><br>
+
+        User:
+           <select th:field="*{student}">
+               <option th:value="1" th:text="1"></option>
+               <option th:value="2" th:text="2"></option>
+           </select>
+
+        <br><br>
+
+    <h2>Equipment List</h2>
+    <table class="table1" >
+        <tr>
+            <th align="center" style="width:500px;">Equipment Name</th>
+            <th align="center" style="width:100px;">Photo</th>
+            <th align="center" style="width:150px;">Equipment Select</th>
+        </tr>
+        <tr>
+            <td align="center">Prototyping Board</td>
+            <td><img src="../images/Prototyping Board.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{prototyping_board}" th:value="1" th:placeholder="0" ></td>
+        </tr>
+        <tr>
+            <td align="center">Solid Core Wire - 1/0.6mm</td>
+            <td><img src="../images/Solid Core Wire - 1_0.6mm.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{solidCoreWire}" th:value="1" th:placeholder="0"></td>
+        </tr>
+        <tr>
+            <td align="center">Wire Strippers/Cutters</td>
+            <td><img src="../images/Wire Strippers Cutters.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{wire_strippers}" th:value="1" th:placeholder="0"></td>
+        </tr>
+        <tr>
+            <td align="center">Resistors</td>
+            <td><img src="../images/Resistors.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{wire_strippers}" th:value="1" th:placeholder="0"></td>
+        </tr>
+        <tr>
+            <td align="center">Capacitors</td>
+            <td><img src="../images/Capacitors.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{resistors}" th:value="1" th:placeholder="0"></td>
+        </tr>
+        <tr>
+            <td align="center">TTi LCR400 Bridge</td>
+            <td><img src="../images/TTi LCR400 Bridge.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{lcr400_bridge}" th:value="1" th:placeholder="0"></td>
+        </tr>
+        <tr>
+            <td align="center">BNC "T" Piece</td>
+            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{bnc_Tpiece}" th:value="1" th:placeholder="0" ></td>
+        </tr>
+        <tr>
+            <td align="center">  Rohde & Schwarz RTB2004 Digital Oscilloscope : Rohde & Schwarz RT-ZP03 Oscilloscope Probes</td>
+            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{rsop}" th:value="1" th:placeholder="0"></td>
+        </tr>
+        <tr>
+            <td align="center">Rohde & Schwarz RTB2004 Digital Oscilloscope : Rohde & Schwarz RT-ZL03 Active 8 Channel Logic Probe</td>
+            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{active8}" th:value="1" th:placeholder="0"></td>
+        </tr>
+        <tr>
+            <td align="center">BK Precision 4054B Dual Channel 30Mhz Function/Arbitrary Waveform Generator : BNC ® Croc Lead</td>
+            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{bnc_croclead}" th:value="1" th:placeholder="0" ></td>
+        </tr>
+        <tr>
+            <td align="center">BK Precision 4054B Dual Channel 30Mhz Function/Arbitrary Waveform Generator : BNC ® BNC Lead</td>
+            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{bnc_lead}" th:value="1" th:placeholder="0" ></td>
+        </tr>
+        <tr>
+            <td align="center">Rohde & Schwarz NGE 100 Triple Output Power Supply</td>
+            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{power_supp}" th:value="1" th:placeholder="0" ></td>
+        </tr>
+        <tr>
+            <td align="center">Rohde & Schwarz HMC 8012 Digital Multimeter : 4mm plug ® Croc Lead (usually a pair of Black and Red Cables)</td>
+            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{rs_4mmplug}" th:value="1" th:placeholder="0"></td>
+        </tr>
+        <tr>
+            <td align="center">Oscilloscope Trim Tool</td>
+            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{oscilloscope_trim}" th:value="1" th:placeholder="0" ></td>
+        </tr>
+    </table>
+        <input type="submit" value="Submit" />
+    </form>
+
+</body>
+</html>

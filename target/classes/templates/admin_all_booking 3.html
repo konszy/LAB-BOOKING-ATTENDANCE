@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <link rel="stylesheet" media="screen" th:href="@{/css/display.css}"/>
+    <title>All Students </title>
+</head>
+<h3> Current Booking Slots </h3>
+<body onload = "onLoad();">
+<div class="mypanel"></div>
+<div class="container">
+    <h2> List of all Users </h2>
+    <table class="student">
+        <tr>
+            <th> Booking Number/Reference </th>
+            <th> student </th>
+            <th> seatNo </th>
+            <th> dateAndTime </th>
+            <th> Length </th>
+        </tr>
+        <tr th:each="booking :${admin_all_booking}">
+            <td th:text="${booking.id}"> </td>
+            <td th:text="${booking.student}"> </td>
+            <td th:text="${booking.seatNo}"> </td>
+            <td th:text="${booking.dateAndTime}"> </td>
+            <td th:text="${booking.length}"> </td>
+            <td> <a th:href="@{'http://localhost:8080/bookings/' + ${booking.id} + '/dlt'}" > Delete </a> </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

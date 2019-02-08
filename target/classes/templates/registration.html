@@ -59,6 +59,14 @@
 								class="validation-message"></label>
 						</div>
 					</div>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<label	th:if="${#fields.hasErrors('ucard')}" th:errors="*{ucard}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{ucard}"
+								placeholder="Ucard" class="form-control" />
+						</div>
+					</div>
 
 					<div class="form-group">
 						<div class="col-sm-9">
