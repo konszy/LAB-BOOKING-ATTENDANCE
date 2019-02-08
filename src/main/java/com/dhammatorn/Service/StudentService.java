@@ -63,6 +63,11 @@ public class StudentService {
         return students.get(0);
     }
 
+    public int getMaybeStudentByUsername(String username){
+        List<Student> students = studentRepository.findByUsername(username);
+        return students.size();
+    }
+
     public void updateStudent(Student student){
         studentRepository.save(student);
     }

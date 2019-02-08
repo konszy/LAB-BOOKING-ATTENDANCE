@@ -70,28 +70,30 @@ public class StudentController {
     public ModelAndView createNewUser(@Valid Student student, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
 
+        /*
         studentService.saveStudent(student);
         modelAndView.addObject("successMessage", "Student has been registered successfully");
         modelAndView.addObject("student", new Student());
         modelAndView.setViewName("registration");
+        */
 
-        /*
-        Student studentExists = studentService.getStudentByUsername(student.getUsername());
-        if (studentExists != null) {
+        int studentExists = studentService.getMaybeStudentByUsername(student.getUsername());
+        if (studentExists != 0) {
             bindingResult
-                    .rejectValue("email", "error.student",
+                    .rejectValue("username", "error.student",
                             "There is already a user registered with the username provided");
         }
+
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {
-            studentService.addStudent(student);
+            studentService.saveStudent(student);
             modelAndView.addObject("successMessage", "Student has been registered successfully");
             modelAndView.addObject("student", new Student());
             modelAndView.setViewName("registration");
 
         }
-        */
+
         return modelAndView;
     }
 
