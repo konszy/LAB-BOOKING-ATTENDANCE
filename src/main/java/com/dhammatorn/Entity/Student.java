@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 
 
 //object in the database
+@Data
 @Entity @Table(name = "student")
 public class Student {
     @Id @GeneratedValue @Column(name="id")
@@ -29,17 +30,17 @@ public class Student {
     @Column(name="email")
     private String email;
 
-    @Column(name="username") @NotNull @NotEmpty @Size(min=2, max=30)
+    @Column(name="username")
     private String username;
 
-    @Column(name="password") @NotNull @NotEmpty @Size(min=2, max=30)
+    @Column(name="password")
     private String password;
 
     @Column(name = "active")
     private int active;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     @Column(name="booking")
@@ -106,5 +107,20 @@ public class Student {
         return this.password;
     }
 
+    public void setActive(int active){
+        this.active = active;
+    }
+
+    public int getActive(){
+        return this.active;
+    }
+
+    public void setRoles(Set<Role> roles){
+        this.roles = roles;
+    }
+
+    public Set<Role> getRoles(){
+        return this.roles;
+    }
 
 }

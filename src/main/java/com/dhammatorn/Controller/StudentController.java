@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.List;
+import javax.validation.Valid;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.ModelAndView;
 
 //Rest deals with HTTP requests and the web - to - database controller
 @Controller
@@ -27,17 +32,67 @@ public class StudentController {
     //Autowired means springboot will instantiate the injection automatically
     private StudentService studentService;
 
-    // Registering
-    @GetMapping("/register")
-    public String registerForm(Model model) {
-        model.addAttribute("student", new Student());
-        return "register";
+    // Login
+    @RequestMapping(value={"/login"}, method = RequestMethod.GET)
+    public ModelAndView login(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        return modelAndView;
     }
 
-    @PostMapping("/register")
-    public String registerSubmit(@ModelAttribute Student student) {
-        studentService.addStudent(student);
-        return "result";
+
+
+    // Admin home
+    /*
+    @RequestMapping(value="/admin/home", method = RequestMethod.GET)
+    public ModelAndView home(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Student student = studentService.getStudentByUsername(auth.getName());
+        modelAndView.addObject("userName", "Welcome " + student.getName() + " " + student.getLastname() + " (" + student.getUsername() + ")");
+        modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+        modelAndView.setViewName("admin/home");
+        return modelAndView;
+    }
+    */
+
+    // Updated Registration
+    @RequestMapping(value="/registration", method = RequestMethod.GET)
+    public ModelAndView registration(){
+        ModelAndView modelAndView = new ModelAndView();
+        Student student = new Student();
+        modelAndView.addObject("student", student);
+        modelAndView.setViewName("registration");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public ModelAndView createNewUser(@Valid Student student, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        studentService.saveStudent(student);
+        modelAndView.addObject("successMessage", "Student has been registered successfully");
+        modelAndView.addObject("student", new Student());
+        modelAndView.setViewName("registration");
+
+        /*
+        Student studentExists = studentService.getStudentByUsername(student.getUsername());
+        if (studentExists != null) {
+            bindingResult
+                    .rejectValue("email", "error.student",
+                            "There is already a user registered with the username provided");
+        }
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("registration");
+        } else {
+            studentService.addStudent(student);
+            modelAndView.addObject("successMessage", "Student has been registered successfully");
+            modelAndView.addObject("student", new Student());
+            modelAndView.setViewName("registration");
+
+        }
+        */
+        return modelAndView;
     }
 
     //function to return all students
@@ -46,7 +101,6 @@ public class StudentController {
         return studentService.getAllStudent();
 
     }
-
 
     //value /{id} means we are going to pass an id from the URL and this method is going to output
     // a student according to that id
@@ -62,6 +116,13 @@ public class StudentController {
             Student student = new Student();
             return student;
         }
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @ResponseBody
+    public Student getStudentByUsername() {
+        Student student = studentService.getStudentByUsername("jim");
+        return student;
     }
 
     @GetMapping(value = "/{id}/edituser")

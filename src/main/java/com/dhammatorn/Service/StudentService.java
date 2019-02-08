@@ -1,17 +1,22 @@
 package com.dhammatorn.Service;
 
 import com.dhammatorn.Entity.Student;
+import com.dhammatorn.Entity.Role;
 import com.dhammatorn.Dao.StudentRepository;
+import com.dhammatorn.Dao.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.Collection;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import com.dhammatorn.Entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @Service
@@ -23,6 +28,18 @@ public class StudentService {
     //create an instance of the Dao
     @Autowired
     public StudentRepository studentRepository;
+    public RoleRepository roleRepository;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    public StudentService(StudentRepository studentRepository,
+                       RoleRepository roleRepository,
+                       BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.studentRepository = studentRepository;
+        this.roleRepository = roleRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+
 
     public void addStudent(Student student){
        studentRepository.save(student);
@@ -41,7 +58,20 @@ public class StudentService {
         return studentRepository.findById(id);
     }
 
+    public Student getStudentByUsername(String username){
+        List<Student> students = studentRepository.findByUsername(username);
+        return students.get(0);
+    }
+
     public void updateStudent(Student student){
+        studentRepository.save(student);
+    }
+
+    public void saveStudent(Student student) {
+        student.setPassword(bCryptPasswordEncoder.encode(student.getPassword()));
+        student.setActive(1);
+        Role userRole = roleRepository.findByRole("ADMIN");
+        student.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         studentRepository.save(student);
     }
 

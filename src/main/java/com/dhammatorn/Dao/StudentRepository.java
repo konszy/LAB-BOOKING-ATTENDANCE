@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import java.util.List;
+
 
 public interface StudentRepository extends CrudRepository<Student,Integer>{
 
@@ -18,5 +20,7 @@ public interface StudentRepository extends CrudRepository<Student,Integer>{
     //@Query("DELETE Student u WHERE u.id = :id")
     //public Student deleteStudentById(@Param("id") int id);
 
+    @Query(value = "SELECT u FROM Student u WHERE u.username = :username")
+    public List<Student> findByUsername(@Param("username") String username);
 
 }
