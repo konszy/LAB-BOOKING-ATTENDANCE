@@ -152,6 +152,13 @@ public class BookingController {
         return "admin_all_booking";
     }
 
+//    @RequestMapping("/user_booking")
+//    public String user_booking(Model model){
+//        model.addAttribute("admin_all_booking", viewAllBookings());
+//        return "admin_all_booking";
+//    }
+
+
 
     //value /{id} means we are going to pass an id from the URL and this method is going to output
     // a student according to that id
