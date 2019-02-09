@@ -46,6 +46,7 @@ public class BookingController {
     @PostMapping("/book")
 //    @ResponseBody
     String bookingSubmit(@ModelAttribute @Valid Tempbooking tempbooking,BindingResult bindingResult,RedirectAttributes redirectAttributes,Model model){
+
         int endTime = Integer.parseInt(tempbooking.getEndTime());
         int length = endTime - Integer.parseInt(tempbooking.getStartTime());
 

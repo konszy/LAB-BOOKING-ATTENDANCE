@@ -53,7 +53,8 @@ public class BookingService {
         for(Booking temp: bookings){
             if(temp.getSeatNo().equals(booking.getSeatNo())
                     && temp.getDateAndTime().equals(booking.getDateAndTime())
-                    && temp.getLength() == temp.getLength()){
+                    && temp.getLength() == booking.getLength()
+                    && temp.getStudent() == booking.getStudent()){
                 booked = true;
             }
         }
