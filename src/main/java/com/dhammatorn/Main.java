@@ -2,9 +2,17 @@ package com.dhammatorn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 
 //declare that this is the main spring boot application
 //this annotation make sure spring initiliaze the spring beans
+
+
+@PropertySources({
+//        @PropertySource("classpath:default.properties"),
+        @PropertySource(value = "file:${user.home}/.secret.properties", ignoreResourceNotFound = true)
+})
 
 @SpringBootApplication
 public class Main {
