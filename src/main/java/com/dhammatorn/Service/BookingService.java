@@ -24,26 +24,30 @@ public class BookingService {
     @Autowired
     public BookingRepository bookingRepository;
 
-//    private JavaMailSender javaMailSender;
-//
-//    @Autowired
-//    public BookingService(JavaMailSender javaMailSender){
-//                this.javaMailSender = javaMailSender;
-//    }
-//
-//    public void sendNotification(Booking booking) throws MailException
-//
-//    {
-//        //send email
-//        SimpleMailMessage mail = new SimpleMailMessage();
-//        mail.setTo("dr17549@my.bristol.ac.uk");
-//        mail.setFrom("ee.lab.system@gmail.com");
-//        mail.setSubject("Booking Success");
-//        mail.setText("YAY!");
-//
-//        javaMailSender.send(mail);
-//
-//    }
+    private JavaMailSender javaMailSender;
+
+    @Autowired
+    public BookingService(JavaMailSender javaMailSender){
+                this.javaMailSender = javaMailSender;
+    }
+
+    public void sendNotification(Booking booking) throws MailException
+
+    {
+        //send email
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setTo("ee.lab.system@gmail.com");
+        mail.setFrom("ee.lab.system@gmail.com");
+        mail.setSubject("Booking Success!");
+        mail.setText("You currently booked on : " + booking.getDateAndTime() + ":00 with seats : " + booking.getSeatNo() +
+        " __for " + booking.getLength() + " hr(s)." + " Please bring your UCARD " +
+                        "and scan the system before using the lab. There will be penalities for not being present as " +
+                        "in agreement and will result in your account being blacklisted."
+        );
+
+        javaMailSender.send(mail);
+
+    }
 
     public int saveBooking(Booking booking){
         //check if there is any booking on the same date

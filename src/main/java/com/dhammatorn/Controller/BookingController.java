@@ -121,7 +121,7 @@ public class BookingController {
 //        }
 
             bookingService.saveBooking(booking);
-
+            bookingService.sendNotification(booking);
 
             return "redirect:/";
 //        return new RedirectView("/bookings/all");
