@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-								xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<title>Registration</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -18,26 +18,33 @@
             <h2>Sign Up</h2>
             <p>Please fill in this form to create an account.</p>
             <hr>
-						<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="validation-message"></label>
-						<input type="text" th:field="*{name}" placeholder="Name" class="form-control" required/>
+				<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="validation-message"></label>
+			    <b>First Name</b>
+				<input type="text" th:field="*{name}" class="form-control" required/>
 
-						<label th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" class="validation-message"></label>
-						<input type="text" th:field="*{lastname}" placeholder="Last Name" class="form-control" required/>
+				<label th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" class="validation-message"></label>
+                <b>Last Name</b>
+				<input type="text" th:field="*{lastname}"  class="form-control" required/>
 
-						<label th:if="${#fields.hasErrors('course')}" th:errors="*{course}" class="validation-message"></label>
-						<input type="text" th:field="*{course}" placeholder="Course" class="form-control" required/>
+				<label th:if="${#fields.hasErrors('course')}" th:errors="*{course}" class="validation-message"></label>
+                <b>Course</b>
+				<input type="text" th:field="*{course}" class="form-control" required/>
 
-						<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></label>
-						<input type="text" th:field="*{email}" placeholder="Email" class="form-control" required/>
+				<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></label>
+                <b>Email</b>
+				<input type="text" th:field="*{email}" class="form-control" required/>
 
-						<label th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="validation-message"></label>
-						<input type="text" th:field="*{username}" placeholder="Username" class="form-control" required/>
+				<label th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="validation-message"></label>
+                <b>User Name</b>
+				<input type="text" th:field="*{username}" class="form-control" required/>
 
-						<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validation-message"></label>
-						<input type="password" th:field="*{password}" placeholder="Password" class="form-control" required/>
+				<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validation-message"></label>
+                <b>Password</b>
+				<input type="password" th:field="*{password}" class="form-control" required/>
 
-						<label th:if="${#fields.hasErrors('ucard')}" th:errors="*{ucard}" class="validation-message"></label>
-						<input type="text" th:field="*{ucard}" placeholder="Ucard" class="form-control" required/>
+				<label th:if="${#fields.hasErrors('ucard')}" th:errors="*{ucard}" class="validation-message"></label>
+                <b>Ucard</b>
+				<input type="text" th:field="*{ucard}" class="form-control" required/>
         </div>
         <div class="agree">
             1. Report to your supervisor incase of emergency in equipment.<br>
@@ -48,7 +55,7 @@
             <strong>Three strikes and your account will be blacklisted.</strong><br>
             Please Contact Mr. Richard Walker for removing your name from the black list.
         </div>
-				<span th:utext="${successMessage}"></span>
+            <span th:utext="${successMessage}"></span>
         <p><button type="submit" class="btn btn-primary btn-block">Register</button></p>
     </div>
 </form>
