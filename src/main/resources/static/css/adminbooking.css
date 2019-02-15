@@ -13,6 +13,24 @@ h3 {
     text-align: center;
 }
 
+div.head {
+    width:600px;
+    margin: auto;
+    text-align: center;
+    padding: 20px 0 20px 20px;
+    display:inline-block;
+    vertical-align:text-bottom;
+    font-size:32px;
+    color:#B01C2E;
+}
+
+
+img {
+    align="baseline";
+    margin-right: 15px;
+    margin-bottom: -1px;
+}
+
 .table1 th {
     background-color:#B01C2E;
     color:#000000

@@ -52,3 +52,30 @@ input[type=submit], input[type=Submit] {
     cursor: pointer;
     width: 10%;
 }
+
+.btnU{text-decoration:none;padding:10px 18px;border-radius:3px;font-size:16px;line-height:1.5;border:2px solid;display:inline-block;vertical-align:middle;font-weight:700;white-space:nowrap;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}
+.btnU-large{padding:13px 24px}
+.btnU:focus,
+.btnU:hover{cursor:pointer}
+.btnU-large{padding:13px 24px}
+.btnU-small{font-size:14px;font-weight:400;padding:6px 14px}
+.btnU:focus{box-shadow:0 0 0 .2rem rgba(176,28,46,.35)}
+.btnU-ghost-reversed:focus{box-shadow:0 0 0 .2rem hsla(0,0%,100%,.35)}
+.btnU{background:#b01c2e;color:#fff;border-color:#b01c2e}
+.btnU:active,
+.btnU:focus,
+.btnU:hover{background:transparent;border-color:#961827;color:#b01c2e}
+.btnU-ghost{color:#b01c2e;border-color:#b01c2e;background:transparent}
+.btnU-ghost:active,
+.btnU-ghost:focus,
+.btnU-ghost:hover{background:#b01c2e;color:#fff}
+.btnU-ghost-reversed{color:#fff;border-color:#fff}
+.btnU-ghost-reversed:active,
+.btnU-ghost-reversed:focus,
+.btnU-ghost-reversed:hover{background:#fff;color:#b01c2e}
+.btnU-white{background:#fff;color:#333;border-color:#fff}
+.btnU-white:hover{background:transparent}
+.btnU-group{margin-bottom:24px}
+.btnU-pagination{padding:14px}
+.btnU-pagination
+.btnU-large{padding:17px}
