@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <title>University of Bristol</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,7 +43,7 @@ p{
       <a th:href="@{/bookings/book}" class="w3-button w3-block">Student Booking</a>
     </div>
     <div class="w3-col s3">
-      <a th:href="@{/bookings/display_all}" class="w3-button w3-block">Display All Booking</a>
+      <a th:href="@{/bookings/admin_all_booking}" class="w3-button w3-block">Display All Booking</a>
     </div>
     <div class="w3-col s3">
       <a th:href="@{login}" class="w3-button w3-block">Login</a>
@@ -75,7 +74,7 @@ p{
       <img th:src="@{../images/ee5.jpg}" style="width:100%">
     </div>
     <div class="w3-display-container mySlides">
-      <img th:src="@{../images/ee1.jpg}" style="width:100%">
+      <img th:src="@{../images/ee9.jpeg}" style="width:100%">
     </div>
 
     <!-- Slideshow next/previous buttons -->
@@ -113,11 +112,12 @@ p{
       <p>Students can select each equipment they need in each session.</p>
     </div>
 
-    <div class="w3-col l3 m6 w3-black w3-container w3-padding-16">
+    <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
       <h3>Agreements</h3>
       <p>Ensure that you read each requirement and agreement carefully before booking.</p>
     </div>
   </div>
+
 
 <script>
 // Slideshow

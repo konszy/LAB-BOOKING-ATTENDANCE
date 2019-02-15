@@ -10,7 +10,7 @@
 <div class="mypanel"></div>
 <div class="container">
     <h2> List of all Users </h2>
-    <table class="student">
+    <table class="table1">
       <tr>
           <th> ID </th>
           <th> Name </th>
@@ -22,9 +22,9 @@
       <tr th:each="student :${display}">
           <td th:text="${student.id}"> </td>
           <td th:text="${student.name}"> </td>
-          <td th:text="${student.email}"> </td>
           <td th:text="${student.lastname}"> </td>
           <td th:text="${student.course}"> </td>
+          <td th:text="${student.email}"> </td>
           <td th:text="${student.username}"> </td>
           <td> <a th:href="@{'http://localhost:8080/' + ${student.id} + '/deleteuser'}" > Delete </a> </td>
       </tr>

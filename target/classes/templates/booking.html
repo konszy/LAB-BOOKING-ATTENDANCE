@@ -3,11 +3,16 @@
     <title>Seats and Equipment Selection</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" media="screen" th:href="@{/css/booking.css}"/>
+    <style>
+        p.error {
+        color: red;
+        }
+    </style>
 </head>
 <body>
 
         <h3> Time slot </h3>
-        <p  th:text="${error}"> Web Application. Passed parameter </p>
+        <p class ="error" th:text="${error}"> </p>
     <form action="#" th:action="@{/bookings/book}" th:object="${tempbooking}" method="post">
           Start time:
             <select th:field="*{startTime}">
@@ -33,7 +38,7 @@
               </select> :00
 
         <br><br>
-            <p th:if="${#fields.hasErrors('day')}" th:errors="*{day}">Name Error</p>
+            <p class="error" th:if="${#fields.hasErrors('day')}" th:errors="*{day}">Name Error</p>
             <input type="radio" th:field="*{day}" th:value="MON" >Monday
             <input type="radio" th:field="*{day}" th:value="TUE" >Tuesday
             <input type="radio" th:field="*{day}" th:value="WED" >Wednesday
@@ -44,7 +49,7 @@
 
 
         <table class="table1" >
-            <p th:if="${#fields.hasErrors('seatNo')}" th:errors="*{seatNo}">Seat Number Error</p>
+            <p class="error" th:if="${#fields.hasErrors('seatNo')}" th:errors="*{seatNo}">Seat Number Error</p>
           <tr>
             <th align="center" style="width:100px;">Seat</th>
             <th align="center" style="width:150px;">Status</th>
@@ -88,6 +93,10 @@
            <select th:field="*{student}">
                <option th:value="1" th:text="1"></option>
                <option th:value="2" th:text="2"></option>
+               <option th:value="3" th:text="3"></option>
+               <option th:value="4" th:text="4"></option>
+               <option th:value="5" th:text="5"></option>
+
            </select>
 
         <br><br>
@@ -102,74 +111,91 @@
         <tr>
             <td align="center">Prototyping Board</td>
             <td><img src="../images/Prototyping Board.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{prototyping_board}" th:value="1" th:placeholder="0" ></td>
+            <td align="center"><input type="checkbox" th:field="*{prototyping_board}" th:value="1"  ></td>
         </tr>
         <tr>
             <td align="center">Solid Core Wire - 1/0.6mm</td>
             <td><img src="../images/Solid Core Wire - 1_0.6mm.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{solidCoreWire}" th:value="1" th:placeholder="0"></td>
+            <td align="center"><input type="checkbox" th:field="*{solidCoreWire}" th:value="1" ></td>
         </tr>
         <tr>
             <td align="center">Wire Strippers/Cutters</td>
             <td><img src="../images/Wire Strippers Cutters.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{wire_strippers}" th:value="1" th:placeholder="0"></td>
+            <td align="center"><input type="checkbox" th:field="*{wire_strippers}" th:value="1" ></td>
         </tr>
         <tr>
             <td align="center">Resistors</td>
             <td><img src="../images/Resistors.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{wire_strippers}" th:value="1" th:placeholder="0"></td>
+            <td align="center"><input type="checkbox" th:field="*{wire_strippers}" th:value="1" ></td>
         </tr>
         <tr>
             <td align="center">Capacitors</td>
             <td><img src="../images/Capacitors.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{resistors}" th:value="1" th:placeholder="0"></td>
+            <td align="center"><input type="checkbox" th:field="*{resistors}" th:value="1" ></td>
         </tr>
         <tr>
             <td align="center">TTi LCR400 Bridge</td>
             <td><img src="../images/TTi LCR400 Bridge.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{lcr400_bridge}" th:value="1" th:placeholder="0"></td>
+            <td align="center"><input type="checkbox" th:field="*{lcr400_bridge}" th:value="1" ></td>
         </tr>
         <tr>
             <td align="center">BNC "T" Piece</td>
             <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{bnc_Tpiece}" th:value="1" th:placeholder="0" ></td>
+            <td align="center"><input type="checkbox" th:field="*{bnc_Tpiece}" th:value="1"  ></td>
         </tr>
         <tr>
             <td align="center">  Rohde & Schwarz RTB2004 Digital Oscilloscope : Rohde & Schwarz RT-ZP03 Oscilloscope Probes</td>
-            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{rsop}" th:value="1" th:placeholder="0"></td>
+            <td><img src="../images/Rohde & Schwarz RTB2004 Digital Oscilloscope.jpg" width="70" height="70"></td>
+            <td align="center"> <!-- <input type="checkbox" th:field="*{rsop}" th:value="1"  -->
+                <select th:field="*{rsop}">
+                    <option th:value="0" th:text="0"></option>
+                    <option th:value="2" th:text="2"></option>
+                    <option th:value="3" th:text="3"></option>
+                    <option th:value="4" th:text="4"></option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td align="center">Rohde & Schwarz RTB2004 Digital Oscilloscope : Rohde & Schwarz RT-ZL03 Active 8 Channel Logic Probe</td>
-            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{active8}" th:value="1" th:placeholder="0"></td>
+            <td><img src="../images/Rohde & Schwarz RTB2004 Digital Oscilloscope.jpg" width="70" height="70"></td>
+            <td align="center">
+                <!-- <input type="checkbox" th:field="*{active8}" th:value="1" > -->
+                <select th:field="*{active8}">
+                    <option th:value="0" th:text="0"></option>
+                    <option th:value="1" th:text="1"></option>
+                    <option th:value="2" th:text="2"></option>
+
+                </select>
+            </td>
         </tr>
         <tr>
             <td align="center">BK Precision 4054B Dual Channel 30Mhz Function/Arbitrary Waveform Generator : BNC ® Croc Lead</td>
-            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{bnc_croclead}" th:value="1" th:placeholder="0" ></td>
+            <td><img src="../images/BK Precision 4054B Dual Channel.jpg" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{bnc_croclead}" th:value="1" ></td>
         </tr>
         <tr>
             <td align="center">BK Precision 4054B Dual Channel 30Mhz Function/Arbitrary Waveform Generator : BNC ® BNC Lead</td>
-            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{bnc_lead}" th:value="1" th:placeholder="0" ></td>
+            <td><img src="../images/BK Precision 4054B Dual Channel.jpg" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{bnc_lead}" th:value="1" ></td>
         </tr>
         <tr>
             <td align="center">Rohde & Schwarz NGE 100 Triple Output Power Supply</td>
-            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{power_supp}" th:value="1" th:placeholder="0" ></td>
+            <td><img src="../images/Rohde & Schwarz NGE 100 Triple Output Power Supply.jpg" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{power_supp}" th:value="1" ></td>
         </tr>
         <tr>
             <td align="center">Rohde & Schwarz HMC 8012 Digital Multimeter : 4mm plug ® Croc Lead (usually a pair of Black and Red Cables)</td>
-            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{rs_4mmplug}" th:value="1" th:placeholder="0"></td>
+            <td><img src="../images/Rohde & Schwarz NGE 100 Triple Output Power Supply.jpg" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{rs_4mmplug}" th:value="1" ></td>
         </tr>
         <tr>
             <td align="center">Oscilloscope Trim Tool</td>
-            <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{oscilloscope_trim}" th:value="1" th:placeholder="0" ></td>
+            <td><img src="../images/???.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{oscilloscope_trim}" th:value="1" ></td>
         </tr>
     </table>
+        <br>
+        <br>
         <input type="submit" value="Submit" />
     </form>
 

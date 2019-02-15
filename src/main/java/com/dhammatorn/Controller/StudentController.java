@@ -70,13 +70,6 @@ public class StudentController {
     public ModelAndView createNewUser(@Valid Student student, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
 
-        /*
-        studentService.saveStudent(student);
-        modelAndView.addObject("successMessage", "Student has been registered successfully");
-        modelAndView.addObject("student", new Student());
-        modelAndView.setViewName("registration");
-        */
-
         int studentExists = studentService.getMaybeStudentByUsername(student.getUsername());
         if (studentExists != 0) {
             bindingResult
@@ -84,11 +77,19 @@ public class StudentController {
                             "There is already a user registered with the username provided");
         }
 
+        String emailCheck = student.getEmail();
+        if (emailCheck.contains("@my.bristol.ac.uk") == false){
+            bindingResult
+                    .rejectValue("email", "error.student",
+                            "Please use your Bristol email, ending in @my.bristol.ac.uk");
+        }
+
+
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {
             studentService.saveStudent(student);
-            modelAndView.addObject("successMessage", "Student has been registered successfully");
+            modelAndView.addObject("successMessage", "Student has been registered successfully, return to home:    ");
             modelAndView.addObject("student", new Student());
             modelAndView.setViewName("registration");
         }

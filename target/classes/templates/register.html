@@ -5,18 +5,31 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" media="screen" th:href="@{/css/register.css}"/>
 </head>
-<body>
-  <p><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" /></p>
-  <h1> Faculty of Engineering </h1>
-    <form action="#" th:action="@{/register}" th:object="${student}" method="post">
-        <p>First Name: <input type="text" th:field="*{name}" /></p>
-        <p>Last Name: <input type="text" th:field="*{lastname}" /></p>
-        <p>Course: <input type="text" th:field="*{course}" /></p>
-        <p>Email: <input type="text" th:field="*{email}" /></p>
-        <p>Username: <input type="text" th:field="*{username}" /></p>
-        <p>Password: <input type="text" th:field="*{password}" /></p>
-        <p class="agreement_head">  Please ensure you have acknowledge the following : </p>
-        <div>
+<body><div class="head">
+<img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" width="200";>
+    LAB Booking System
+</div>
+
+<form action="#" th:action="@{/register}" th:object="${student}" method="post">
+    <div class="container">
+        <div class="input">
+            <h2>Sign Up</h2>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+            <label for="name"><b>First Name</b></label>
+            <input type="text" th:field="*{name}" required>
+            <label for="lastname"><b>Last Name</b></label>
+            <input type="text" th:field="*{lastname}" required>
+            <label for="course"><b>Course</b></label>
+            <input type="text" th:field="*{course}" required>
+            <label for="email"><b>Email</b></label>
+            <input type="text" th:field="*{email}" required>
+            <label for="username"><b>Username</b></label>
+            <input type="text" th:field="*{username}" required>
+            <label for="email"><b>Password</b></label>
+            <input type="password" th:field="*{password}" required>
+        </div>
+        <div class="agree">
             1. Report to your supervisor incase of emergency in equipment.<br>
             2. You are responsible for the safety of your own and others while using the lab.<br>
             3. It is against the rule for you to book the seats for others.<br>
@@ -26,6 +39,7 @@
             Please Contact Mr. Richard Walker for removing your name from the black list.
         </div>
         <p><input type="submit" value="Register" /> <input type="reset" value="Reset" /></p>
-    </form>
+    </div>
+</form>
 </body>
 </html>
