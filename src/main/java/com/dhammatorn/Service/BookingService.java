@@ -55,10 +55,10 @@ public class BookingService {
         bookingRepository.findAll().forEach(bookings::add);
         Boolean booked = false;
         for(Booking temp: bookings){
-            if(temp.getSeatNo().equals(booking.getSeatNo())
+            if((temp.getSeatNo().equals(booking.getSeatNo())
                     && temp.getDateAndTime().equals(booking.getDateAndTime())
                     && temp.getLength() == booking.getLength()
-                    && temp.getStudent() == booking.getStudent()){
+                    ) || temp.getStudent() == booking.getStudent()){
                 booked = true;
             }
         }

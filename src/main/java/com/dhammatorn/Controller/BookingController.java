@@ -58,7 +58,7 @@ public class BookingController {
 //            return new RedirectView("/bookings/book");
         }
         else if(length <= 0){
-            model.addAttribute("error","start and end time not valid");
+            model.addAttribute("error","End time must be after Start time");
             return "booking";
         }
         else {
@@ -113,17 +113,17 @@ public class BookingController {
             if (tempbooking.getRsop() == null) booking.setRsop(0);
             else booking.setRsop(tempbooking.getRsop());
 
-//        int feedback = bookingService.saveBooking(booking);
-//        if (feedback == 1){
-//        if(length <= 0){
-//            tempbooking.setError("Date and Time Not avaliable");
-//            return new RedirectView("/bookings/book");
-//        }
+            int feedback =   bookingService.saveBooking(booking);
+            if(feedback == 1) {
 
-            bookingService.saveBooking(booking);
-            bookingService.sendNotification(booking);
+                bookingService.sendNotification(booking);
+                return "booking_success";
+            }
+            else{
+                return "bookingfailed";
+            }
 
-            return "redirect:/";
+            //return "booking_success";
 //        return new RedirectView("/bookings/all");
 
         }
@@ -158,6 +158,8 @@ public class BookingController {
 //        return "admin_all_booking";
 //    }
 
+    @GetMapping(value = "/booking_success")
+    public String booking_success(){return "booking_success"; }
 
 
     //value /{id} means we are going to pass an id from the URL and this method is going to output
