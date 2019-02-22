@@ -47,19 +47,19 @@ public class StudentController {
         return modelAndView;
     }
 
-    // Admin home
-    /*
-    @RequestMapping(value="/loggedinuser", method = RequestMethod.GET)
-    public ModelAndView loggedinuser(){
+
+
+    @RequestMapping(value="/loggedinindex", method = RequestMethod.GET)
+    public ModelAndView loggedinindex(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Student student = studentService.getStudentByUsername(auth.getName());
-        modelAndView.addObject("userName", "Welcome " + student.getName() + " " + student.getLastname() + " (" + student.getUsername() + ")");
+        modelAndView.addObject("userName", "Logged in: " + student.getName() + " " + student.getLastname() + " (" + student.getUsername() + ")");
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-        modelAndView.setViewName("loggedinuser");
+        modelAndView.setViewName("loggedinindex");
         return modelAndView;
     }
-    */
+
 
 
     // Updated Registration

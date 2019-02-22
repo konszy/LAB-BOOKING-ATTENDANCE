@@ -26,6 +26,7 @@ div.head {
     color:#B01C2E;
 }
 
+
 img {
     align="baseline";
     margin-right: 15px;
@@ -144,3 +145,5 @@ input[type=text]:focus, input[type=password]:focus {
     background-color: #f8d3d8;
     outline: none;
 }
+
+

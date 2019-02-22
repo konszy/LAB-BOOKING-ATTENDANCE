@@ -1,5 +1,4 @@
 com/dhammatorn/Dao/BookingRepository.class
-com/dhammatorn/Entity/TempbookingValidator.class
 com/dhammatorn/Entity/Tempbooking.class
 com/dhammatorn/config/SecurityConfiguration.class
 com/dhammatorn/Main.class
