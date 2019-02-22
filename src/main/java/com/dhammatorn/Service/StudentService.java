@@ -68,11 +68,6 @@ public class StudentService {
         return students.size();
     }
 
-    public Student getStudentByUcard(String ucard){
-        List<Student> students = studentRepository.findByUcard(ucard);
-        return students.get(0);
-    }
-
     public void updateStudent(Student student){
         studentRepository.save(student);
     }

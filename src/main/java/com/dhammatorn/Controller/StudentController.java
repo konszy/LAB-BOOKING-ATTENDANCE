@@ -32,13 +32,6 @@ public class StudentController {
     //Autowired means springboot will instantiate the injection automatically
     private StudentService studentService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView index(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
-        return modelAndView;
-    }
-
     // Login
     @RequestMapping(value={"/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
@@ -47,20 +40,21 @@ public class StudentController {
         return modelAndView;
     }
 
+
+
     // Admin home
     /*
-    @RequestMapping(value="/loggedinuser", method = RequestMethod.GET)
-    public ModelAndView loggedinuser(){
+    @RequestMapping(value="/admin/home", method = RequestMethod.GET)
+    public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Student student = studentService.getStudentByUsername(auth.getName());
         modelAndView.addObject("userName", "Welcome " + student.getName() + " " + student.getLastname() + " (" + student.getUsername() + ")");
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-        modelAndView.setViewName("loggedinuser");
+        modelAndView.setViewName("admin/home");
         return modelAndView;
     }
     */
-
 
     // Updated Registration
     @RequestMapping(value="/registration", method = RequestMethod.GET)
@@ -157,6 +151,11 @@ public class StudentController {
     public String deleteUser(@PathVariable("id") int id){
         studentService.deleteStudentById(id);
         return "Student Deleted";
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String index(){
+        return "index";
     }
 
 
