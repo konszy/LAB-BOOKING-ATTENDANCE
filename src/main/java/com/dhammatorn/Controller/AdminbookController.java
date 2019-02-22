@@ -50,8 +50,8 @@ public class AdminbookController {
 //    @ResponseBody
     String bookingSubmit(@ModelAttribute @Valid Adminbooking tempbooking, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
 
-        int endTime = Integer.parseInt(tempbooking.getEndTime());
-        int length = endTime - Integer.parseInt(tempbooking.getStartTime());
+        int endTime = tempbooking.getEndTime();
+        int length = endTime - tempbooking.getStartTime();
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.createAccountModel", bindingResult);
@@ -71,7 +71,9 @@ public class AdminbookController {
 //            ArrayList<String> all_seats = tempbooking.getSeatNum();
             for(String each_seats : all_seats) {
                 Booking booking = new Booking();
-                booking.setDateAndTime(day + ":" + tempbooking.getStartTime());
+                booking.setDate(tempbooking.getDay());
+                booking.setStartTime(tempbooking.getStartTime());
+                booking.setEndTime(tempbooking.getEndTime());
                 booking.setLength(length);
                 booking.setSeatNo(each_seats);
                 booking.setStudent(0);

@@ -14,8 +14,14 @@ public class Booking {
     @Column(name="seatNo")
     private String seatNo;
 
-    @Column(name="dateAndTime")
-    private String dateAndTime;
+    @Column(name="startTime")
+    private int startTime;
+
+    @Column(name="date")
+    private String date;
+
+    @Column(name="endTime")
+    private int endTime;
 
     @Column(name="length")
     private int length;
@@ -71,14 +77,6 @@ public class Booking {
 
     public String getSeatNo(){
         return this.seatNo;
-    }
-
-    public void setDateAndTime(String dateAndTime){
-        this.dateAndTime = dateAndTime;
-    }
-
-    public String getDateAndTime(){
-        return this.dateAndTime;
     }
 
     public void setLength(int length){
@@ -212,4 +210,27 @@ public class Booking {
         this.oscilloscope_trim = oscilloscope_trim;
     }
 
+    public int getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(int startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(int endTime) {
+        this.endTime = endTime;
+    }
 }
