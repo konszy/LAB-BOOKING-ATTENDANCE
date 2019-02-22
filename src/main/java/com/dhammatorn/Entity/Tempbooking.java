@@ -17,9 +17,9 @@ public class Tempbooking{
     @NotNull
     private String seatNo;
 
-    private String startTime;
+    private int startTime;
 
-    private String endTime;
+    private int endTime;
 
     private String error;
 
@@ -71,21 +71,38 @@ public class Tempbooking{
     public String getSeatNo(){
         return this.seatNo;
     }
+//
+//    public void setStartTime(String startTime){
+//        this.startTime = startTime;
+//    }
+//
+//    public String getStartTime(){
+//        return this.startTime;
+//    }
+//
+//    public void setEndTime(String endTime){
+//        this.endTime = endTime;
+//    }
+//
+//    public String getEndTime(){
+//        return this.endTime;
+//    }
 
-    public void setStartTime(String startTime){
+
+    public int getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(int startTime) {
         this.startTime = startTime;
     }
 
-    public String getStartTime(){
-        return this.startTime;
+    public int getEndTime() {
+        return endTime;
     }
 
-    public void setEndTime(String endTime){
+    public void setEndTime(int endTime) {
         this.endTime = endTime;
-    }
-
-    public String getEndTime(){
-        return this.endTime;
     }
 
     public void setDay(String day){

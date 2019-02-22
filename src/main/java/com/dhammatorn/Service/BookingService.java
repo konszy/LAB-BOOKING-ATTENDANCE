@@ -39,7 +39,8 @@ public class BookingService {
         mail.setTo("ee.lab.system@gmail.com");
         mail.setFrom("ee.lab.system@gmail.com");
         mail.setSubject("Booking Success!");
-        mail.setText("You currently booked on : " + booking.getDateAndTime() + ":00 with seats : " + booking.getSeatNo() +
+        mail.setText("You currently booked on : " + booking.getDay() + "from" + booking.getStartTime() + ":00 to "+ booking.getEndTime()
+                        + ":00 with seats : " + booking.getSeatNo() +
         " __for " + booking.getLength() + " hr(s)." + " Please bring your UCARD " +
                         "and scan the system before using the lab. There will be penalities for not being present as " +
                         "in agreement and will result in your account being blacklisted."
@@ -54,12 +55,26 @@ public class BookingService {
         List<Booking> bookings = new ArrayList<>();
         bookingRepository.findAll().forEach(bookings::add);
         Boolean booked = false;
-        for(Booking temp: bookings){
-            if((temp.getSeatNo().equals(booking.getSeatNo())
-                    && temp.getDateAndTime().equals(booking.getDateAndTime())
-                    && temp.getLength() == booking.getLength()
-                    ) || temp.getStudent() == booking.getStudent()){
-                booked = true;
+        if(booking.getStudent() == 0){
+            for(Booking temp: bookings){
+                if((temp.getSeatNo().equals(booking.getSeatNo())
+                        && timeValid(booking,temp)
+                        && temp.getLength() == booking.getLength()
+                )){
+                    booked = true;
+                    System.out.println("Failed here admin ");
+                }
+            }
+        }
+        else {
+            for (Booking temp : bookings) {
+                if ((temp.getSeatNo().equals(booking.getSeatNo())
+                        && timeValid(booking, temp)
+                        && temp.getLength() == booking.getLength()
+                ) || temp.getStudent() == booking.getStudent()) {
+                    booked = true;
+                    System.out.println("Failed here ");
+                }
             }
         }
 
@@ -72,6 +87,22 @@ public class BookingService {
         }
     }
 
+    public Boolean timeValid(Booking booking, Booking temp){
+
+        if(booking.getEndTime() == temp.getEndTime()) return true;
+        else if(booking.getStartTime() == temp.getStartTime()) return true;
+
+        else{
+            for(int start = booking.getStartTime(); start < booking.getEndTime(); start++){
+                if(start == temp.getStartTime()) return true;
+            }
+            for(int start = temp.getStartTime(); start < temp.getEndTime(); start++){
+                if(start == booking.getStartTime()) return true;
+            }
+        }
+
+        return false;
+    }
 
     public List<Booking> getAllBookings(){
         List<Booking> bookings = new ArrayList<>();

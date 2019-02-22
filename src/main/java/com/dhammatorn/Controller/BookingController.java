@@ -47,8 +47,8 @@ public class BookingController {
 //    @ResponseBody
     String bookingSubmit(@ModelAttribute @Valid Tempbooking tempbooking,BindingResult bindingResult,RedirectAttributes redirectAttributes,Model model){
 
-        int endTime = Integer.parseInt(tempbooking.getEndTime());
-        int length = endTime - Integer.parseInt(tempbooking.getStartTime());
+        int endTime = tempbooking.getEndTime();
+        int length = endTime - tempbooking.getStartTime();
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.createAccountModel", bindingResult);
@@ -65,7 +65,9 @@ public class BookingController {
             Booking booking = new Booking();
             String day = tempbooking.getDay();
 
-            booking.setDateAndTime(day + ":" + tempbooking.getStartTime());
+            booking.setDay(day);
+            booking.setStartTime(tempbooking.getStartTime());
+            booking.setEndTime(tempbooking.getEndTime());
             booking.setLength(length);
             booking.setSeatNo(tempbooking.getSeatNo());
             booking.setStudent(tempbooking.getStudent());
