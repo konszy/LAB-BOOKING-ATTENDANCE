@@ -19,9 +19,9 @@ public class Adminbooking {
     @NotNull
     private String[] seatNo;
 
-    private int startTime;
+    private String startTime;
 
-    private int endTime;
+    private String endTime;
 
     @NotNull
     private String day;
@@ -42,37 +42,20 @@ public class Adminbooking {
         return this.seatNo;
     }
 
-//    public void setStartTime(String startTime){
-//        this.startTime = startTime;
-//    }
-//
-//    public String getStartTime(){
-//        return this.startTime;
-//    }
-//
-//    public void setEndTime(String endTime){
-//        this.endTime = endTime;
-//    }
-//
-//    public String getEndTime(){
-//        return this.endTime;
-//    }
-
-
-    public int getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(int startTime) {
+    public void setStartTime(String startTime){
         this.startTime = startTime;
     }
 
-    public int getEndTime() {
-        return endTime;
+    public String getStartTime(){
+        return this.startTime;
     }
 
-    public void setEndTime(int endTime) {
+    public void setEndTime(String endTime){
         this.endTime = endTime;
+    }
+
+    public String getEndTime(){
+        return this.endTime;
     }
 
     public void setDay(String day){
