@@ -105,6 +105,7 @@
         <br><br>
 
     <h2>Equipment List</h2>
+        <h3> Selectable fields </h3>
     <table class="table1" >
         <tr>
             <th align="center" style="width:500px;">Equipment Name</th>
@@ -146,6 +147,18 @@
             <td><img src="../images/BNC T Piece.png" width="70" height="70"></td>
             <td align="center"><input type="checkbox" th:field="*{bnc_Tpiece}" th:value="1"  ></td>
         </tr>
+        <tr>
+            <td align="center">Oscilloscope Trim Tool</td>
+            <td><img src="../images/???.png" width="70" height="70"></td>
+            <td align="center"><input type="checkbox" th:field="*{oscilloscope_trim}" th:value="1" ></td>
+        </tr>
+    </table>
+        <br>
+        <h4> Optional Fields </h4>
+        <p> Note that these equipments are avaliable in each counter upon your arrival. Further needs for more of these
+        must be discussed with the lab admin upon your arrival on the day. This may be subjected to change according to
+        the lab admin. </p>
+        <table class = "table1">
         <tr>
             <td align="center">  Rohde & Schwarz RTB2004 Digital Oscilloscope : Rohde & Schwarz RT-ZP03 Oscilloscope Probes</td>
             <td><img src="../images/Rohde & Schwarz RTB2004 Digital Oscilloscope.jpg" width="70" height="70"></td>
@@ -190,11 +203,6 @@
             <td align="center">Rohde & Schwarz HMC 8012 Digital Multimeter : 4mm plug ® Croc Lead (usually a pair of Black and Red Cables)</td>
             <td><img src="../images/Rohde & Schwarz NGE 100 Triple Output Power Supply.jpg" width="70" height="70"></td>
             <td align="center"><input type="checkbox" th:field="*{rs_4mmplug}" th:value="1" ></td>
-        </tr>
-        <tr>
-            <td align="center">Oscilloscope Trim Tool</td>
-            <td><img src="../images/???.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{oscilloscope_trim}" th:value="1" ></td>
         </tr>
     </table>
         <br>
