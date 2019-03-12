@@ -56,6 +56,7 @@ public class StudentController {
         Student student = studentService.getStudentByUsername(auth.getName());
         modelAndView.addObject("userName", "Logged in: " + student.getName() + " " + student.getLastname() + " (" + student.getUsername() + ")");
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+        modelAndView.addObject("id", student.getId());
         modelAndView.setViewName("loggedinindex");
         return modelAndView;
     }

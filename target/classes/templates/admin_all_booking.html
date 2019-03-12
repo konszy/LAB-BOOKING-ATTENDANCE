@@ -44,9 +44,9 @@
             <td th:text="${booking.student}"> </td>
             <td th:text="${booking.seatNo}"> </td>
             <td th:text="${booking.day}"> </td>
-            <td th:text="${booking.startTime}"> </td>
-            <td th:text="${booking.endTime}"> </td>
-            <td th:text="${booking.length}"> </td>
+            <td th:text="${booking.startTime + ':00' }"> </td>
+            <td th:text="${booking.endTime} + ':00' "></td>
+            <td th:text="${booking.length + ' hr'}"> </td>
             <td th:text="${booking.prototyping_board}"> </td>
             <td th:text="${booking.solidCoreWire}"> </td>
             <td th:text="${booking.wire_strippers}"> </td>
