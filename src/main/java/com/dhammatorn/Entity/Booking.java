@@ -71,6 +71,30 @@ public class Booking {
     @Column(name="oscilloscope_trim")
     private int oscilloscope_trim;
 
+//    public Booking(int id, String seatNo, String day, int startTime, int endTime, int length, int student, int rsop, int active8, int bnc_croclead, int bnc_lead, int power_supp, int rs_4mmplug, int prototyping_board, int solidCoreWire, int wire_strippers, int resistors, int capacitors, int lcr400_bridge, int bnc_Tpiece, int oscilloscope_trim) {
+//        this.id = id;
+//        this.seatNo = seatNo;
+//        this.day = day;
+//        this.startTime = startTime;
+//        this.endTime = endTime;
+//        this.length = length;
+//        this.student = student;
+//        this.rsop = rsop;
+//        this.active8 = active8;
+//        this.bnc_croclead = bnc_croclead;
+//        this.bnc_lead = bnc_lead;
+//        this.power_supp = power_supp;
+//        this.rs_4mmplug = rs_4mmplug;
+//        this.prototyping_board = prototyping_board;
+//        this.solidCoreWire = solidCoreWire;
+//        this.wire_strippers = wire_strippers;
+//        this.resistors = resistors;
+//        this.capacitors = capacitors;
+//        this.lcr400_bridge = lcr400_bridge;
+//        this.bnc_Tpiece = bnc_Tpiece;
+//        this.oscilloscope_trim = oscilloscope_trim;
+//    }
+
     public void setSeatNo(String seatNo){
         this.seatNo = seatNo;
     }
@@ -99,6 +123,7 @@ public class Booking {
     public int getId() {
         return id;
     }
+
     public int getRsop() {
         return rsop;
     }
@@ -233,5 +258,9 @@ public class Booking {
 
     public void setEndTime(int endTime) {
         this.endTime = endTime;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
