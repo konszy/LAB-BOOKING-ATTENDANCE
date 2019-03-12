@@ -98,7 +98,7 @@ public class StudentController {
             studentService.saveStudent(student);
             modelAndView.addObject("successMessage", "Student has been registered successfully, return to home:    ");
             modelAndView.addObject("student", new Student());
-            modelAndView.setViewName("registration");
+            modelAndView.setViewName("loggedinindex");
         }
 
         return modelAndView;
@@ -134,22 +134,31 @@ public class StudentController {
         return student;
     }
 
-    @GetMapping(value = "/{id}/edituser")
-    public String edituserForm(Model model, @PathVariable("id") int id) {
-        Optional<Student> maybeStudent = studentService.getStudentById(id);
-        if (maybeStudent.isPresent()) {
-            Student student = maybeStudent.get();
-            model.addAttribute("student", student);
-        } else {
-            //error
-        }
-        return "edit_users";
+
+    // EDIT USER
+    @RequestMapping(value="/edituser", method = RequestMethod.GET)
+    public ModelAndView edituser(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Student student = studentService.getStudentByUsername(auth.getName());
+        modelAndView.addObject("student", student);
+        modelAndView.setViewName("edit_users");
+        return modelAndView;
     }
 
-    @PutMapping(value = "/{id}/edituser")
-    public String edituserSubmit(@ModelAttribute Student student) {
-        studentService.updateStudent(student);
-        return "editresult";
+    @RequestMapping(value = "/edituser", method = RequestMethod.POST)
+    public ModelAndView completeEdituser(@Valid Student student, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("edit_users");
+        } else {
+            studentService.saveStudent(student);
+            modelAndView.addObject("student", student);
+            modelAndView.setViewName("loggedinindex");
+        }
+
+        return modelAndView;
     }
 
     // Delete by Id

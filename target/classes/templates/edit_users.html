@@ -7,7 +7,7 @@
 </head>
 <body>
 	<h1>Edit User</h1>
-    <form action="#" th:action="@{/1/edituser}" th:object="${student}" method="put">
+    <form action="#" th:action="@{/edituser}" th:object="${student}" method="post">
         <p th:text="'ID: ' + ${student.id}" />
       <p>First Name: <input type="text" th:field="*{name}" /></p>
       <p>Last Name: <br> <br> <input type="text" th:field="*{lastname}" /></p>
