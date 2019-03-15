@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.security.auth.login.LoginException;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -154,6 +155,21 @@ public class BookingController {
         return bookingService.getAllBookings();
     }
 
+    public List<Booking> view_onlyUser(){
+        List<Booking> user = viewAllBookings();
+        List<Booking> to_return = new ArrayList<>();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Student student = studentService.getStudentByUsername(auth.getName());
+        int student_id = student.getId();
+        for(Booking temp: user){
+            if(temp.getStudent() == student_id){
+                to_return.add(temp);
+            }
+        }
+        if(user.isEmpty()) System.out.println("NULL");
+        return to_return;
+    }
+
     @GetMapping(value = "/error")
     public String error(){return "error"; }
 
@@ -190,6 +206,12 @@ public class BookingController {
             Booking student = new Booking();
             return student;
         }
+    }
+
+    @RequestMapping("/userallbooking")
+    public String display_useronly(Model model){
+        model.addAttribute("userallbooking", view_onlyUser());
+        return "userallbooking";
     }
 
     // Delete by Id
