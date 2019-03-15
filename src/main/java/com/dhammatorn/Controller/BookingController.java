@@ -3,10 +3,13 @@ import com.dhammatorn.Entity.Booking;
 import com.dhammatorn.Entity.Student;
 import com.dhammatorn.Entity.Tempbooking;
 import com.dhammatorn.Service.BookingService;
+import com.dhammatorn.Service.StudentService;
 import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.mail.MailException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -29,6 +32,10 @@ import java.util.Optional;
 public class BookingController {
     @Autowired
     private BookingService bookingService;
+
+    @Autowired
+    //Autowired means springboot will instantiate the injection automatically
+    private StudentService studentService;
 
     @GetMapping("/book")
     public String bookingForm(Model model){
@@ -70,7 +77,12 @@ public class BookingController {
             booking.setEndTime(tempbooking.getEndTime());
             booking.setLength(length);
             booking.setSeatNo(tempbooking.getSeatNo());
-            booking.setStudent(tempbooking.getStudent());
+
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            Student student = studentService.getStudentByUsername(auth.getName());
+//            Student student = studentService.getStudentByUsername(auth.getName());
+            int student_id = student.getId();
+            booking.setStudent(student_id);
 
             //equipments
             if (tempbooking.getCapacitors() == null) booking.setCapacitors(0);
