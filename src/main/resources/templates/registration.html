@@ -34,7 +34,16 @@
 				<input type="text" th:field="*{lastname}"  class="form-control" required/>
 
                 <b>Course</b>
-				<input type="text" th:field="*{course}" class="form-control" required/>
+				<br>
+				<select th:field="*{course}">
+	              <option th:value="EE" th:text="EE"></option>
+	              <option th:value="CSEE" th:text="CSEE"></option>
+	              <option th:value="CS" th:text="CS"></option>
+	            </select>
+				<br>
+				<br>
+				<b>  </b>
+
 
                 <b>Email </b>
 				<input type="text" th:field="*{email}" placeholder="use bristol email only" class="form-control" required/>

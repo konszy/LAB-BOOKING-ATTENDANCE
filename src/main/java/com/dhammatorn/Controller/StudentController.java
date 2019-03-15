@@ -81,14 +81,34 @@ public class StudentController {
         if (studentExists != 0) {
             bindingResult
                     .rejectValue("username", "error.student",
-                            "There is already a user registered with the username provided");
+                            "There is already a user registered with the username provided                .");
         }
 
         String emailCheck = student.getEmail();
-        if (emailCheck.contains("@my.bristol.ac.uk") == false){
+        if ((emailCheck.contains("@my.bristol.ac.uk") == false) && (emailCheck.contains("@bristol.ac.uk") == false)){
             bindingResult
                     .rejectValue("email", "error.student",
-                            "Please use your Bristol email, ending in @my.bristol.ac.uk");
+                            "Please use your Bristol email, ending in @(my.)bristol.ac.uk                   .");
+        }
+
+        String firstCheck = student.getName();
+        if (firstCheck.contains("0") || firstCheck.contains("1") || firstCheck.contains("2")
+            || firstCheck.contains("3") || firstCheck.contains("4") || firstCheck.contains("5")
+            || firstCheck.contains("6") || firstCheck.contains("7") || firstCheck.contains("8")
+            || firstCheck.contains("9")){
+            bindingResult
+                    .rejectValue("name", "error.student",
+                            "Please do not include numbers in your first name.              .");
+        }
+
+        String lastCheck = student.getLastname();
+        if (lastCheck.contains("0") || lastCheck.contains("1") || lastCheck.contains("2")
+            || lastCheck.contains("3") || lastCheck.contains("4") || lastCheck.contains("5")
+            || lastCheck.contains("6") || lastCheck.contains("7") || lastCheck.contains("8")
+            || lastCheck.contains("9")){
+            bindingResult
+                    .rejectValue("lastname", "error.student",
+                            "Please do not include numbers in your last name.               .");
         }
 
 
