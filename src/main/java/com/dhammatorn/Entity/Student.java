@@ -56,6 +56,9 @@ public class Student {
     @Column(name="booking")
     private int booking;
 
+    @Column(name="strikes")
+    private int strikes;
+
 
 
     public int getId(){
@@ -140,6 +143,14 @@ public class Student {
 
     public String getUcard(){
         return this.ucard;
+    }
+
+    public void setStrikes(int strikes){
+        this.strikes = strikes;
+    }
+
+    public int getStrikes(){
+        return this.strikes;
     }
 
 }

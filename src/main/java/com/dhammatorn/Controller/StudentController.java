@@ -192,6 +192,24 @@ public class StudentController {
 
     // ADMIN PAGES
 
+    // Add Strike by Id
+    @GetMapping(value = "/admin/{id}/addstrike")
+    @ResponseBody
+    public String addStrike(@PathVariable("id") int id){
+        Optional<Student> maybeStudent = studentService.getStudentById(id);
+        if (maybeStudent.isPresent()) {
+            Student student = maybeStudent.get();
+            int strikes = student.getStrikes() + 1;
+            student.setStrikes(1);
+            return "Strike Added";
+        } else {
+            //error
+            return "error";
+        }
+
+
+    }
+
     @GetMapping(value = "/admin/booking")
     public String adminbooking(){
         return "adminbooking";

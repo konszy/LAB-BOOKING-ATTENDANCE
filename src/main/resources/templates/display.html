@@ -18,6 +18,7 @@
           <th> Course </th>
           <th> Email </th>
           <th> Username </th>
+          <th> Strikes </th>
       </tr>
       <tr th:each="student :${display}">
           <td th:text="${student.id}"> </td>
@@ -26,6 +27,8 @@
           <td th:text="${student.course}"> </td>
           <td th:text="${student.email}"> </td>
           <td th:text="${student.username}"> </td>
+          <td th:text="${student.strikes}"> </td>
+          <td> <a th:href="@{'http://localhost:8080/' + 'admin/' + ${student.id} + '/addstrike'}" > Add Strike </a> </td>
           <td> <a th:href="@{'http://localhost:8080/' + ${student.id} + '/deleteuser'}" > Delete </a> </td>
       </tr>
     </table>
