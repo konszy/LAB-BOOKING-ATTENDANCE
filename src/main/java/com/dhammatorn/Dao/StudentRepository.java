@@ -26,4 +26,8 @@ public interface StudentRepository extends CrudRepository<Student,Integer>{
     @Query(value = "SELECT u FROM Student u WHERE u.ucard = :ucard")
     public List<Student> findByUcard(@Param("ucard") String ucard);
 
+    //@Modifying
+    //@Query("UPDATE Student SET strikes = :strikes WHERE id = :id")
+    //public void updateStudentStrikesByID(@Param("id") int id, @Param("strikes") int strikes);
+    
 }
