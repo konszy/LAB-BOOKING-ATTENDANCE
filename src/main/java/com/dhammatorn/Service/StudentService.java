@@ -70,7 +70,12 @@ public class StudentService {
 
     public Student getStudentByUcard(String ucard){
         List<Student> students = studentRepository.findByUcard(ucard);
-        return students.get(0);
+        if (students.isEmpty()){
+            return (new Student());
+        } else {
+            return students.get(0);
+        }
+
     }
 
     public void updateStudent(Student student){
