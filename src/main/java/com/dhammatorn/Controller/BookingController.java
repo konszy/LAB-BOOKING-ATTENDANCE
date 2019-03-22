@@ -1,4 +1,5 @@
 package com.dhammatorn.Controller;
+import com.dhammatorn.Entity.Attendance;
 import com.dhammatorn.Entity.Booking;
 import com.dhammatorn.Entity.Student;
 import com.dhammatorn.Entity.Tempbooking;
@@ -49,6 +50,41 @@ public class BookingController {
         ModelAndView mav = new ModelAndView("bookings/book");
         mav.addObject("error", "Start and End time error");
         return mav;
+    }
+
+    @RequestMapping(value="/attendance", method = RequestMethod.GET)
+    public ModelAndView attendance(){
+        ModelAndView modelAndView = new ModelAndView();
+        Attendance attend = new Attendance();
+        modelAndView.addObject("attendance", attend);
+        modelAndView.setViewName("attendance");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/attendance", method = RequestMethod.POST)
+    public String check_attendance(@Valid Attendance attend) {
+
+        String UCARD_id = attend.getUCARD();
+        System.out.println("This is ok ! 67");
+
+        Student exist = studentService.getStudentByUcard(UCARD_id);
+        if(exist != null){
+                Optional<Booking> booked_student = bookingService.getBookingbyStudent(exist.getId());
+
+                if(booked_student.isPresent()) {
+                    Booking present = booked_student.get();
+                    present.setAttendace(true);
+                    return "attendance_success";
+                }
+
+                else{
+                    return "attendance_failed";
+                }
+
+        }
+        else {
+            return "not_registered";
+        }
     }
 
     @PostMapping("/book")
@@ -190,6 +226,17 @@ public class BookingController {
 
     @GetMapping(value = "/booking_success")
     public String booking_success(){return "booking_success"; }
+
+    @GetMapping(value = "/not_registered")
+    public String not_registed(){return "not_registered"; }
+
+    @GetMapping(value = "/attendance_success")
+    public String attendance_success(){return "attendance_success"; }
+
+
+    @GetMapping(value = "/attendance_failed")
+    public String attendance_failed(){return "attendance_failed"; }
+
 
 
     //value /{id} means we are going to pass an id from the URL and this method is going to output

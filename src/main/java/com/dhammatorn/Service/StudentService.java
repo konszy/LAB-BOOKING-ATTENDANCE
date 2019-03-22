@@ -18,7 +18,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
 @Service
 //this is where Buisness logic happens (where database meets web) -- middle ground/layer
 public class StudentService {

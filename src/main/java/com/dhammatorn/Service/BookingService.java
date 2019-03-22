@@ -110,6 +110,13 @@ public class BookingService {
         return bookings;
     }
 
+    public Optional<Booking> getBookingbyStudent(int Student){
+         List<Booking> all_bookings = bookingRepository.findByStudent(Student);
+         if(all_bookings.isEmpty()) return Optional.empty();
+         else return Optional.of(all_bookings.get(0));
+
+    }
+
 
     // Delete a booking by using a given ID
     public void deleteBookingById(int id) {
