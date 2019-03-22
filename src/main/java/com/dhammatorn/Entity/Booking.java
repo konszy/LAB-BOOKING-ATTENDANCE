@@ -71,6 +71,9 @@ public class Booking {
     @Column(name="oscilloscope_trim")
     private int oscilloscope_trim;
 
+    @Column(name="attedance")
+    private Boolean attendace;
+
 //    public Booking(int id, String seatNo, String day, int startTime, int endTime, int length, int student, int rsop, int active8, int bnc_croclead, int bnc_lead, int power_supp, int rs_4mmplug, int prototyping_board, int solidCoreWire, int wire_strippers, int resistors, int capacitors, int lcr400_bridge, int bnc_Tpiece, int oscilloscope_trim) {
 //        this.id = id;
 //        this.seatNo = seatNo;
@@ -262,5 +265,13 @@ public class Booking {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Boolean getAttendace() {
+        return attendace;
+    }
+
+    public void setAttendace(Boolean attendace) {
+        this.attendace = attendace;
     }
 }
