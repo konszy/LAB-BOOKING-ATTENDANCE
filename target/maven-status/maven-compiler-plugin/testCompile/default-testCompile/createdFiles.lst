@@ -1,2 +1,4 @@
-com/dhammatorn/test/BookingMockTest.class
+com/dhammatorn/test/StudentControllerTest.class
 com/dhammatorn/test/MockitoDemoApplicationTests.class
+com/dhammatorn/test/StudentServiceTest.class
+com/dhammatorn/test/BookingMockTest.class

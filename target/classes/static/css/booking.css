@@ -24,6 +24,19 @@ div.head {
     color:#B01C2E;
 }
 
+div.container {
+    width:600px;
+    margin: auto;
+    text-align: center;
+}
+
+div.left {
+    margin: auto;
+}
+
+div.right {
+    margin: auto;
+}
 
 img {
     align="baseline";
@@ -69,4 +82,63 @@ input[type=submit], input[type=Submit] {
     border: none;
     cursor: pointer;
     width: 10%;
+}
+
+.c_radio {
+    height: 35px;
+    line-height: 35px;
+}
+
+.c_radio > input {
+    display: none;
+}
+
+.c_radio label {
+    vertical-align: middle;
+    line-height: 20px;
+    display: inline-block;
+    height: 20px;
+}
+label.lb_text{
+    margin-left:5px;
+}
+
+.c_radio > input:checked + label::before {
+    border: 1px solid #57b5e3;
+}
+
+.c_radio > input:checked + label::after {
+    display: block;
+}
+
+.c_radio > input + label {
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.c_radio > input + label::before {
+    border-radius: 10%;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 40px;
+    height: 30px;
+    content: '';
+    border: 1px solid #c0c0c0;
+    background: #B9DEA0;
+}
+
+
+.c_radio > input + label::after {
+    content: "";
+    display: none;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 34px;
+    height: 24px;
+    border-radius: 10%;
+    background: #34adeb;
 }

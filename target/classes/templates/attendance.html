@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>University of Bristol</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" media="screen" th:href="@{/css/register.css}"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+    Attendance Check
+</head>
+
+<body>
+<form autocomplete="off" action="#" th:action="@{/bookings/attendance}" th:object="${attendance}" method="post" class="form-horizontal" role="form">
+<b>Tap Your UCard </b>
+<input type="text" th:field="*{UCARD}" placeholder="Please tap your UCARD only!" class="form-control" required/>
+    <p><button type="submit" class="btn btn-primary btn-block">Attended</button></p>
+</form>
+
+<div class="agree">
+    <strong>Do not Type your ID (e.g. ab12345) as input, it will not be recorded. Please Tap your UCARD. </strong><br>
+</div>
+
+</body>
