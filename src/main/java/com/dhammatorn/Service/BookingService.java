@@ -114,7 +114,6 @@ public class BookingService {
          List<Booking> all_bookings = bookingRepository.findByStudent(Student);
          if(all_bookings.isEmpty()) return Optional.empty();
          else return Optional.of(all_bookings.get(0));
-
     }
 
 

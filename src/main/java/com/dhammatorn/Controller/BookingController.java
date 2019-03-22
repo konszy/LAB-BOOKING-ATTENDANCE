@@ -68,13 +68,18 @@ public class BookingController {
         System.out.println("This is ok ! 67");
 
         Student exist = studentService.getStudentByUcard(UCARD_id);
-        if(exist != null){
+        if(!exist.getName().equals("-1")){
                 Optional<Booking> booked_student = bookingService.getBookingbyStudent(exist.getId());
 
                 if(booked_student.isPresent()) {
                     Booking present = booked_student.get();
-                    present.setAttendace(true);
-                    return "attendance_success";
+                    if(present.getStudent() == exist.getId()) {
+                        present.setAttendace(true);
+                        return "attendance_success";
+                    }
+                    else{
+                        return "attendance_failed";
+                    }
                 }
 
                 else{

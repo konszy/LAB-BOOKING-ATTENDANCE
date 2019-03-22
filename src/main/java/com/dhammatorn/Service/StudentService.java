@@ -1,5 +1,6 @@
 package com.dhammatorn.Service;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.dhammatorn.Entity.Student;
 import com.dhammatorn.Entity.Role;
 import com.dhammatorn.Dao.StudentRepository;
@@ -71,8 +72,12 @@ public class StudentService {
     public Student getStudentByUcard(String ucard){
         List<Student> students = studentRepository.findByUcard(ucard);
         if (students.isEmpty()){
-            return (new Student());
+            Student temp = new Student();
+            temp.setUsername("-1");
+            System.out.println(temp.getUsername());
+            return (temp);
         } else {
+            System.out.println(students.get(0).getUsername());
             return students.get(0);
         }
 
