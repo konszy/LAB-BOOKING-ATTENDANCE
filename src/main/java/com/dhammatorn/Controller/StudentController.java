@@ -199,15 +199,38 @@ public class StudentController {
         Optional<Student> maybeStudent = studentService.getStudentById(id);
         if (maybeStudent.isPresent()) {
             Student student = maybeStudent.get();
-            int strikes = student.getStrikes() + 1;
-            student.setStrikes(1);
-            return "Strike Added";
+            int strikes = student.getStrikes();
+            if (strikes == 3){
+                return "Max Strikes";
+            } else {
+                strikes = strikes + 1;
+                student.setStrikes(strikes);
+                return "Strike Added";
+            }
         } else {
             //error
             return "error";
         }
+    }
 
-
+    @GetMapping(value = "/admin/{id}/removestrike")
+    @ResponseBody
+    public String removeStrike(@PathVariable("id") int id){
+        Optional<Student> maybeStudent = studentService.getStudentById(id);
+        if (maybeStudent.isPresent()) {
+            Student student = maybeStudent.get();
+            int strikes = student.getStrikes();
+            if (strikes == 0){
+                return "No Strikes";
+            } else {
+                strikes = strikes - 1;
+                student.setStrikes(strikes);
+                return "Strike Removed";
+            }
+        } else {
+            //error
+            return "error";
+        }
     }
 
     @GetMapping(value = "/admin/booking")
