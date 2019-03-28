@@ -7,6 +7,10 @@
 </head>
 
 <body>
+<div class="head">
+    <a href="http://www.bristol.ac.uk"><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" width="200";></a>
+    <a th:href="@{/}" style="color: #B01C2E; text-decoration:none;" title="Return to homepage" >LAB Booking System</a>
+</div>
 
   <h3> Time slot </h3>
     Start time:
@@ -72,6 +76,21 @@
         <td align="center"><input id="foo3" name="foo" type="checkbox" th:field="*{seatNo}" th:value="A3"></td>
       </tr>
       <tr>
+        <td align="center">A4</td>
+        <td>Available</td>
+        <td align="center"><input id="foo1" name="foo" type="checkbox" th:field="*{seatNo}" th:value="A4"></td>
+      </tr>
+      <tr>
+        <td align="center">A5</td>
+        <td>Available</td>
+        <td align="center"><input id="foo2" name="foo" type="checkbox" th:field="*{seatNo}" th:value="A5"></td>
+      </tr>
+      <tr>
+        <td align="center">A6</td>
+        <td>Available</td>
+        <td align="center"><input id="foo3" name="foo" type="checkbox" th:field="*{seatNo}" th:value="A6"></td>
+      </tr>
+      <tr>
         <td align="center">B1</td>
         <td>Available</td>
         <td align="center"><input id="foo4" name="foo" type="checkbox" th:field="*{seatNo}" th:value="B1"></td>
@@ -85,6 +104,141 @@
         <td align="center">B3</td>
         <td>Available</td>
         <td align="center"><input id="foo6" type="checkbox" th:field="*{seatNo}" th:value="B3"></td>
+      </tr>
+      <tr>
+        <td align="center">B4</td>
+        <td>Available</td>
+        <td align="center"><input id="foo4" name="foo" type="checkbox" th:field="*{seatNo}" th:value="B4"></td>
+      </tr>
+      <tr>
+        <td align="center">B5</td>
+        <td>Available</td>
+        <td align="center"><input type="checkbox" id="foo5" th:field="*{seatNo}" th:value="B5"></td>
+      </tr>
+      <tr>
+        <td align="center">B6</td>
+        <td>Available</td>
+        <td align="center"><input id="foo6" type="checkbox" th:field="*{seatNo}" th:value="B6"></td>
+      </tr>
+      <tr>
+        <td align="center">C1</td>
+        <td>Available</td>
+        <td align="center"><input id="foo1" name="foo" type="checkbox" th:field="*{seatNo}" th:value="C1"></td>
+      </tr>
+      <tr>
+        <td align="center">C2</td>
+        <td>Available</td>
+        <td align="center"><input id="foo2" name="foo" type="checkbox" th:field="*{seatNo}" th:value="C2"></td>
+      </tr>
+      <tr>
+        <td align="center">C3</td>
+        <td>Available</td>
+        <td align="center"><input id="foo3" name="foo" type="checkbox" th:field="*{seatNo}" th:value="C3"></td>
+      </tr>
+      <tr>
+        <td align="center">C4</td>
+        <td>Available</td>
+        <td align="center"><input id="foo1" name="foo" type="checkbox" th:field="*{seatNo}" th:value="C4"></td>
+      </tr>
+      <tr>
+        <td align="center">C5</td>
+        <td>Available</td>
+        <td align="center"><input id="foo2" name="foo" type="checkbox" th:field="*{seatNo}" th:value="C5"></td>
+      </tr>
+      <tr>
+        <td align="center">C6</td>
+        <td>Available</td>
+        <td align="center"><input id="foo3" name="foo" type="checkbox" th:field="*{seatNo}" th:value="C6"></td>
+      </tr>
+      <tr>
+        <td align="center">D1</td>
+        <td>Available</td>
+        <td align="center"><input id="foo1" name="foo" type="checkbox" th:field="*{seatNo}" th:value="D1"></td>
+      </tr>
+      <tr>
+        <td align="center">D2</td>
+        <td>Available</td>
+        <td align="center"><input id="foo2" name="foo" type="checkbox" th:field="*{seatNo}" th:value="D2"></td>
+      </tr>
+      <tr>
+        <td align="center">D3</td>
+        <td>Available</td>
+        <td align="center"><input id="foo3" name="foo" type="checkbox" th:field="*{seatNo}" th:value="D3"></td>
+      </tr>
+      <tr>
+        <td align="center">D4</td>
+        <td>Available</td>
+        <td align="center"><input id="foo1" name="foo" type="checkbox" th:field="*{seatNo}" th:value="D4"></td>
+      </tr>
+      <tr>
+        <td align="center">D5</td>
+        <td>Available</td>
+        <td align="center"><input id="foo2" name="foo" type="checkbox" th:field="*{seatNo}" th:value="D5"></td>
+      </tr>
+      <tr>
+        <td align="center">D6</td>
+        <td>Available</td>
+        <td align="center"><input id="foo3" name="foo" type="checkbox" th:field="*{seatNo}" th:value="D6"></td>
+      </tr>
+      <tr>
+        <td align="center">E1</td>
+        <td>Available</td>
+        <td align="center"><input id="foo1" name="foo" type="checkbox" th:field="*{seatNo}" th:value="E1"></td>
+      </tr>
+      <tr>
+        <td align="center">E2</td>
+        <td>Available</td>
+        <td align="center"><input id="foo2" name="foo" type="checkbox" th:field="*{seatNo}" th:value="E2"></td>
+      </tr>
+      <tr>
+        <td align="center">E3</td>
+        <td>Available</td>
+        <td align="center"><input id="foo3" name="foo" type="checkbox" th:field="*{seatNo}" th:value="E3"></td>
+      </tr>
+      <tr>
+        <td align="center">E4</td>
+        <td>Available</td>
+        <td align="center"><input id="foo1" name="foo" type="checkbox" th:field="*{seatNo}" th:value="E4"></td>
+      </tr>
+      <tr>
+        <td align="center">E5</td>
+        <td>Available</td>
+        <td align="center"><input id="foo2" name="foo" type="checkbox" th:field="*{seatNo}" th:value="E5"></td>
+      </tr>
+      <tr>
+        <td align="center">E6</td>
+        <td>Available</td>
+        <td align="center"><input id="foo3" name="foo" type="checkbox" th:field="*{seatNo}" th:value="E6"></td>
+      </tr>
+      <tr>
+        <td align="center">F1</td>
+        <td>Available</td>
+        <td align="center"><input id="foo1" name="foo" type="checkbox" th:field="*{seatNo}" th:value="F1"></td>
+      </tr>
+      <tr>
+        <td align="center">F2</td>
+        <td>Available</td>
+        <td align="center"><input id="foo2" name="foo" type="checkbox" th:field="*{seatNo}" th:value="F2"></td>
+      </tr>
+      <tr>
+        <td align="center">F3</td>
+        <td>Available</td>
+        <td align="center"><input id="foo3" name="foo" type="checkbox" th:field="*{seatNo}" th:value="F3"></td>
+      </tr>
+      <tr>
+        <td align="center">F4</td>
+        <td>Available</td>
+        <td align="center"><input id="foo1" name="foo" type="checkbox" th:field="*{seatNo}" th:value="F4"></td>
+      </tr>
+      <tr>
+        <td align="center">F5</td>
+        <td>Available</td>
+        <td align="center"><input id="foo2" name="foo" type="checkbox" th:field="*{seatNo}" th:value="F5"></td>
+      </tr>
+      <tr>
+        <td align="center">F6</td>
+        <td>Available</td>
+        <td align="center"><input id="foo3" name="foo" type="checkbox" th:field="*{seatNo}" th:value="F6"></td>
       </tr>
       </tbody>
 
