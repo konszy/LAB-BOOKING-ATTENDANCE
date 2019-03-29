@@ -205,6 +205,7 @@ public class StudentController {
             } else {
                 strikes = strikes + 1;
                 student.setStrikes(strikes);
+                studentService.updateStudentStrikesByID(student);
                 return "Strike Added";
             }
         } else {
@@ -225,6 +226,7 @@ public class StudentController {
             } else {
                 strikes = strikes - 1;
                 student.setStrikes(strikes);
+                studentService.updateStudentStrikesByID(student);
                 return "Strike Removed";
             }
         } else {

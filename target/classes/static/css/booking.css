@@ -100,7 +100,10 @@ input[type=submit], input[type=Submit] {
     height: 20px;
 }
 label.lb_text{
-    margin-left:5px;
+    position: absolute;
+    margin-left:-34px;
+    margin-top: 14px;
+
 }
 
 .c_radio > input:checked + label::before {
