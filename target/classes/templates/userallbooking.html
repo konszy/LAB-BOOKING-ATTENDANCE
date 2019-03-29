@@ -23,6 +23,7 @@
             <th> Start Time (am) </th>
             <th> End Time (am/pm)</th>
             <th> Length </th>
+            <th> Attendance </th>
             <th> Prototyping Board </th>
             <th> Solid Core Wire - 1/0.6mm </th>
             <th> Wire Strippers/Cutters </th>
@@ -47,6 +48,7 @@
             <td th:text="${booking.startTime + ':00' }"> </td>
             <td th:text="${booking.endTime} + ':00' "></td>
             <td th:text="${booking.length + ' hr'}"> </td>
+            <td th:text="${booking.attendance}"> </td>
             <td th:text="${booking.prototyping_board}"> </td>
             <td th:text="${booking.solidCoreWire}"> </td>
             <td th:text="${booking.wire_strippers}"> </td>

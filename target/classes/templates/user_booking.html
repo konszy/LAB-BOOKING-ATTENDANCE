@@ -17,6 +17,7 @@
             <th> seatNo </th>
             <th> dateAndTime </th>
             <th> Length </th>
+            <th> Attendance </th>
             <th> Prototyping Board </th>
             <th> Solid Core Wire - 1/0.6mm </th>
             <th> Wire Strippers/Cutters </th>
@@ -32,13 +33,15 @@
             <th> Rohde & Schwarz HMC 8012 Digital Multimeter : 4mm plug ® Croc Lead</th>
             <th> Oscilloscope Trim Tool </th>
 
+
         </tr>
-        <tr th:each="booking :${admin_all_booking}">
+        <tr th:each="booking :${userallbooking}">
             <td th:text="${booking.id}"> </td>
             <td th:text="${booking.student}"> </td>
             <td th:text="${booking.seatNo}"> </td>
             <td th:text="${booking.dateAndTime}"> </td>
             <td th:text="${booking.length}"> </td>
+            <td th:text="${booking.attendance}"> </td>
             <td th:text="${booking.prototyping_board}"> </td>
             <td th:text="${booking.solidCoreWire}"> </td>
             <td th:text="${booking.wire_strippers}"> </td>
@@ -54,7 +57,7 @@
             <td th:text="${booking.rs_4mmplug}"> </td>
             <td th:text="${booking.oscilloscope_trim}"> </td>
 
-            <td> <a th:href="@{'http://localhost:8080/bookings/' + ${booking.id} + '/dlt'}" > Delete </a> </td>
+            <td> <a th:href="@{'http://localhost:8080/bookings/' + ${booking.id} + '/delete'}" > Delete </a> </td>
         </tr>
     </table>
 </div>
