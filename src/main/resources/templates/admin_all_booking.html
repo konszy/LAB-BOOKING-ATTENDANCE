@@ -23,6 +23,7 @@
             <th> Start Time (am) </th>
             <th> End Time (am/pm)</th>
             <th> Length </th>
+            <th> Attendance </th>
             <th> Prototyping Board </th>
             <th> Solid Core Wire - 1/0.6mm </th>
             <th> Wire Strippers/Cutters </th>
@@ -37,6 +38,7 @@
             <th> Rohde & Schwarz NGE 100 Triple Output Power Supply </th>
             <th> Rohde & Schwarz HMC 8012 Digital Multimeter : 4mm plug ® Croc Lead</th>
             <th> Oscilloscope Trim Tool </th>
+            <th> Attendance </th>
 
         </tr>
         <tr th:each="booking :${admin_all_booking}">
@@ -47,6 +49,7 @@
             <td th:text="${booking.startTime + ':00' }"> </td>
             <td th:text="${booking.endTime} + ':00' "></td>
             <td th:text="${booking.length + ' hr'}"> </td>
+            <td th:text="${booking.attendance}"> </td>
             <td th:text="${booking.prototyping_board}"> </td>
             <td th:text="${booking.solidCoreWire}"> </td>
             <td th:text="${booking.wire_strippers}"> </td>
@@ -61,8 +64,9 @@
             <td th:text="${booking.power_supp}"> </td>
             <td th:text="${booking.rs_4mmplug}"> </td>
             <td th:text="${booking.oscilloscope_trim}"> </td>
+            <td th:text="${booking.attendance}"> </td>
 
-            <td> <a th:href="@{'http://localhost:8080/bookings/' + ${booking.id} + '/dlt'}" > Delete </a> </td>
+            <td> <a th:href="@{'http://localhost:8080/bookings/' + ${booking.id} + '/delete'}" > Delete </a> </td>
         </tr>
     </table>
 </div>

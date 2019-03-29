@@ -65,7 +65,7 @@ public class BookingController {
     public String check_attendance(@Valid Attendance attend) {
 
         String UCARD_id = attend.getUCARD();
-        System.out.println("This is ok ! 67");
+//        System.out.println("This is ok ! 67");
 
         Student exist = studentService.getStudentByUcard(UCARD_id);
         if(!exist.getName().equals("-1")){
@@ -74,7 +74,8 @@ public class BookingController {
                 if(booked_student.isPresent()) {
                     Booking present = booked_student.get();
                     if(present.getStudent() == exist.getId()) {
-                        present.setAttendace(true);
+                        present.setAttendance(true);
+                        bookingService.updateBookingwithAttendance(present);
                         return "attendance_success";
                     }
                     else{
@@ -125,6 +126,7 @@ public class BookingController {
 //            Student student = studentService.getStudentByUsername(auth.getName());
             int student_id = student.getId();
             booking.setStudent(student_id);
+            booking.setAttendance(false);
 
             //equipments
             if (tempbooking.getCapacitors() == null) booking.setCapacitors(0);
@@ -277,6 +279,18 @@ public class BookingController {
 //        }
         bookingService.deleteBookingById(id);
         return new RedirectView("/bookings/admin_all_booking");
+    }
+
+    @GetMapping(value = "/{id}/delete")
+    @ResponseBody
+    public RedirectView deleteBookingforUser(@PathVariable("id") int id){
+//        List<Booking> all_bookings = viewAllBookings();
+//        int id;
+//        for(Booking temp:all_bookings){
+//            if(student == temp.getStudent()) id = temp.getID();
+//        }
+        bookingService.deleteBookingById(id);
+        return new RedirectView("/bookings/userallbooking");
     }
 
 

@@ -130,5 +130,8 @@ public class BookingService {
         return bookingRepository.findById(id);
     }
 
+    public void updateBookingwithAttendance(Booking booking){
+        bookingRepository.save(booking);
+    }
 
 }
