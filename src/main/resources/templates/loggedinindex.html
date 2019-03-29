@@ -21,6 +21,10 @@ p{
     font-family: "Times New Roman", Times, serif;
     font-size: 20px;
 }
+p.content{
+  font-family: "Helvetica Neue 45 Light", sans-serif;
+  font-size: 19px;
+}
 </style>
 <body>
 
@@ -32,9 +36,6 @@ p{
     </div>
     <div class="w3-col s3">
       <a th:href="@{display}" class="w3-button w3-block">Display All Student </a>
-    </div>
-    <div class="w3-col s3">
-      <a th:href="@{/bookings/userallbooking}" class="w3-button w3-block">User Booking</a>
     </div>
     <div class="w3-col s3">
       <a th:href="@{/admin/book}" class="w3-button w3-block">Admin Booking</a>
@@ -51,11 +52,13 @@ p{
     <div class="w3-col s3">
       <a th:href="@{/logout}" class="w3-button w3-block">Logout</a>
     </div>
+    <div class="w3-col s3">
+      <a th:href="@{/edituser}" th:utext="${userName}" class="w3-button w3-block">Login</a>
+    </div>
   </div>
 </div>
 <br>
 <br>
-
 
 <!-- Content -->
 <div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
@@ -69,57 +72,57 @@ p{
     <p align="center" >University of Bristol : Faculty of Engineering</p>
   </div>
 
-   <!--Slideshow-->
-  <!--<div class="w3-container">-->
-    <!--<div class="w3-display-container mySlides">-->
-      <!--<img th:src="@{../images/ee7.png}" style="width:100%">-->
-    <!--</div>-->
-    <!--<div class="w3-display-container mySlides">-->
-      <!--<img th:src="@{../images/ee5.jpg}" style="width:100%">-->
-    <!--</div>-->
-    <!--<div class="w3-display-container mySlides">-->
-      <!--<img th:src="@{../images/ee9.jpeg}" style="width:100%">-->
-    <!--</div>-->
+  <!-- Slideshow -->
+  <div class="w3-container">
+    <div class="w3-display-container mySlides">
+      <img th:src="@{../images/ee7.png}" style="width:100%">
+    </div>
+    <div class="w3-display-container mySlides">
+      <img th:src="@{../images/ee5.jpg}" style="width:100%">
+    </div>
+    <div class="w3-display-container mySlides">
+      <img th:src="@{../images/ee9.jpeg}" style="width:100%">
+    </div>
 
-    <!--&lt;!&ndash; Slideshow next/previous buttons &ndash;&gt;-->
-    <!--<div class="w3-container w3-dark-grey w3-padding w3-xlarge">-->
-      <!--<div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>-->
-      <!--<div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>-->
+    <!-- Slideshow next/previous buttons -->
+    <div class="w3-container w3-dark-grey w3-padding w3-xlarge">
+      <div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
+      <div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
 
-      <!--<div class="w3-center">-->
-        <!--<span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>-->
-        <!--<span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>-->
-        <!--<span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
+      <div class="w3-center">
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+      </div>
+    </div>
+  </div>
 
   <!--
   Grid -->
-  <div class="w3-row w3-container">
-    <div class="w3-center w3-padding-64">
-      <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">What can you do</span>
-    </div>
-    <div class="w3-col l3 m6 w3-light-grey w3-container w3-padding-16">
-      <h3>Register</h3>
-      <p>Scan your UCARD, register with your email and student id on LAB booking system.</p>
-    </div>
+    <div class="w3-row w3-container">
+        <div class="w3-center w3-padding-64">
+            <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">What can you do</span>
+        </div>
+        <div class="w3-col l3 m6 w3-light-grey w3-container w3-padding-16">
+            <h3>Register</h3>
+            <p class="content">Scan your UCARD and register with your email and student id on LAB booking system.</p>
+        </div>
 
-    <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
-      <h3>Booking a slot</h3>
-      <p>Each student is allowed a maximum of 3 hours slot booking each time.</p>
-    </div>
+        <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
+            <h3>Booking a slot</h3>
+            <p class="content">Students are allowed to book a maximum of &nbsp three hours slot booking each time.</p>
+        </div>
 
-    <div class="w3-col l3 m6 w3-dark-grey w3-container w3-padding-16">
-      <h3>Selecting equipment</h3>
-      <p>Students can select each equipment they need in each session.</p>
-    </div>
+        <div class="w3-col l3 m6 w3-dark-grey w3-container w3-padding-16">
+            <h3>Selecting equipment</h3>
+            <p class="content">Students can select equipments they need for specific experiment in every session.</p>
+        </div>
 
-    <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
-      <h3>Agreements</h3>
-      <p>Ensure that you read each requirement and agreement carefully before booking.</p>
+        <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
+            <h3>Agreements</h3>
+            <p class="content">Ensure that you read &nbsp each requirement and agreement carefully before booking.</p>
+        </div>
     </div>
-  </div>
 
 
 <script>
