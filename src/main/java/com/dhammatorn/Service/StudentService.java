@@ -102,7 +102,6 @@ public class StudentService {
 
     //Update student strikes by giving an id
     public void updateStudentStrikesByID(Student student){
-        //studentRepository.updateStudentStrikesByID(strikes, id);
         studentRepository.save(student);
     }
 

@@ -34,6 +34,9 @@ p{
       <a th:href="@{display}" class="w3-button w3-block">Display All Student </a>
     </div>
     <div class="w3-col s3">
+      <a th:href="@{/bookings/userallbooking}" class="w3-button w3-block">User Booking</a>
+    </div>
+    <div class="w3-col s3">
       <a th:href="@{/admin/book}" class="w3-button w3-block">Admin Booking</a>
     </div>
     <div class="w3-col s3">
@@ -48,13 +51,11 @@ p{
     <div class="w3-col s3">
       <a th:href="@{/logout}" class="w3-button w3-block">Logout</a>
     </div>
-    <div class="w3-col s3">
-      <a th:href="@{/edituser}" th:utext="${userName}" class="w3-button w3-block">Login</a>
-    </div>
   </div>
 </div>
 <br>
 <br>
+
 
 <!-- Content -->
 <div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
@@ -68,30 +69,30 @@ p{
     <p align="center" >University of Bristol : Faculty of Engineering</p>
   </div>
 
-  <!-- Slideshow -->
-  <div class="w3-container">
-    <div class="w3-display-container mySlides">
-      <img th:src="@{../images/ee7.png}" style="width:100%">
-    </div>
-    <div class="w3-display-container mySlides">
-      <img th:src="@{../images/ee5.jpg}" style="width:100%">
-    </div>
-    <div class="w3-display-container mySlides">
-      <img th:src="@{../images/ee9.jpeg}" style="width:100%">
-    </div>
+   <!--Slideshow-->
+  <!--<div class="w3-container">-->
+    <!--<div class="w3-display-container mySlides">-->
+      <!--<img th:src="@{../images/ee7.png}" style="width:100%">-->
+    <!--</div>-->
+    <!--<div class="w3-display-container mySlides">-->
+      <!--<img th:src="@{../images/ee5.jpg}" style="width:100%">-->
+    <!--</div>-->
+    <!--<div class="w3-display-container mySlides">-->
+      <!--<img th:src="@{../images/ee9.jpeg}" style="width:100%">-->
+    <!--</div>-->
 
-    <!-- Slideshow next/previous buttons -->
-    <div class="w3-container w3-dark-grey w3-padding w3-xlarge">
-      <div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>
-      <div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>
+    <!--&lt;!&ndash; Slideshow next/previous buttons &ndash;&gt;-->
+    <!--<div class="w3-container w3-dark-grey w3-padding w3-xlarge">-->
+      <!--<div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-teal"></i></div>-->
+      <!--<div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-teal"></i></div>-->
 
-      <div class="w3-center">
-        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
-        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
-        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
-      </div>
-    </div>
-  </div>
+      <!--<div class="w3-center">-->
+        <!--<span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>-->
+        <!--<span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>-->
+        <!--<span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
   <!--
   Grid -->

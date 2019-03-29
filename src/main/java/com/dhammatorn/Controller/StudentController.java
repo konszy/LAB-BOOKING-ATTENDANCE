@@ -173,7 +173,7 @@ public class StudentController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("edit_users");
         } else {
-            studentService.saveStudent(student);
+            studentService.updateStudent(student);
             modelAndView.addObject("student", student);
             modelAndView.setViewName("loggedinindex");
         }
