@@ -1,4 +1,5 @@
 package com.dhammatorn.Controller;
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.dhammatorn.Entity.Attendance;
 import com.dhammatorn.Entity.Booking;
 import com.dhammatorn.Entity.Student;
@@ -203,7 +204,10 @@ public class BookingController {
             else booking.setRsop(tempbooking.getRsop());
 
             if (tempbooking.getPower_supp() == null) booking.setPower_supp(0);
-            else booking.setPower_supp(tempbooking.getPower_supp());
+            else {
+                System.out.println("power Supp ok!");
+                booking.setPower_supp(tempbooking.getPower_supp());
+            }
 
             if (tempbooking.getBnc_croclead() == null) booking.setBnc_croclead(0);
             else booking.setBnc_croclead(tempbooking.getBnc_croclead());
