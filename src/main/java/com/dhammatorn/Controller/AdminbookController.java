@@ -1,6 +1,9 @@
 package com.dhammatorn.Controller;
 
 import java.lang.reflect.Array;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -71,9 +74,32 @@ public class AdminbookController {
 //            ArrayList<String> all_seats = tempbooking.getSeatNum();
             for(String each_seats : all_seats) {
                 Booking booking = new Booking();
-                booking.setDay(day);
-                booking.setEndTime(tempbooking.getEndTime());
-                booking.setStartTime(tempbooking.getStartTime());
+//                String day = tempbooking.getDay();
+                ZoneId zone = ZoneId.systemDefault();
+
+
+                LocalDateTime now = LocalDateTime.now(zone);
+
+
+                DayOfWeek userBookedDay = translatorStringtoDOW(day);
+
+                LocalDateTime startTime = LocalDateTime.now(zone);
+                LocalDateTime finalEndTime = LocalDateTime.now(zone);
+                for(int i = 0 ; i < 7; i++){
+                    DayOfWeek currentDay = now.getDayOfWeek();
+                    if(currentDay.equals(userBookedDay)) startTime = now;
+                    else now = now.plusDays(1);
+                }
+
+                for(int i = 0; i < 24; i++){
+                    int starthour = startTime.getHour();
+                    if(starthour != tempbooking.getStartTime()) startTime = startTime.plusHours(1);
+                }
+
+                finalEndTime = startTime.plusHours(length);
+
+                booking.setStartTime(now);
+                booking.setEndTime(finalEndTime);
                 booking.setLength(length);
                 booking.setSeatNo(each_seats);
                 booking.setStudent(0);
@@ -98,5 +124,13 @@ public class AdminbookController {
 
     @GetMapping(value = "/booking_success")
     public String booking_success(){return "booking_success"; }
+
+    public DayOfWeek translatorStringtoDOW(String day){
+        if(day.equals("MON")) return DayOfWeek.MONDAY;
+        else if (day.equals("TUE")) return DayOfWeek.TUESDAY;
+        else if (day.equals("WED")) return DayOfWeek.WEDNESDAY;
+        else if (day.equals("THU")) return DayOfWeek.THURSDAY;
+        else return DayOfWeek.FRIDAY;
+    }
 
 }

@@ -3,13 +3,18 @@ package com.dhammatorn.Service;
 import com.dhammatorn.Dao.BookingRepository;
 import com.dhammatorn.Entity.Booking;
 import com.dhammatorn.Entity.Student;
+import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.management.Notification;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -27,6 +32,9 @@ public class BookingService {
     private JavaMailSender javaMailSender;
 
     @Autowired
+    public StudentService studentService;
+
+    @Autowired
     public BookingService(JavaMailSender javaMailSender){
                 this.javaMailSender = javaMailSender;
     }
@@ -34,12 +42,15 @@ public class BookingService {
     public void sendNotification(Booking booking) throws MailException
 
     {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Student student = studentService.getStudentByUsername(auth.getName());
+        String email = student.getEmail();
         //send email
         SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setTo("ee.lab.system@gmail.com");
+        mail.setTo(email);
         mail.setFrom("ee.lab.system@gmail.com");
         mail.setSubject("Booking Success!");
-        mail.setText("You currently booked on : " + booking.getDay() + "from" + booking.getStartTime() + ":00 to "+ booking.getEndTime()
+        mail.setText("You currently booked on : " + booking.getStartTime() + " to "+ booking.getEndTime()
                         + ":00 with seats : " + booking.getSeatNo() +
         " __for " + booking.getLength() + " hr(s)." + " Please bring your UCARD " +
                         "and scan the system before using the lab. There will be penalities for not being present as " +
@@ -87,17 +98,23 @@ public class BookingService {
         }
     }
 
-    public Boolean timeValid(Booking booking, Booking temp){
+    public Boolean timeValid(Booking booking, Booking temp) {
 
-        if(booking.getEndTime() == temp.getEndTime()) return true;
-        else if(booking.getStartTime() == temp.getStartTime()) return true;
+        LocalDateTime bookingStart = booking.getStartTime();
+        LocalDateTime bookingEnd = booking.getEndTime();
+        LocalDateTime tempStart = temp.getStartTime();
+        LocalDateTime tempEnd = temp.getEndTime();
 
-        else{
-            for(int start = booking.getStartTime(); start < booking.getEndTime(); start++){
-                if(start == temp.getStartTime()) return true;
+        if (booking.getEndTime().equals(temp.getEndTime())) return true;
+        else if (booking.getStartTime().equals(temp.getStartTime())) return true;
+        else {
+            while (bookingEnd.equals(bookingStart) == false) {
+                if (bookingStart.equals(tempStart)) return true;
+                else bookingStart = bookingStart.plusHours(1);
             }
-            for(int start = temp.getStartTime(); start < temp.getEndTime(); start++){
-                if(start == booking.getStartTime()) return true;
+            while (temp.getStartTime().equals(booking.getEndTime()) == false) {
+                if (tempStart.equals(bookingStart)) return true;
+                else tempStart = tempStart.plusHours(1);
             }
         }
 

@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Entity @Table(name = "booking")
 public class Booking {
@@ -14,14 +15,11 @@ public class Booking {
     @Column(name="seatNo")
     private String seatNo;
 
-    @Column(name="day")
-    private String day;
-
-    @Column(name="starTime")
-    private int startTime;
-
     @Column(name="endTime")
-    private int endTime;
+    private LocalDateTime endTime;
+
+    @Column(name="startTime")
+    private LocalDateTime startTime;
 
     @Column(name="length")
     private int length;
@@ -239,28 +237,20 @@ public class Booking {
         this.oscilloscope_trim = oscilloscope_trim;
     }
 
-    public String getDay() {
-        return day;
-    }
-
-    public void setDay(String day) {
-        this.day = day;
-    }
-
-    public int getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(int startTime) {
-        this.startTime = startTime;
-    }
-
-    public int getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(int endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
     }
 
     public void setId(int id) {

@@ -5,6 +5,7 @@ import com.dhammatorn.Entity.Student;
 import com.dhammatorn.Entity.Tempbooking;
 import com.dhammatorn.Service.BookingService;
 import com.dhammatorn.Service.StudentService;
+import jdk.vm.ci.meta.Local;
 import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -24,9 +25,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.security.auth.login.LoginException;
 import javax.validation.Valid;
+import java.sql.Time;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 
 @Controller
@@ -74,9 +80,22 @@ public class BookingController {
                 if(booked_student.isPresent()) {
                     Booking present = booked_student.get();
                     if(present.getStudent() == exist.getId()) {
-                        present.setAttendance(true);
-                        bookingService.updateBookingwithAttendance(present);
-                        return "attendance_success";
+                        //Current Time
+                        ZoneId zone = ZoneId.systemDefault();
+                        LocalDateTime now = LocalDateTime.now(zone);
+
+                        LocalDateTime startTime = present.getStartTime();
+                        LocalDateTime endTime = present.getEndTime();
+                        //check if start time and end time is correct
+                        if(now.isBefore(endTime) && now.isAfter(startTime)){
+                            present.setAttendance(true);
+                            bookingService.updateBookingwithAttendance(present);
+                            return "attendance_success";
+                        }
+                        else{
+                            return "attendance_failed";
+                        }
+
                     }
                     else{
                         return "attendance_failed";
@@ -114,10 +133,31 @@ public class BookingController {
         else {
             Booking booking = new Booking();
             String day = tempbooking.getDay();
+            ZoneId zone = ZoneId.systemDefault();
 
-            booking.setDay(day);
-            booking.setStartTime(tempbooking.getStartTime());
-            booking.setEndTime(tempbooking.getEndTime());
+
+            LocalDateTime now = LocalDateTime.now(zone);
+
+
+            DayOfWeek userBookedDay = translatorStringtoDOW(day);
+
+            LocalDateTime startTime = LocalDateTime.now(zone);
+            LocalDateTime finalEndTime = LocalDateTime.now(zone);
+            for(int i = 0 ; i < 7; i++){
+                DayOfWeek currentDay = now.getDayOfWeek();
+                if(currentDay.equals(userBookedDay)) startTime = now;
+                else now = now.plusDays(1);
+            }
+
+            for(int i = 0; i < 24; i++){
+                int starthour = startTime.getHour();
+                if(starthour != tempbooking.getStartTime()) startTime = startTime.plusHours(1);
+            }
+
+            finalEndTime = startTime.plusHours(length);
+
+            booking.setStartTime(now);
+            booking.setEndTime(finalEndTime);
             booking.setLength(length);
             booking.setSeatNo(tempbooking.getSeatNo());
 
@@ -130,7 +170,10 @@ public class BookingController {
 
             //equipments
             if (tempbooking.getCapacitors() == null) booking.setCapacitors(0);
-            else booking.setCapacitors(tempbooking.getCapacitors());
+            else {
+                System.out.println("Capacitor received ok!");
+                booking.setCapacitors(tempbooking.getCapacitors());
+            }
 
             if (tempbooking.getBnc_Tpiece() == null) booking.setBnc_Tpiece(0);
             else booking.setBnc_Tpiece(tempbooking.getBnc_Tpiece());
@@ -293,6 +336,12 @@ public class BookingController {
         return new RedirectView("/bookings/userallbooking");
     }
 
-
+    public DayOfWeek translatorStringtoDOW(String day){
+        if(day.equals("MON")) return DayOfWeek.MONDAY;
+        else if (day.equals("TUE")) return DayOfWeek.TUESDAY;
+        else if (day.equals("WED")) return DayOfWeek.WEDNESDAY;
+        else if (day.equals("THU")) return DayOfWeek.THURSDAY;
+        else return DayOfWeek.FRIDAY;
+     }
 
 }
