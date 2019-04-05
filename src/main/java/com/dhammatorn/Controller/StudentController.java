@@ -118,7 +118,7 @@ public class StudentController {
             studentService.saveStudent(student);
             modelAndView.addObject("successMessage", "Student has been registered successfully, return to home:    ");
             modelAndView.addObject("student", new Student());
-            modelAndView.setViewName("loggedinindex");
+            modelAndView.setViewName("index");
         }
 
         return modelAndView;
@@ -266,6 +266,11 @@ public class StudentController {
 
     @GetMapping(value = "/error")
     public String error(){return "error"; }
+
+    @GetMapping(value = "/adminindex")
+    public String adminindex(){
+        return "adminindex";
+    }
 
 
 }

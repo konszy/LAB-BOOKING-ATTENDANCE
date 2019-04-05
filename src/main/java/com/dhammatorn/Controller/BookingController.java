@@ -6,7 +6,6 @@ import com.dhammatorn.Entity.Student;
 import com.dhammatorn.Entity.Tempbooking;
 import com.dhammatorn.Service.BookingService;
 import com.dhammatorn.Service.StudentService;
-import jdk.vm.ci.meta.Local;
 import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

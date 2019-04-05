@@ -3,7 +3,6 @@ package com.dhammatorn.Service;
 import com.dhammatorn.Dao.BookingRepository;
 import com.dhammatorn.Entity.Booking;
 import com.dhammatorn.Entity.Student;
-import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
