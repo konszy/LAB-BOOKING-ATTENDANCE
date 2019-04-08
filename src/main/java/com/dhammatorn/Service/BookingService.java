@@ -16,8 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
-
-
+import java.util.Calendar;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -77,11 +76,21 @@ public class BookingService {
             }
         }
         else {
+            List<Booking> personal = new ArrayList<>();
+            bookingRepository.findByStudent(booking.getStudent()).forEach(personal::add);
+            for(Booking temp : personal){
+                if(same_week(booking,temp) || single_date_validation(booking,temp)){
+                    booked = true;
+                }
+            }
+
             for (Booking temp : bookings) {
-                if ((temp.getSeatNo().equals(booking.getSeatNo())
-                        && timeValid(booking, temp)
-                        && temp.getLength() == booking.getLength()
-                ) || temp.getStudent() == booking.getStudent()) {
+                if (
+                                temp.getSeatNo().equals(booking.getSeatNo())
+                                && timeValid(booking, temp)
+                                && temp.getLength() == booking.getLength()
+                        )
+                {
                     booked = true;
                     System.out.println("Failed here ");
                 }
@@ -99,6 +108,7 @@ public class BookingService {
 
     public Boolean timeValid(Booking booking, Booking temp) {
 
+
         LocalDateTime bookingStart = booking.getStartTime();
         LocalDateTime bookingEnd = booking.getEndTime();
         LocalDateTime tempStart = temp.getStartTime();
@@ -108,14 +118,17 @@ public class BookingService {
         else if (booking.getStartTime().equals(temp.getStartTime())) return true;
         else {
             while (bookingEnd.equals(bookingStart) == false) {
+                System.out.println("Loops 1");
                 if (bookingStart.equals(tempStart)) return true;
                 else bookingStart = bookingStart.plusHours(1);
             }
-            while (temp.getStartTime().equals(booking.getEndTime()) == false) {
+            while (tempStart.equals(temp.getEndTime()) == false) {
+                System.out.println("Loops 2");
                 if (tempStart.equals(bookingStart)) return true;
                 else tempStart = tempStart.plusHours(1);
             }
         }
+        System.out.println("Done 1");
 
         return false;
     }
@@ -148,6 +161,23 @@ public class BookingService {
 
     public void updateBookingwithAttendance(Booking booking){
         bookingRepository.save(booking);
+    }
+
+    public Boolean single_date_validation(Booking current, Booking temp){
+        if(temp.getStartTime().getDayOfYear() - current.getStartTime().getDayOfYear() > 2) {
+            return false;
+        }
+        else return true;
+    }
+    public Boolean same_week(Booking current, Booking temp){
+        if(temp.getStartTime().getDayOfWeek().getValue() - current.getStartTime().getDayOfWeek().getValue() < 5) return true;
+        else return false;
+    }
+
+    public static boolean isLeapYear(int year) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        return cal.getActualMaximum(Calendar.DAY_OF_YEAR) > 365;
     }
 
 }

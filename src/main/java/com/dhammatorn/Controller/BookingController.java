@@ -155,8 +155,16 @@ public class BookingController {
             }
 
             finalEndTime = startTime.plusHours(length);
+            //set min of both end time and start time
+            finalEndTime = finalEndTime.withNano(0);
+            finalEndTime = finalEndTime.withMinute(0);
+            finalEndTime = finalEndTime.withSecond(0);
 
-            booking.setStartTime(now);
+            startTime =  startTime.withNano(0);
+            startTime = startTime.withMinute(0);
+            startTime = startTime.withSecond(0);
+
+            booking.setStartTime(startTime);
             booking.setEndTime(finalEndTime);
             booking.setLength(length);
             booking.setSeatNo(tempbooking.getSeatNo());
@@ -171,7 +179,7 @@ public class BookingController {
             //equipments
             if (tempbooking.getCapacitors() == null) booking.setCapacitors(0);
             else {
-                System.out.println("Capacitor received ok!");
+//                System.out.println("Capacitor received ok!");
                 booking.setCapacitors(tempbooking.getCapacitors());
             }
 
@@ -204,7 +212,7 @@ public class BookingController {
 
             if (tempbooking.getPower_supp() == null) booking.setPower_supp(0);
             else {
-                System.out.println("power Supp ok!");
+//                System.out.println("power Supp ok!");
                 booking.setPower_supp(tempbooking.getPower_supp());
             }
 
