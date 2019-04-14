@@ -8,12 +8,11 @@
 <body>
 	<h1>Edit User</h1>
     <form action="#" th:action="@{/edituser}" th:object="${student}" method="post">
-        <p th:text="'Username: ' + ${student.username}" />
+        <p th:text="'ID: ' + ${student.id}" />
       <p>First Name: <input type="text" th:field="*{name}" /></p>
       <p>Last Name: <br> <br> <input type="text" th:field="*{lastname}" /></p>
-      <p>Email: <br> <br> <input type="text" th:field="*{email}" /></p>
-      <p>Ucard: <br> <br> <input type="text" th:field="*{ucard}" /></p>
-      <p><input type="submit" value="Submit" /></p>
+      <p>UCARD: <br> <br> <input type="text" th:field="*{ucard}" /></p>
+      <p><input type="submit" value="Submit" />
     </form>
     <a th:href="@{/loggedinindex}" Class="btnU btnU-large">Return to Home</a>
 </body>

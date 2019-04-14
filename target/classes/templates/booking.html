@@ -12,8 +12,8 @@
 </head>
 <body>
 <div class="head">
-    <a href="http://www.bristol.ac.uk"><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" width="200";></a>
-    <a th:href="@{/}" style="color: #B01C2E; text-decoration:none;" title="Return to homepage" >LAB Booking System</a>
+    <a href="@{/loggedinindex}"><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" width="200";></a>
+    <a th:href="@{/loggedinindex}" style="color: #B01C2E; text-decoration:none;" title="Return to homepage" >LAB Booking System</a>
 </div>
         <h3> Time slot </h3>
         <p class ="error" th:text="${error}"> </p>
@@ -214,12 +214,12 @@
         <tr>
             <td align="center">Resistors</td>
             <td><img src="../images/Resistors.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{wire_strippers}" th:value="1" ></td>
+            <td align="center"><input type="checkbox" th:field="*{resistors}" th:value="1" ></td>
         </tr>
         <tr>
             <td align="center">Capacitors</td>
             <td><img src="../images/Capacitors.png" width="70" height="70"></td>
-            <td align="center"><input type="checkbox" th:field="*{resistors}" th:value="1" ></td>
+            <td align="center"><input type="checkbox" th:field="*{capacitors}" th:value="1" ></td>
         </tr>
         <tr>
             <td align="center">TTi LCR400 Bridge</td>
@@ -233,7 +233,7 @@
         </tr>
         <tr>
             <td align="center">Oscilloscope Trim Tool</td>
-            <td><img src="../images/???.png" width="70" height="70"></td>
+            <td><img src="../images/osc_trim_tool.jpg" width="70" height="70"></td>
             <td align="center"><input type="checkbox" th:field="*{oscilloscope_trim}" th:value="1" ></td>
         </tr>
     </table>
@@ -269,12 +269,12 @@
             </td>
         </tr>
         <tr>
-            <td align="center">BK Precision 4054B Dual Channel 30Mhz Function/Arbitrary Waveform Generator : BNC ® Croc Lead</td>
+            <td align="center"> BNC ® Croc Lead : BK Precision 4054B Dual Channel 30Mhz Function/Arbitrary Waveform Generator </td>
             <td><img src="../images/BK Precision 4054B Dual Channel.jpg" width="70" height="70"></td>
             <td align="center"><input type="checkbox" th:field="*{bnc_croclead}" th:value="1" ></td>
         </tr>
         <tr>
-            <td align="center">BK Precision 4054B Dual Channel 30Mhz Function/Arbitrary Waveform Generator : BNC ® BNC Lead</td>
+            <td align="center"> BNC ® BNC Lead : BK Precision 4054B Dual Channel 30Mhz Function/Arbitrary Waveform Generator : </td>
             <td><img src="../images/BK Precision 4054B Dual Channel.jpg" width="70" height="70"></td>
             <td align="center"><input type="checkbox" th:field="*{bnc_lead}" th:value="1" ></td>
         </tr>
