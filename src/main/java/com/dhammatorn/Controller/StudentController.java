@@ -155,32 +155,38 @@ public class StudentController {
     }
 
 
-    // EDIT USER
+   // EDIT USER
     @RequestMapping(value="/edituser", method = RequestMethod.GET)
     public ModelAndView edituser(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Student student = studentService.getStudentByUsername(auth.getName());
-        modelAndView.addObject("student", student);
+        Student current = studentService.getStudentByUsername(auth.getName());
+//        System.out.println(current.getId());
+        modelAndView.addObject("current", current);
+        modelAndView.addObject("student", new TempStudent());
         modelAndView.setViewName("edit_users");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edituser", method = RequestMethod.POST)
-    public ModelAndView completeEdituser(@Valid Student student, BindingResult bindingResult) {
-        ModelAndView modelAndView = new ModelAndView();
+    @RequestMapping(value = "/edituserpost", method = RequestMethod.POST)
+    public RedirectView completeEdituser(@Valid TempStudent student, BindingResult bindingResult) {
 
-        if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("edit_users");
-        } else {
-            studentService.updateStudent(student);
-            modelAndView.addObject("student", student);
-            modelAndView.setViewName("loggedinindex");
-        }
+            int pid = Integer.parseInt(student.getId());
+//            System.out.println(pid);
 
-        return modelAndView;
+            Optional<Student> maybeStudent = studentService.getStudentById(pid);
+            Student old = maybeStudent.get();
+
+            old.setLastname(student.getLastname());
+            old.setName(student.getName());
+            old.setEmail(student.getEmail());
+            old.setUcard(student.getUcard());
+
+            studentService.updateStudent(old);
+
+
+        return new RedirectView("/edituser");
     }
-
     // Delete by Id
     @GetMapping(value = "/admin/{id}/deleteuser")
     @ResponseBody
