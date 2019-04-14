@@ -193,9 +193,9 @@ public class StudentController {
     // Delete by Id
     @GetMapping(value = "/admin/{id}/deleteuser")
     @ResponseBody
-    public String deleteUser(@PathVariable("id") int id){
+    public RedirectView deleteUser(@PathVariable("id") int id){
         studentService.deleteStudentById(id);
-        return "Student Deleted";
+        return new RedirectView("/display");
     }
 
 
@@ -204,43 +204,47 @@ public class StudentController {
     // Add Strike by Id
     @GetMapping(value = "/admin/{id}/addstrike")
     @ResponseBody
-    public String addStrike(@PathVariable("id") int id){
+    public RedirectView addStrike(@PathVariable("id") int id){
         Optional<Student> maybeStudent = studentService.getStudentById(id);
         if (maybeStudent.isPresent()) {
             Student student = maybeStudent.get();
             int strikes = student.getStrikes();
             if (strikes == 3){
-                return "Max Strikes";
+//                return "Max Strikes";
+                return new RedirectView("/display");
             } else {
                 strikes = strikes + 1;
                 student.setStrikes(strikes);
                 studentService.updateStudentStrikesByID(student);
-                return "Strike Added";
+//                return "Strike Added":
+                return new RedirectView("/display");
             }
         } else {
             //error
-            return "error";
+//            return "error";
+            return new RedirectView("/display");
         }
+
     }
 
     @GetMapping(value = "/admin/{id}/removestrike")
     @ResponseBody
-    public String removeStrike(@PathVariable("id") int id){
+    public RedirectView removeStrike(@PathVariable("id") int id){
         Optional<Student> maybeStudent = studentService.getStudentById(id);
         if (maybeStudent.isPresent()) {
             Student student = maybeStudent.get();
             int strikes = student.getStrikes();
             if (strikes == 0){
-                return "No Strikes";
+                return new RedirectView("/display");
             } else {
                 strikes = strikes - 1;
                 student.setStrikes(strikes);
                 studentService.updateStudentStrikesByID(student);
-                return "Strike Removed";
+                 return new RedirectView("/display");
             }
         } else {
             //error
-            return "error";
+            return new RedirectView("/display");
         }
     }
 
