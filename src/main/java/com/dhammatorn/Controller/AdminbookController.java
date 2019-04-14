@@ -36,6 +36,11 @@ public class AdminbookController {
     @Autowired
     private BookingService bookingService;
 
+    @GetMapping()
+    public String adminindex(){
+        return "adminindex";
+    }
+
     @GetMapping("/book")
     public String bookingForm(Model model){
         model.addAttribute("adminbookinfo", new Adminbooking());

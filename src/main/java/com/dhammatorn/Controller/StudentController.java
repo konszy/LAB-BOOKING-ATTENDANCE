@@ -133,7 +133,7 @@ public class StudentController {
 
     //value /{id} means we are going to pass an id from the URL and this method is going to output
     // a student according to that id
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/{id}", method = RequestMethod.GET)
     //Pathvariable means u actually want the id to be the one you send from the url
     public @ResponseBody Student getStudentById(@PathVariable("id") int id) {
         Optional<Student> maybeStudent = studentService.getStudentById(id);
@@ -182,7 +182,7 @@ public class StudentController {
     }
 
     // Delete by Id
-    @GetMapping(value = "/{id}/deleteuser")
+    @GetMapping(value = "/admin/{id}/deleteuser")
     @ResponseBody
     public String deleteUser(@PathVariable("id") int id){
         studentService.deleteStudentById(id);
@@ -266,11 +266,6 @@ public class StudentController {
 
     @GetMapping(value = "/error")
     public String error(){return "error"; }
-
-    @GetMapping(value = "/adminindex")
-    public String adminindex(){
-        return "adminindex";
-    }
 
 
 }
