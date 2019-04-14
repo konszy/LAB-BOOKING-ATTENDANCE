@@ -1,6 +1,7 @@
 package com.dhammatorn.Controller;
 
 import com.dhammatorn.Entity.Student;
+import com.dhammatorn.Entity.TempStudent;
 import com.dhammatorn.Service.StudentService;
 import com.dhammatorn.Entity.Register;
 import org.omg.CORBA.Request;
@@ -20,6 +21,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
 
 //Rest deals with HTTP requests and the web - to - database controller
 @Controller
