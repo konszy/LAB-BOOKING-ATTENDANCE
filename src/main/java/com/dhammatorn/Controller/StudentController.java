@@ -188,7 +188,7 @@ public class StudentController {
             studentService.updateStudent(old);
 
 
-        return new RedirectView("/edituser");
+        return new RedirectView("/edit_success");
     }
     // Delete by Id
     @GetMapping(value = "/admin/{id}/deleteuser")
@@ -275,6 +275,9 @@ public class StudentController {
 
     @GetMapping(value = "/error")
     public String error(){return "error"; }
+
+    @GetMapping(value="/edit_success")
+    public String edit_success(){return "edit_user_success"; }
 
 
 }

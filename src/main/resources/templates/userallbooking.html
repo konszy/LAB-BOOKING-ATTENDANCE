@@ -38,6 +38,7 @@
             <th> NGE 100 Triple Output Power Supply </th>
             <th> HMC 8012 Digital Multimeter </th>
             <th> Trim Tool </th>
+            <th> Notes </th>
 
             <th style="color: white"> Edit </th>
 
@@ -64,6 +65,7 @@
             <td th:text="${booking.power_supp}"> </td>
             <td th:text="${booking.rs_4mmplug}"> </td>
             <td th:text="${booking.oscilloscope_trim}"> </td>
+            <td th:text="${booking.notes}"> </td>
 
             <td> <a th:href="@{'http://localhost:8080/bookings/' + ${booking.id} + '/delete'}" > Delete </a> </td>
         </tr>

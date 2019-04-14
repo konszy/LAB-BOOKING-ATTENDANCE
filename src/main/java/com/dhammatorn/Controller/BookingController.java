@@ -168,6 +168,7 @@ public class BookingController {
             booking.setEndTime(finalEndTime);
             booking.setLength(length);
             booking.setSeatNo(tempbooking.getSeatNo());
+            booking.setNotes(tempbooking.getNotes());
 
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             Student student = studentService.getStudentByUsername(auth.getName());

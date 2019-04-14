@@ -72,6 +72,8 @@ public class Booking {
     @Column(name="attendance")
     private Boolean attendance;
 
+    @Column(name="notes")
+    private String notes;
 //    public Booking(int id, String seatNo, String day, int startTime, int endTime, int length, int student, int rsop, int active8, int bnc_croclead, int bnc_lead, int power_supp, int rs_4mmplug, int prototyping_board, int solidCoreWire, int wire_strippers, int resistors, int capacitors, int lcr400_bridge, int bnc_Tpiece, int oscilloscope_trim) {
 //        this.id = id;
 //        this.seatNo = seatNo;
@@ -263,5 +265,15 @@ public class Booking {
 
     public void setAttendance(Boolean attendance) {
         this.attendance = attendance;
+    }
+
+
+    public String getNotes() {
+
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }
