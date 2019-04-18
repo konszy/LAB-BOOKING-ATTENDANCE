@@ -6,6 +6,7 @@ import com.dhammatorn.Entity.Student;
 import com.dhammatorn.Entity.Tempbooking;
 import com.dhammatorn.Service.BookingService;
 import com.dhammatorn.Service.StudentService;
+import jdk.vm.ci.meta.Local;
 import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -344,8 +345,18 @@ public class BookingController {
 //        for(Booking temp:all_bookings){
 //            if(student == temp.getStudent()) id = temp.getID();
 //        }
-        bookingService.deleteBookingById(id);
-        return new RedirectView("/bookings/userallbooking");
+        ZoneId zone = ZoneId.systemDefault();
+
+        LocalDateTime now = LocalDateTime.now(zone);
+       Optional<Booking> op_user = bookingService.getBookingById(id);
+       Booking user = op_user.get();
+       if(user.getStartTime().isBefore(now)){
+           return new RedirectView("/bookings/error");
+       }
+       else {
+           bookingService.deleteBookingById(id);
+           return new RedirectView("/bookings/userallbooking");
+       }
     }
 
     public DayOfWeek translatorStringtoDOW(String day){
