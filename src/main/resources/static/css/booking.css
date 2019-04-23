@@ -152,11 +152,12 @@ label.lb_text{
 #floorplan{
     display: none;
     position: absolute;
-    left:70%;
+    left:66%;
     top:45%;
-    width:200px;
+    width:350px;
     height:20px;
     text-align: center;
+    color: #B01C2E;
 
 }
 #open{
