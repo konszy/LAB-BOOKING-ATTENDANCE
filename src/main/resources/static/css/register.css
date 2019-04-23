@@ -68,6 +68,12 @@ div.container {
     rgba(0, 0, 0, 0.1) inset;
 }
 
+div.attendacce {
+    width:800px;
+    margin: auto;
+    text-align: center;
+}
+
 div.input {
     line-height: 10px;
     font-family: "Helvetica Neue 55 Roman", sans-serif;
@@ -131,6 +137,17 @@ button {
    cursor: pointer;
    width: 40%;
 }
+
+button.attendance {
+    background-color: #B01C2E;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+}
+
 
 /* button:hover {
     opacity: 0.8;
