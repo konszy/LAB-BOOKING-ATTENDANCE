@@ -31,7 +31,7 @@ p{
       <a th:href="@{/edituser}" class="w3-button w3-block">Edit User</a>
     </div>
     <div class="w3-col s3">
-      <a th:href="@{/bookings/book}" class="w3-button w3-block">Student Booking</a>
+      <a th:href="@{/bookings/book}" class="w3-button w3-block">Seat Booking</a>
     </div>
     <div class="w3-col s3">
       <a th:href="@{/bookings/userallbooking}" class="w3-button w3-block">My Booking</a>
@@ -96,7 +96,7 @@ p{
     </div>
 
     <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
-      <h3>Booking a slot</h3>
+      <h3><a th:href="@{/bookings/book}" style="text-decoration:none;">Booking a slot</a></h3>
       <p>Each student is allowed a maximum of 3 hours slot booking each time.</p>
     </div>
 
