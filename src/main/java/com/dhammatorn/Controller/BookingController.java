@@ -6,7 +6,6 @@ import com.dhammatorn.Entity.Student;
 import com.dhammatorn.Entity.Tempbooking;
 import com.dhammatorn.Service.BookingService;
 import com.dhammatorn.Service.StudentService;
-import jdk.vm.ci.meta.Local;
 import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -119,6 +118,12 @@ public class BookingController {
 
         int endTime = tempbooking.getEndTime();
         int length = endTime - tempbooking.getStartTime();
+
+        Authentication authen = SecurityContextHolder.getContext().getAuthentication();
+        Student loggedinstudent = studentService.getStudentByUsername(authen.getName());
+        if (loggedinstudent.getStrikes() == 3){
+            return "blacklisted";
+        }
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.createAccountModel", bindingResult);

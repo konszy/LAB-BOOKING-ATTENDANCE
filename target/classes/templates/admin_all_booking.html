@@ -38,6 +38,7 @@
             <th> HMC 8012 Digital Multimeter </th>
             <th> Trim Tool </th>
             <th> Attendance </th>
+            <th>Notes </th>
 
             <!--<th style="color: white"> Edit </th>-->
 
@@ -64,7 +65,7 @@
             <td th:text="${booking.rs_4mmplug}"> </td>
             <td th:text="${booking.oscilloscope_trim}"> </td>
             <td th:text="${booking.attendance}"> </td>
-
+            <td th:text="${booking.notes}"></td>
             <td> <a th:href="@{'http://localhost:8080/bookings/' + ${booking.id} + '/dlt'}" > Delete </a> </td>
         </tr>
     </table>
