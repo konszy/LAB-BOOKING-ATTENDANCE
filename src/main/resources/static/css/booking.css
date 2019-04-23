@@ -26,6 +26,7 @@ div.head {
 }
 
 div.container {
+    font-family: "Helvetica Neue 55 Roman", sans-serif;
     width:600px;
     margin: auto;
     text-align: center;
@@ -146,4 +147,40 @@ label.lb_text{
     height: 24px;
     border-radius: 10%;
     background: #34adeb;
+}
+
+#floorplan{
+    display: none;
+    position: absolute;
+    left:70%;
+    top:45%;
+    width:200px;
+    height:20px;
+    text-align: center;
+
+}
+#open{
+    position: absolute;
+    text-align: center;
+    left:43%;
+    top:38%;
+    width:200px;
+    height:20px;
+}
+
+input.floor {
+    background-color: #B01C2E;
+    color: white;
+    padding: 3px 6px;
+    margin: 1px 0;
+    border: none;
+    cursor: pointer;
+    width: 46px;
+}
+
+div.floor {
+    font-family: "Helvetica Neue 55 Roman", sans-serif;
+    margin: auto;
+    text-align: center;
+    width:600px;
 }
