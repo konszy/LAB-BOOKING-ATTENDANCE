@@ -14,7 +14,7 @@ html,body,h1,h2,h3,h4 {font-family:"Lato", sans-serif}
 .university-logo {
     text-align: center;
 }
-h1{
+h1, h2{
     font-family: "Times New Roman", Times, serif;
 }
 p{
@@ -48,15 +48,18 @@ p{
 <br>
 
 <!-- Content -->
-<div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+<div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px;text-align: center">
 
   <div class="w3-panel">
     <div class="university-logo">
-    <img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" class="center"/>
+      <img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" class="center"/>
     </div>
     <br>
-    <h1 align="center"> ADMIN HOME</h1>
-    <a th:href="@{/loggedinindex}" Class="btnU btnU-large">User Home</a>
+    <h1 align="center"> Electrical and Electronics Engineering Lab Booking System</h1>
+    <h2 align="center"> Admin Home</h2>
+    <a th:href="@{/loggedinindex}" Class="btnU btnU-large" >Return User Home</a>
+  </div>
+
 
 
   </div>
