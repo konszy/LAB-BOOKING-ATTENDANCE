@@ -4,7 +4,6 @@ import com.dhammatorn.Entity.Booking;
 import com.dhammatorn.Entity.Student;
 import com.dhammatorn.Service.BookingService;
 import com.dhammatorn.Service.StudentService;
-import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.ZoneId;
