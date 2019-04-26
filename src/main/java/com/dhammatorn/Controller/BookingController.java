@@ -74,7 +74,8 @@ public class BookingController {
 //        System.out.println("This is ok ! 67");
 
         Student exist = studentService.getStudentByUcard(UCARD_id);
-        if(!exist.getName().equals("-1")){
+        System.out.println(exist.getUsername());
+        if(!exist.getUsername().equals("-1")){
                 Optional<Booking> booked_student = bookingService.getBookingbyStudent(exist.getId());
 
                 if(booked_student.isPresent()) {
@@ -87,7 +88,7 @@ public class BookingController {
                         LocalDateTime startTime = present.getStartTime();
                         LocalDateTime endTime = present.getEndTime();
                         //check if start time and end time is correct
-                        if(now.isBefore(endTime) && now.isAfter(startTime)){
+                        if(now.isBefore(endTime) && now.isAfter(startTime.minusMinutes(10))){
                             present.setAttendance(true);
                             bookingService.updateBookingwithAttendance(present);
                             return "attendance_success";
