@@ -74,7 +74,8 @@ public class BookingController {
 //        System.out.println("This is ok ! 67");
 
         Student exist = studentService.getStudentByUcard(UCARD_id);
-        if(!exist.getName().equals("-1")){
+        System.out.println(exist.getUsername());
+        if(!exist.getUsername().equals("-1")){
                 Optional<Booking> booked_student = bookingService.getBookingbyStudent(exist.getId());
 
                 if(booked_student.isPresent()) {
@@ -87,22 +88,25 @@ public class BookingController {
                         LocalDateTime startTime = present.getStartTime();
                         LocalDateTime endTime = present.getEndTime();
                         //check if start time and end time is correct
-                        if(now.isBefore(endTime) && now.isAfter(startTime)){
+                        if(now.isBefore(endTime) && now.isAfter(startTime.minusMinutes(10))){
                             present.setAttendance(true);
                             bookingService.updateBookingwithAttendance(present);
                             return "attendance_success";
                         }
                         else{
+                            System.out.println("Failed 96");
                             return "attendance_failed";
                         }
 
                     }
                     else{
+                        System.out.println("Failed 102");
                         return "attendance_failed";
                     }
                 }
 
                 else{
+                    System.out.println("Failed 108");
                     return "attendance_failed";
                 }
 
@@ -113,7 +117,6 @@ public class BookingController {
     }
 
     @PostMapping("/book")
-//    @ResponseBody
     String bookingSubmit(@ModelAttribute @Valid Tempbooking tempbooking,BindingResult bindingResult,RedirectAttributes redirectAttributes,Model model){
 
         int endTime = tempbooking.getEndTime();
@@ -175,6 +178,7 @@ public class BookingController {
             booking.setLength(length);
             booking.setSeatNo(tempbooking.getSeatNo());
             booking.setNotes(tempbooking.getNotes());
+            booking.setAuto_checked(false);
 
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             Student student = studentService.getStudentByUsername(auth.getName());
@@ -232,7 +236,7 @@ public class BookingController {
             if (tempbooking.getRsop() == null) booking.setRsop(0);
             else booking.setRsop(tempbooking.getRsop());
 
-            int feedback =   bookingService.saveBooking(booking);
+            int feedback = bookingService.saveBooking(booking);
             if(feedback == 1) {
 
                 bookingService.sendNotification(booking);
@@ -242,15 +246,10 @@ public class BookingController {
                 return "bookingfailed";
             }
 
-            //return "booking_success";
-//        return new RedirectView("/bookings/all");
 
         }
         }
-//        else {
-//            return new RedirectView("/bookings/bookingfailed");
-//        }
-//    }
+
 
 
     @GetMapping("/all")
@@ -265,6 +264,7 @@ public class BookingController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Student student = studentService.getStudentByUsername(auth.getName());
         int student_id = student.getId();
+        System.out.println("ID : " + student_id);
         for(Booking temp: user){
             if(temp.getStudent() == student_id){
                 to_return.add(temp);
