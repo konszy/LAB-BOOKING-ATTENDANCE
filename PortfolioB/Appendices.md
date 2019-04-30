@@ -6,13 +6,9 @@
 **P2 is the process of logging in, booking a seat, and viewing it.**
 ### Table 1 : Test 1
  Person-Part | 1 - P1 | 1 - P2 | 2 - P1 | 2 - P2 | 3 - P1 | 3 - P2 |  4 - P1 | 4 - P2 | 5 - P1 | 5 - P2 | AVG - P1 | AVG - P2 | 
- 
  ---| --- | --- | --- | --- | --- | --- | ---| --- | --- | ---| --- | --- | 
- 
  Time |  0:51 | 1:01 | 1:00 | 1:14 | 0:42 | 2:02 | 0:37 | 1:31 | 0:56 | 1:30 | 0:49 | 1:28 | 
- 
  Mistakes |   // |/ | |||/ | | // | / |
- 
  undo | | / |
 
 ### Table 2 : Test 2
