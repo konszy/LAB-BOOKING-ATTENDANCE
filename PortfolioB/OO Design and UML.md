@@ -1,22 +1,25 @@
-## OO Design and UML 
-**High Level Architecture Diagram**
+﻿# OO Design and UML 
+### High Level Architecture Diagram
 ![
 ](https://github.com/konszy/LAB-BOOKING-ATTENDANCE/blob/master/PortfolioB/high%20level.png)
 
 This high level architecture provides an overview of our entire system including the website and oracle cloud services, identifying the main components that would be developed for our project and its interface. It also expresses the connection between each individual clients/devices that will be connected to the server and our website along with how it is connected. It also expresses the fact that our web functionality also depends on the internet connection and server status. If the internet the client is connected to is not good/stable enough, the website may not be functioning as intended. This is similar to the status of Oracle Cloud where maintenance of cloud service or emergency offline process may affect our system.
 
+## Class Diagrams:
 
-**Class Diagrams**:
 ![Entity (Classes)](https://github.com/konszy/LAB-BOOKING-ATTENDANCE/blob/master/PortfolioB/EntitySPE.png)
+
 Because javascript and java sometimes different format, we decided to add the **AdminBooking** and **TempBooking** which changes some attributes in order to fit the information sent through the POST method to the controller. The main difference is that the the seatNo (seat Number) is a list in **AdminBooking** while a it is a string in the **TempBooking** since admin can book many seats at once. In addition, because HTML and _Thymleaf_ is better at displaying a String than a Java *LocalDateTime* , we decided to send the date and time as an Int and String then turn it into the correct format in the Controller instead.
 
 The attributes of **Student** is similar to the ones displayed for input in the HTML and Thymeleaf, hence we did not use the same approach as **Booking**. However, we have the **Role** Class which is the attribute which defines if a user is the admin or normal user.
 
 **Attendance** class is used specifically to send information in only the UCARD number of the student. Since attendance is a seperate function, it make sense
+
 ![Controller and Service](https://github.com/konszy/LAB-BOOKING-ATTENDANCE/blob/master/PortfolioB/BookingSPE.png)
+
 In addition, we also have the diagram for all functions in the Controller and Service for Students and (Admin) Booking which are connected to the _CRUD_ repository.
 
-**Sequence UML Diagram**
+## Sequence UML Diagram
 
 ![](https://github.com/konszy/LAB-BOOKING-ATTENDANCE/blob/master/PortfolioB/sequence%20diagram.png)
 
@@ -35,7 +38,7 @@ In addition, users must record their attendance or they will be striked by the a
 Users can only record their attendance 10 minutes before the start time until the end of the session. Users can only delete their booking before their session begins. Users can also edit their name,last name, email and UCARD in Edituser function. In addition, users can also view their past bookings while the admin can see all the bookings and delete them. Users will be notified with an email after a booking is successful.
 
 
-**Reflection of Modelling Choices**
+### Reflection of Modelling Choices
 
 The High-Level Architecture diagram gives us a clear overall image of how each device,user and system works as a whole. By using the information from the diagram, we can know reflect and analyze in depth on the requirements of each specific element. For example, the user interface requirement of smartphones, laptop and tablet is that it must be scaled to the correct size.
 
