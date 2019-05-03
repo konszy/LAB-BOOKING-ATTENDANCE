@@ -1,3 +1,5 @@
+package com.dhammatorn.Dao;
+
 /*
 LAB BOOKING AND ATTENDANCE - SPE 2018/19
 This file is the repository file for the student and their actions.

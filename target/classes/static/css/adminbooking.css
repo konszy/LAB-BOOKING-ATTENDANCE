@@ -71,3 +71,45 @@ input[type=submit], input[type=Submit] {
     cursor: pointer;
     width: 10%;
 }
+
+#floorplan{
+    display: none;
+    position: absolute;
+    left:66%;
+    top: 365px;
+    width:350px;
+    height:20px;
+    text-align: center;
+    color: #B01C2E;
+
+}
+
+#open{
+    position: absolute;
+    text-align: center;
+    /*left:42%;*/
+    left: 50%;
+    transform: translateX(-50%);
+    /*top:312px;*/
+    top:260px;
+    width:200px;
+    height:20px;
+
+}
+
+input.floor {
+    background-color: #B01C2E;
+    color: white;
+    padding: 3px 6px;
+    margin: 1px 0;
+    border: none;
+    cursor: pointer;
+    width: 46px;
+}
+
+div.floor {
+    font-family: "Helvetica Neue 55 Roman", sans-serif;
+    margin: auto;
+    text-align: center;
+    width:600px;
+}
