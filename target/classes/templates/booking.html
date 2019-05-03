@@ -13,76 +13,43 @@
 <body>
 <div class="head">
     <a href="@{/loggedinindex}"><img src="https://mybristol.bris.ac.uk/portal/media/skins/universality/common/uob/images/logo-uob.svg" width="200";></a>
-    <a th:href="@{/loggedinindex}" id = "return_to_home_test" style="color: #B01C2E; text-decoration:none;" title="Return to homepage" >LAB Booking System</a>
+    <a th:href="@{/loggedinindex}" style="color: #B01C2E; text-decoration:none;" title="Return to homepage" >LAB Booking System</a>
 </div>
         <h3> Time slot </h3>
         <p class ="error" th:text="${error}"> </p>
     <form action="#" th:action="@{/bookings/book}" th:object="${tempbooking}" method="post">
-
           Start time:
-            <select th:field="*{startTime}" id="start_time">
-              <option th:value="9" id="booking_s9" th:text="9"></option>
-              <option th:value="10" id="booking_s10" th:text="10"></option>
-              <option th:value="11" id="booking_s11" th:text="11"></option>
-              <option th:value="12" id="booking_s12" th:text="12"></option>
-              <option th:value="13" id="booking_s13" th:text="13"></option>
-              <option th:value="14" id="booking_s14" th:text="14"></option>
-              <option th:value="15" id="booking_s15" th:text="15"></option>
-              <option th:value="16" id="booking_s16" th:text="16"></option>
+            <select th:field="*{startTime}">
+              <option th:value="9" th:text="9"></option>
+              <option th:value="10" th:text="10"></option>
+              <option th:value="11" th:text="11"></option>
+              <option th:value="12" th:text="12"></option>
+              <option th:value="13" th:text="13"></option>
+              <option th:value="14" th:text="14"></option>
+              <option th:value="15" th:text="15"></option>
+              <option th:value="16" th:text="16"></option>
             </select> :00
            to End time:
-              <select th:field="*{endTime}" id="end_time">
-                  <option th:value="10" id="booking_e10" th:text="10"></option>
-                  <option th:value="11" id="booking_e11" th:text="11"></option>
-                  <option th:value="12" id="booking_e12" th:text="12"></option>
-                  <option th:value="13" id="booking_e13" th:text="13"></option>
-                  <option th:value="14" id="booking_e14" th:text="14"></option>
-                  <option th:value="15" id="booking_e15" th:text="15"></option>
-                  <option th:value="16" id="booking_e16" th:text="16"></option>
-                  <option th:value="17" id="booking_e17" th:text="17"></option>
+              <select th:field="*{endTime}">
+                  <option th:value="10" th:text="10"></option>
+                  <option th:value="11" th:text="11"></option>
+                  <option th:value="12" th:text="12"></option>
+                  <option th:value="13" th:text="13"></option>
+                  <option th:value="14" th:text="14"></option>
+                  <option th:value="15" th:text="15"></option>
+                  <option th:value="16" th:text="16"></option>
+                  <option th:value="17" th:text="17"></option>
               </select> :00
 
         <br><br>
             <p class="error" th:if="${#fields.hasErrors('day')}" th:errors="*{day}">Name Error</p>
-            <input type="radio" id="booking_d1" th:field="*{day}" th:value="MON" >Monday
-            <input type="radio" id="booking_d2" th:field="*{day}" th:value="TUE" >Tuesday
-            <input type="radio" id="booking_d3" th:field="*{day}" th:value="WED" >Wednesday
-            <input type="radio" id="booking_d4" th:field="*{day}" th:value="THU" >Thursday
-            <input type="radio" id="booking_d5" th:field="*{day}" th:value="FRI" >Friday
+            <input type="radio" th:field="*{day}" th:value="MON" >Monday
+            <input type="radio" th:field="*{day}" th:value="TUE" >Tuesday
+            <input type="radio" th:field="*{day}" th:value="WED" >Wednesday
+            <input type="radio" th:field="*{day}" th:value="THU" >Thursday
+            <input type="radio" th:field="*{day}" th:value="FRI" >Friday
 
-        <br>
-
-
-        <script>
-            function OpenDiv(){
-                document.getElementById("floorplan").style.display="block";
-                document.getElementById("open").style.display="none";
-            }
-            function CloseDiv(){
-                document.getElementById("floorplan").style.display="none";
-                document.getElementById("open").style.display="block";
-            }
-        </script>
-
-        <div class="container">
-
-        <div id="floorplan">
-            <img th:src="@{../images/floor plan.png}" width="350";>
-            <a href="javascript:CloseDiv();" style="text-decoration:none; color:#B01C2E;"> Hide floor plan</a>
-        </div>
-
-        <h4>Laboratory seat chart</h4>
-
-        <br>
-
-        <div class = "floor">
-        <input class = "floor" type="button" value="click here to see floor plan" onclick="javascript:OpenDiv();" id="open">
-        </div>
-
-        </div>
-
-
-
+        <br><br>
 
         <div class="container">
             <div class="c_radio">
@@ -106,18 +73,16 @@
                 <label for="53"></label>
                 <label for="53" class="lb_text">B3</label>
                 <br>
-                <p hidden>
-                    <input type="radio" id="4" name="radio11" th:field="*{seatNo}" th:value="A4">
-                    <label for="4"></label>
-                    <label for="4" class="lb_text">A4</label>
-                    <input type="radio" id="5" name="radio11" th:field="*{seatNo}" th:value="A5">
-                    <label for="5"></label>
-                    <label for="5" class="lb_text">A5</label>
-                    <input type="radio" id="6" name="radio11" th:field="*{seatNo}" th:value="A6">
-                    <label for="6"></label>
-                    <label for="6" class="lb_text">A6</label>
-                </p>
-                &#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&thinsp;&thinsp;&thinsp;&thinsp;
+                <input type="radio" id="4" name="radio11" th:field="*{seatNo}" th:value="A4">
+                <label for="4"></label>
+                <label for="4" class="lb_text">A4</label>
+                <input type="radio" id="5" name="radio11" th:field="*{seatNo}" th:value="A5">
+                <label for="5"></label>
+                <label for="5" class="lb_text">A5</label>
+                <input type="radio" id="6" name="radio11" th:field="*{seatNo}" th:value="A6">
+                <label for="6"></label>
+                <label for="6" class="lb_text">A6</label>
+                &#12288;&#12288;
                 <input type="radio" id="54" name="radio11" th:field="*{seatNo}" th:value="B4">
                 <label for="54"></label>
                 <label for="54" class="lb_text">B4</label>
@@ -210,143 +175,6 @@
                 <label for="68"></label>
                 <label for="68" class="lb_text">F6</label>
                 <br>
-                <br>
-                <input type="radio" id="19" name="radio11" th:field="*{seatNo}" th:value="G1">
-                <label for="19"></label>
-                <label for="19" class="lb_text">G1</label>
-                <input type="radio" id="20" name="radio11" th:field="*{seatNo}" th:value="G2">
-                <label for="20"></label>
-                <label for="20" class="lb_text">G2</label>
-                <input type="radio" id="21" name="radio11" th:field="*{seatNo}" th:value="G3">
-                <label for="21"></label>
-                <label for="21" class="lb_text">G3</label>
-                &#12288;&#12288;
-                <input type="radio" id="69" name="radio11" th:field="*{seatNo}" th:value="H1">
-                <label for="69"></label>
-                <label for="69" class="lb_text">H1</label>
-                <input type="radio" id="70" name="radio11" th:field="*{seatNo}" th:value="H2">
-                <label for="70"></label>
-                <label for="70" class="lb_text">H2</label>
-                <input type="radio" id="71" name="radio11" th:field="*{seatNo}" th:value="H3">
-                <label for="71"></label>
-                <label for="71" class="lb_text">H3</label>
-                <br>
-                <input type="radio" id="22" name="radio11" th:field="*{seatNo}" th:value="G4">
-                <label for="22"></label>
-                <label for="22" class="lb_text">G4</label>
-                <input type="radio" id="23" name="radio11" th:field="*{seatNo}" th:value="G5">
-                <label for="23"></label>
-                <label for="23" class="lb_text">G5</label>
-                <input type="radio" id="24" name="radio11" th:field="*{seatNo}" th:value="G6">
-                <label for="24"></label>
-                <label for="24" class="lb_text">G6</label>
-                &#12288;&#12288;
-                <input type="radio" id="72" name="radio11" th:field="*{seatNo}" th:value="H4">
-                <label for="72"></label>
-                <label for="72" class="lb_text">H4</label>
-                <input type="radio" id="73" name="radio11" th:field="*{seatNo}" th:value="H5">
-                <label for="73"></label>
-                <label for="73" class="lb_text">H5</label>
-                <input type="radio" id="74" name="radio11" th:field="*{seatNo}" th:value="H6">
-                <label for="74"></label>
-                <label for="74" class="lb_text">H6</label>
-                <br>
-                <br>
-                <input type="radio" id="25" name="radio11" th:field="*{seatNo}" th:value="J1">
-                <label for="25"></label>
-                <label for="25" class="lb_text">J1</label>
-                <input type="radio" id="26" name="radio11" th:field="*{seatNo}" th:value="J2">
-                <label for="26"></label>
-                <label for="26" class="lb_text">J2</label>
-                <input type="radio" id="27" name="radio11" th:field="*{seatNo}" th:value="J3">
-                <label for="27"></label>
-                <label for="27" class="lb_text">J3</label>
-                &#12288;&#12288;
-                <input type="radio" id="75" name="radio11" th:field="*{seatNo}" th:value="K1">
-                <label for="75"></label>
-                <label for="75" class="lb_text">K1</label>
-                <input type="radio" id="76" name="radio11" th:field="*{seatNo}" th:value="K2">
-                <label for="76"></label>
-                <label for="76" class="lb_text">K2</label>
-                <input type="radio" id="77" name="radio11" th:field="*{seatNo}" th:value="K3">
-                <label for="77"></label>
-                <label for="77" class="lb_text">K3</label>
-                <br>
-                <input type="radio" id="28" name="radio11" th:field="*{seatNo}" th:value="J4">
-                <label for="28"></label>
-                <label for="28" class="lb_text">J4</label>
-                <input type="radio" id="29" name="radio11" th:field="*{seatNo}" th:value="J5">
-                <label for="29"></label>
-                <label for="29" class="lb_text">J5</label>
-                <input type="radio" id="30" name="radio11" th:field="*{seatNo}" th:value="J6">
-                <label for="30"></label>
-                <label for="30" class="lb_text">J6</label>
-                &#12288;&#12288;
-                <input type="radio" id="78" name="radio11" th:field="*{seatNo}" th:value="K4">
-                <label for="78"></label>
-                <label for="78" class="lb_text">K4</label>
-                <input type="radio" id="79" name="radio11" th:field="*{seatNo}" th:value="K5">
-                <label for="79"></label>
-                <label for="79" class="lb_text">K5</label>
-                <input type="radio" id="80" name="radio11" th:field="*{seatNo}" th:value="K6">
-                <label for="80"></label>
-                <label for="80" class="lb_text">K6</label>
-                <br>
-                <br>
-                <input type="radio" id="31" name="radio11" th:field="*{seatNo}" th:value="L1">
-                <label for="31"></label>
-                <label for="31" class="lb_text">L1</label>
-                <input type="radio" id="32" name="radio11" th:field="*{seatNo}" th:value="L2">
-                <label for="32"></label>
-                <label for="32" class="lb_text">L2</label>
-                <input type="radio" id="33" name="radio11" th:field="*{seatNo}" th:value="L3">
-                <label for="33"></label>
-                <label for="33" class="lb_text">L3</label>
-                &#12288;&#12288;
-                <input type="radio" id="81" name="radio11" th:field="*{seatNo}" th:value="M1">
-                <label for="81"></label>
-                <label for="81" class="lb_text">M1</label>
-                <input type="radio" id="82" name="radio11" th:field="*{seatNo}" th:value="M2">
-                <label for="82"></label>
-                <label for="82" class="lb_text">M2</label>
-                <input type="radio" id="83" name="radio11" th:field="*{seatNo}" th:value="M3">
-                <label for="83"></label>
-                <label for="83" class="lb_text">M3</label>
-                <br>
-                <input type="radio" id="34" name="radio11" th:field="*{seatNo}" th:value="L4">
-                <label for="34"></label>
-                <label for="34" class="lb_text">L4</label>
-                <input type="radio" id="35" name="radio11" th:field="*{seatNo}" th:value="L5">
-                <label for="35"></label>
-                <label for="35" class="lb_text">L5</label>
-                <input type="radio" id="36" name="radio11" th:field="*{seatNo}" th:value="L6">
-                <label for="36"></label>
-                <label for="36" class="lb_text">L6</label>
-                &#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&thinsp;&thinsp;&thinsp;&thinsp;
-                <p hidden>
-                    <input type="radio" id="84" name="radio11" th:field="*{seatNo}" th:value="M4">
-                    <label for="84"></label>
-                    <label for="84" class="lb_text">M4</label>
-                    <input type="radio" id="85" name="radio11" th:field="*{seatNo}" th:value="M5">
-                    <label for="85"></label>
-                    <label for="85" class="lb_text">M5</label>
-                    <input type="radio" id="86" name="radio11" th:field="*{seatNo}" th:value="M6">
-                    <label for="86"></label>
-                    <label for="86" class="lb_text">M6</label>
-                </p>
-                <br>
-                <br>
-                <input type="radio" id="37" name="radio11" th:field="*{seatNo}" th:value="N1">
-                <label for="37"></label>
-                <label for="37" class="lb_text">N1</label>
-                <input type="radio" id="38" name="radio11" th:field="*{seatNo}" th:value="N2">
-                <label for="38"></label>
-                <label for="38" class="lb_text">N2</label>
-                <input type="radio" id="39" name="radio11" th:field="*{seatNo}" th:value="N3">
-                <label for="39"></label>
-                <label for="39" class="lb_text">N3</label>
-                &#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&thinsp;&thinsp;&thinsp;&thinsp;
-                <br>
                 <p hidden>
                     <input type="radio" id="99" name="radio11" >
                     <label for="99"></label>
@@ -358,10 +186,9 @@
             </div>
         </div>
 
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-
-        <h2>Equipment List</h2>
+    <h2>Equipment List</h2>
         <h3> Selectable fields </h3>
     <table class="table1" >
         <tr>
@@ -412,8 +239,8 @@
     </table>
         <br>
         <h4> Optional Fields </h4>
-        <p> Note that these equipments are avaliable in each counter upon your arrival.<br> Further needs for more of these
-        must be discussed with the lab admin upon your arrival on the day.<br> This may be subjected to change according to
+        <p> Note that these equipments are avaliable in each counter upon your arrival. Further needs for more of these
+        must be discussed with the lab admin upon your arrival on the day. This may be subjected to change according to
         the lab admin. </p>
         <table class = "table1">
         <tr>
@@ -465,13 +292,12 @@
 
         <br>
         <h4> Notes to Admin </h4>
-        <input type="text" th:field="*{notes}" style="width: 400px;">
+        <input type="text" th:field="*{notes}" >
 
         <br>
         <br>
-        <input type="submit" value="Submit" id="submit"/>
+        <input type="submit" value="Submit" />
     </form>
-
 
 </body>
 </html>
